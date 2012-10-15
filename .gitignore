@@ -11,3 +11,5 @@ StyleCop.Cache
 packages
 TestResults
 FakesAssemblies
+sources/PersonalWeb/Library/
+sources/PersonalWeb/App_Data/
