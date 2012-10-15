@@ -1,0 +1,319 @@
+﻿@{
+	ViewBag.Title = Html.IsRussian() ? "Гладких Денис: Обо мне / CV" : "Gladkikh Denis: About Me / CV" ;
+}
+
+
+<section itemscope itemtype="http://www.data-vocabulary.org/Person" >
+@if (Html.IsRussian())
+   { 
+ <img itemprop="photo" src="http://www.gravatar.com/avatar/@Html.GetHash("outcoldman@gmail.com") ?d=identicon&s=200" alt="photo" style="float:right" />
+<h1 ><span itemprop="name">Денис Гладких</span> (<span itemprop="nickname">outcoldman</span>)</h1>
+
+<div class="post">
+	
+	<h2 itemprop="title">Software Developer</h2>
+
+	<p>20 Января 1985.</p>
+	<p>@Html.ActionLink("Контакты", "links", "site")</p>
+
+	<h1>Знания:</h1>
+
+<p>В сумме более чем @Math.Round(((DateTime.Now - new DateTime(2005, 5, 1)).TotalDays)/365) лет опыта в разработке программных продуктов и компонент.</p>
+	<ul>
+		<li> Web App, C#: ASP.NET, WebServices, JavaScript, AJAX</li>
+
+		<li>Client App Dev, C#: WinForms, WPF, Silverlight</li>
+
+		<li>MS SQL (2000/2005/2008), T-SQL</li>
+
+		<li>ORM: NHibernate, ActiveRecord, Linq-to-SQL, Entity Framework</li>
+
+		<li>Client App Dev, C++: MFC, STL</li>
+
+		<li>SSL, Certificates, Cryptography in applications</li>
+
+		<li>WSS 3.0/MOSS 2007</li>
+
+		<li>.NET Technologies: WCF, WF</li>
+	</ul>
+<h1>Опыт работы: </h1>
+
+<h2> Июнь 2011 - Настоящее время. <a href="http://microsoft.com" rel="nofollow">Microsoft</a>. Visual Studio Ultimate Team. Software Design Engineer II.</h2>
+
+<ul><li>В команде, разрабатывающей утилиты для профилирования и анализа кода в Visual Studio.</li></ul>
+
+<h2> Март 2010 – Июнь 2011. <a href="http://www.msiuk.com" rel="nofollow">Mobile Systems International Ltd</a> (UK компания), Удаленно, контракт. C# Developer, Software Developer. </h2>
+
+<ul><li>Разработка Silverlight приложения для анализа мобильных сетей поверх SQL Server BI.</li></ul>
+
+<h2> Декабрь 2007 – Февраль 2010. <a href="http://fogsoft.ru" rel="nofollow">ООО Фогсофт</a>, Ярославль. C# Developer, Software architect. </h2>
+
+<ul>
+<li>
+Разработка приложения для рекламных агентств с использованием WinForms и хранимых процедур, база данных MS SQL 2000/2005. Оптимизация производительности (оптимизация БД, хранимых процедур).
+</li>
+<li>
+Разработка ASP.NET приложений для государственных и корпоративных компаний с использованием компонент компании. Принимал участие в доработке компонент.
+</li>
+<li>
+Разработка CRM приложения с использованием WPF. Разработка компонент для WPF приложений. Оптимизация производительности WPF GUI.
+</li>
+<li>
+Разработка решений на WSS 3.0 и MOSS 2007.
+</li>
+<li>
+Опыт в оценке проектов.
+</li>
+</ul>
+
+
+<h2> Январь 2005 – Ноябрь 2007. <a href="http://it-co.ru" rel="nofollow">IT-Co</a>, Москва. Удаленная работа. C++ Developer, ASP.NET Developer, Project Lead. </h2>
+<ul>
+<li>
+Разработка Windows <a href="http://roxtec.ru/design_enu.php" rel="nofollow">приложения для архитекторов</a> с использованием MFC и Access. Разработка механизма для создания спецификаций проектов, автоматического построения чертежей, экспорт в “dfx” формат. По окончании работы над проектом был руководителем проекта.
+</li>
+<li>
+Разработка COM Add-in для интеграции решений с  SolidWorks.
+</li>
+<li>
+Разработка ASP.NET приложения для корпоративных компаний. Написание внутренних компонент для разработки приложений с использованием паттерна MVC, NHibernate и Баз Данных MS SQL 2000/2005.
+</li>
+</ul>
+
+<h1>Обучение:</h1>
+
+<h2> Ноябрь 2007 – Октябрь 2010. Ярославский государственный университет. Аспирант.</h2>
+<p> Прикладная математика и информатика, Кафедра дифференциальных уравнений. Исследование "жадных" алгоритмов в пространствах Лоренца и Марцинкевича.</p> 
+<p> Публикации:
+<ul>
+<li>
+Приложения функциональных языков. Реализация вейвлет-сжатия изображений с использованием F#.
+</li>
+<li>
+Поиск изображений при помощи вейвлет-преобразований. Реализация на F#.
+</li>
+<li>
+Оценка оператора Кордобы-Фернандеза в пространствах Марцинкевича.
+</li>
+<li>
+Оценка снизу тригонометрических сумм в пространствах Марцинкевича.
+</li>
+</ul>
+<i>К сожалению, хоть и закончил аспирантуру с предоставлением кандидасткой работы, но времени и желания на защиту не осталось.</i>
+</p>
+
+<h2>Сентябрь 2002 – Июнь 2007. Ярославский  государственный университет. Специалист. </h2>
+<p>
+Прикладная математика и информатика, Кафедра дифференциальных уравнений. Диплом на тему исследованию вейвлет-преобразований и их применения.<br/>
+<i>Россия. Закончил я кафедру ДУ, а вот в дипломе у меня математическое моделирование. Обнаружилось уже значительно позже получения диплома. Проверяйте сдачу, не отходя от кассы.</i>
+</p>
+<h1>Сертификаты:</h1>
+<ul>
+<li>
+Май 2009 – Microsoft Certified Technology Specialist (MCTS) - .NET Framework 3.5, ASP.NET Applications.
+</li>
+<li>
+Декабрь 2009 – Microsoft Certified Professional Developer (MCPD) - .NET Framework 3.5, ASP.NET Applications.
+</li>
+<li>
+Февраль 2010 – Microsoft Certified Technology Specialist (MCTS) - .NET Framework 3.5, Windows Presentation Foundation
+</li>
+<li>
+Июнь 2010 – Microsoft Certified Technology Specialist (MCTS) - .NET Framework 4, Windows Applications
+</li>
+<li>
+Сентябрь 2010 – Microsoft Certified Technology Specialist (MCTS) - Windows Communication Foundation 4
+</li>
+<li>
+Октябрь 2010 – Microsoft Certified Technology Specialist (MCTS) - .NET Framework 4, Data Access
+</li>
+<li>
+Октябрь 2010 – Microsoft Certified Professional Developer (MCPD) - Windows Developer 4
+</li>
+<li>
+Октябрь 2010 – Microsoft Certified Technology Specialist (MCTS) - Silverlight 4, Development
+</li>
+</ul>
+
+<h1>Языки:</h1>
+
+<ul>
+<li>
+Русский – Родной
+</li>
+<li>
+Английский – Свободно
+</li>
+</ul>
+
+<h1> Награды:</h1>
+
+<p>Июль 2009 – Июнь 2011. Microsoft Most Valuable Professional, Client App Dev.</p>
+
+<h1>ИТ сообщества:</h1>
+
+<ul>
+<li>Студент партнер Microsoft (2009-2010).</li>
+<li><a href="http://ineta.ru" rel="nofollow">Ineta User Groups</a> - .NET Associations. Лидер <a href="http://yargu.ineta.ru" rel="nofollow">Yaroslavl Student .NET Association</a> и докладчик на <a href="http://yana.ineta.ru">Yaroslavl .NET Association</a>.</li>
+<li><a href="http://gotdotnet.ru" rel="nofollow">GotDotNet Team</a>. Модератор и автор статей.</li>
+</ul>
+
+</div>
+   
+   
+   } else
+   {
+   <img itemprop="photo" src="http://www.gravatar.com/avatar/@Html.GetHash("outcoldman@gmail.com") ?d=identicon&s=200" alt="photo" style="float:right" />
+<h1 ><span itemprop="name">Denis Gladkikh</span> (<span itemprop="nickname">outcoldman</span>)</h1>
+
+<div class="post">
+
+<h2 itemprop="title">Software Developer</h2>
+	
+	<p>January 20, 1985.</p>
+	<p>@Html.ActionLink("Contact Details", "links", "site")</p>
+
+	<h1>Skills:</h1>
+
+<p>At sum have more than @Math.Round(((DateTime.Now - new DateTime(2005, 5, 1)).TotalDays)/365) years’ experience in developing applications and components.</p>
+	<ul>
+		<li> Web App, C#: ASP.NET, WebServices, JavaScript, AJAX</li>
+
+		<li>Client App Dev, C#: WinForms, WPF, Silverlight</li>
+
+		<li>MS SQL (2000/2005/2008), T-SQL</li>
+
+		<li>ORM: NHibernate, ActiveRecord, Linq-to-SQL, Entity Framework</li>
+
+		<li>Client App Dev, C++: MFC, STL</li>
+
+		<li>SSL, Certificates, Cryptography in applications</li>
+
+		<li>WSS 3.0/MOSS 2007</li>
+
+		<li>.NET Technologies: WCF, WF</li>
+	</ul>
+<h1>Work Experience: </h1>
+
+<h2> June 2011 - Present. <a href="http://microsoft.com" rel="nofollow">Microsoft</a>. Visual Studio Ultimate Team. Software Design Engineer II.</h2>
+
+<ul><li>Developing profiling and code analysis tools for Visual Studio.</li></ul>
+
+<h2> Mar 2010 – June 2011. <a href="http://www.msiuk.com" rel="nofollow">Mobile Systems International Ltd</a> (UK based company), Remote Job, Long Contract. C# Developer, Software Developer. </h2>
+
+<ul><li>Mobile network management Silverlight application build on top of SQL Server business intelligence.</li></ul>
+
+<h2> Dec 2007 – Feb 2010. <a href="http://fogsoft.ru" rel="nofollow">FogSoft LLC</a>, Yaroslavl. C# Developer, Software architect. </h2>
+
+<ul>
+<li>
+Developing application for advertising agencies with WinForms and Stored Procedures using MS SQL 2000/2005. Optimization of application performance (server sql queries).
+</li>
+<li>
+Developing some ASP.NET applications for government and enterprise companies using inside company engine. Taking part in engine upgrading.
+</li>
+<li>
+Developing CRM application using WPF. Creating components for this application like file storage server with WCF, WPF controls and other. Taking part in performance optimization of WPF GUI.
+</li>
+<li>
+Design solutions based on WSS 3.0 and MOSS 2007.
+</li>
+<li>
+Experience in projects appraisal. 
+</li>
+</ul>
+
+<h2> Jan 2005 – Nov 2007. <a href="http://it-co.ru" rel="nofollow">IT-Co</a>, Moscow. Worked at home (seat in Yaroslavl). C++ Developer, ASP.NET Developer, Project Lead. </h2>
+<ul>
+<li>
+Developing windows <a href="http://roxtec.ru/design_enu.php" rel="nofollow">application for engineers</a> based on MFC using DB Access. Developed engine for creating specification documentation for projects, automating drawing of projects drafts, exporting to the “dfx” format and other new functionality. By the end of my participation I was the project lead.
+</li>
+<li>
+Developing prototype Add-in with COM for integration our solution with SolidWorks.
+</li>
+<li>
+Developing some ASP.NET Applications for corporate use. Wrote engine for creating enterprise applications using MVC pattern, NHibernate ORM and DB MS SQL 2000/2005.
+</li>
+</ul>
+
+<h1>Education:</h1>
+
+<h2> Nov 2007 – Present. Yaroslavl State University. Postgraduate Student.</h2>
+<p> Applied Mathematics and Computer Science, Department of differential equations. Research on “greedy” algorithms in Marzenkewitz and Lorentz spaces.</p> <p> Publications:</p>
+<ul>
+<li>
+Functional languages application. Realization wavelet-compress for images with F#.
+</li>
+<li>
+Images search with wavelet-transformation. Realization with F#.
+</li>
+<li>
+Estimates Cordoba-Fernandez operator in Marcinkiewicz spaces.
+</li>
+<li>
+Lower bounds for exponential sums in Marcinkiewicz spaces.
+</li>
+</ul>
+
+<h2>Sep 2002 – Jun 2007. Yaroslavl State University. Specialist / Master degree. </h2>
+<p>Applied Mathematics and Computer Science, Department of differential equations.</p>
+
+<h1>Certification:</h1>
+<ul>
+<li>
+May 2009 – Microsoft Certified Technology Specialist (MCTS) - .NET Framework 3.5, ASP.NET Applications.
+</li>
+<li>
+Dec 2009 – Microsoft Certified Professional Developer (MCPD) - .NET Framework 3.5, ASP.NET Applications.
+</li>
+<li>
+Feb 2010 – Microsoft Certified Technology Specialist (MCTS) - .NET Framework 3.5, Windows Presentation Foundation
+</li>
+<li>
+Jun 2010 – Microsoft Certified Technology Specialist (MCTS) - .NET Framework 4, Windows Applications
+</li>
+<li>
+Sep 2010 – Microsoft Certified Technology Specialist (MCTS) - Windows Communication Foundation 4
+</li>
+<li>
+Oct 2010 – Microsoft Certified Technology Specialist (MCTS) - .NET Framework 4, Data Access
+</li>
+<li>
+Oct 2010 – Microsoft Certified Professional Developer (MCPD) - Windows Developer 4
+</li>
+<li>
+Oct 2010 – Microsoft Certified Technology Specialist (MCTS) - Silverlight 4, Development
+</li>
+</ul>
+
+<h1>Languages:</h1>
+
+<ul>
+<li>
+Russian – Native language
+</li>
+<li>
+English – Advanced
+</li>
+</ul>
+
+<h1> Honors & Awards:</h1>
+
+<p>Jul 2009 – June 2011. Microsoft Most Valuable Professional, Client App Dev.</p>
+
+<h1>Professional Memberships:</h1>
+
+<ul>
+<li>Microsoft Student Partner (2009-2010).</li>
+<li><a href="http://ineta.ru" rel="nofollow">Ineta User Groups</a> - .NET Associations. Group Leader of <a href="http://yargu.ineta.ru" rel="nofollow">Yaroslavl Student .NET Association</a> and Speaker of <a href="http://yana.ineta.ru" rel="nofollow">Yaroslavl .NET Association</a>.</li>
+<li><a href="http://gotdotnet.ru" rel="nofollow">GotDotNet Team</a>. Forum moderator and articles author.</li>
+</ul>
+
+</div>
+
+   }
+   </section>
+
+
+
+

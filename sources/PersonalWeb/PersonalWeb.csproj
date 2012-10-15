@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{21AF1010-87A9-4563-90DD-1FD5CB4198C0}</ProjectGuid>
+    <ProjectTypeGuids>{e53f8fea-eae0-44a6-8774-ffd645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PersonalWeb</RootNamespace>
+    <AssemblyName>PersonalWeb</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <TargetFrameworkProfile />
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PackageAsSingleFile>false</PackageAsSingleFile>
+    <PublishDatabases>false</PublishDatabases>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AntiXSSLibrary">
+      <HintPath>..\Lib\AntiXSSLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="CodeSnippet">
+      <HintPath>..\Lib\CodeSnippet.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.3.0.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\Lib\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlSanitizationLibrary">
+      <HintPath>..\Lib\HtmlSanitizationLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\Lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Abstractions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Entity">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.WebPages.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web.WebPages">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\LiveJournalController.cs" />
+    <Compile Include="Controllers\RssController.cs" />
+    <Compile Include="Controllers\SiteController.cs" />
+    <Compile Include="Controllers\ShowIPController.cs" />
+    <Compile Include="Controllers\StartController.cs" />
+    <Compile Include="Controllers\ToolsController.cs" />
+    <Compile Include="Core\Akismet\AkismetException.cs" />
+    <Compile Include="Core\Akismet\AkismetItem.cs" />
+    <Compile Include="Core\Akismet\AkismetManager.cs" />
+    <Compile Include="Core\Akismet\AkismetType.cs" />
+    <Compile Include="Core\Akismet\InvalidKeyException.cs" />
+    <Compile Include="Core\Constants.cs" />
+    <Compile Include="Core\DebugTextWriter.cs" />
+    <Compile Include="Core\HtmlParser.cs" />
+    <Compile Include="Core\Util\ConfigurationUtil.cs" />
+    <Compile Include="Core\Util\Log4NetHelper.cs" />
+    <Compile Include="Core\Util\NavigationHelper.cs" />
+    <Compile Include="Core\Util\Parser.cs" />
+    <Compile Include="Core\Util\StringUtils.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BlogPost.cs" />
+    <Compile Include="Model\LiveJournalFriendPost.cs" />
+    <Compile Include="Model\LogOnModel.cs" />
+    <Compile Include="Model\Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Repositories\AkismetRepository.cs" />
+    <Compile Include="Model\Repositories\BaseRepository.cs" />
+    <Compile Include="Model\Repositories\BlogRepository.cs" />
+    <Compile Include="Model\Repositories\LanguagesRepository.cs" />
+    <Compile Include="Model\Repositories\LivejournalRepository.cs" />
+    <Compile Include="Model\Repositories\NotificationRepository.cs" />
+    <Compile Include="Model\SiteMapBlogItem.cs" />
+    <Compile Include="Model\Tag.cs" />
+    <Compile Include="Model\UnsubscribeModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Web\Controls\BlogTagsHelper.cs" />
+    <Compile Include="Web\Controls\Gravatar.cs" />
+    <Compile Include="Web\Controls\HtmlRouteData.cs" />
+    <Compile Include="Web\Controls\MainMenuControl.cs" />
+    <Compile Include="Web\Controls\PagesControl.cs" />
+    <Compile Include="Web\Controls\TagsPagesControl.cs" />
+    <Compile Include="Web\Controls\UserHelper.cs" />
+    <Compile Include="Web\CustomOutputCacheAttribute.cs" />
+    <Compile Include="Web\ExtRouteConstraint.cs" />
+    <Compile Include="Web\LangRouteConstraint.cs" />
+    <Compile Include="Web\MeAuthorizeAttribute.cs" />
+    <Compile Include="Web\Metablog\BlogInfo.cs" />
+    <Compile Include="Web\Metablog\Category.cs" />
+    <Compile Include="Web\Metablog\CategoryInfo.cs" />
+    <Compile Include="Web\Metablog\Enclosure.cs" />
+    <Compile Include="Web\Metablog\IMetaWeblog.cs" />
+    <Compile Include="Web\Metablog\MediaObject.cs" />
+    <Compile Include="Web\Metablog\MediaObjectInfo.cs" />
+    <Compile Include="Web\Metablog\MetaWeblog.cs" />
+    <Compile Include="Web\Metablog\Post.cs" />
+    <Compile Include="Web\Metablog\Source.cs" />
+    <Compile Include="Web\Metablog\UserInfo.cs" />
+    <Compile Include="Web\Providers\SqlCeMembershipProvider.cs" />
+    <Compile Include="Web\Providers\SqlCeMembershipUtils.cs" />
+    <Compile Include="Web\RenderPartialToString.cs" />
+    <Compile Include="Web\Resources\ResourceEn.Designer.cs">
+      <DependentUpon>ResourceEn.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Web\Resources\ResourceLoader.cs" />
+    <Compile Include="Web\Resources\ResourceRu.Designer.cs">
+      <DependentUpon>ResourceRu.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Web\SmtpConfig.cs" />
+    <Compile Include="Web\SourceCodeHighlighterService.cs" />
+    <Compile Include="Web\Timers\NotificationSender.cs" />
+    <Compile Include="Web\ValidateLangAttribute.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\LocalDatabase.sdf" />
+    <None Include="Core\Akismet\copyright.txt" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="MetaWeblog.svc" />
+    <Content Include="Resources\css\edit.css" />
+    <Content Include="Resources\images\bgR.png" />
+    <Content Include="Resources\images\busy.gif" />
+    <Content Include="Resources\images\footerContainerBgR.png" />
+    <Content Include="Resources\images\icons\en.gif" />
+    <Content Include="Resources\images\icons\facebook.gif" />
+    <Content Include="Resources\images\icons\habrahabr.gif" />
+    <Content Include="Resources\images\icons\linkedin.ico" />
+    <Content Include="Resources\images\icons\livejournal.gif" />
+    <Content Include="Resources\images\icons\microsoft.png" />
+    <Content Include="Resources\images\icons\ru.gif" />
+    <Content Include="Resources\images\icons\skype.png" />
+    <Content Include="Resources\images\icons\spaces.live.com.gif" />
+    <Content Include="Resources\images\icons\twitter.gif" />
+    <Content Include="Resources\images\icons\vkontakte.gif" />
+    <Content Include="Resources\images\mvp.jpg" />
+    <Content Include="Resources\images\rss.png" />
+    <Content Include="Resources\images\rss64.png" />
+    <Content Include="Resources\images\sideBarArrow.png" />
+    <Content Include="Resources\images\topNavSep.png" />
+    <Content Include="Resources\images\twitter.png" />
+    <Content Include="Resources\images\twitter64.png" />
+    <Content Include="Resources\scripts\CodeHighlighter.js" />
+    <Content Include="Resources\scripts\ItemView.js" />
+    <Content Include="Resources\scripts\jquery.cookie.js" />
+    <Content Include="Resources\scripts\Master.js" />
+    <Content Include="Resources\scripts\modernizr-1.7.min.js" />
+    <Content Include="Resources\scripts\RegEx.js" />
+    <Content Include="robots.txt" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Resources\css\Site.css" />
+    <Content Include="Views\Web.config" />
+    <EntityDeploy Include="Model\Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Views\site\AboutMe.cshtml" />
+    <Content Include="Views\site\Index.cshtml" />
+    <Content Include="Views\site\Links.cshtml" />
+    <Content Include="Views\site\OpenID.cshtml" />
+    <Content Include="Views\site\SiteMap.cshtml" />
+    <Content Include="Views\ShowIP\UserIP.cshtml" />
+    <Content Include="Views\rss\rss.cshtml" />
+    <Content Include="Views\account\LogOn.cshtml" />
+    <Content Include="Views\blog\Delete.cshtml" />
+    <Content Include="Views\blog\Index.cshtml" />
+    <Content Include="Views\blog\ItemEdit.cshtml" />
+    <Content Include="Views\blog\ItemView.cshtml" />
+    <Content Include="Views\blog\List.cshtml" />
+    <Content Include="Views\comment\Delete.cshtml" />
+    <Content Include="Views\comment\List.cshtml" />
+    <Content Include="Views\comment\unsubscribe.cshtml" />
+    <Content Include="Views\error\Error.cshtml" />
+    <Content Include="Views\livejournal\friends.cshtml" />
+    <Content Include="Views\tools\Index.cshtml" />
+    <Content Include="Views\tools\KeysExtender.cshtml" />
+    <Content Include="Views\tools\RegEx.cshtml" />
+    <Content Include="Views\tools\TwitterStatistic.cshtml" />
+    <Content Include="Views\Shared\Advertising.cshtml" />
+    <Content Include="Views\Shared\CommentViewItem.cshtml" />
+    <Content Include="Views\Shared\FeedBurner.cshtml" />
+    <Content Include="Views\Shared\LinksPartial.cshtml" />
+    <Content Include="Views\Shared\_Public.cshtml" />
+    <Content Include="Views\Shared\ShowBlogItem.cshtml" />
+    <Content Include="Views\Shared\_Site.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\tools\CodeHighlighter.cshtml" />
+    <Content Include="Views\site\Search.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\Logs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Microsoft.Samples.XmlRpc\Microsoft.Samples.XmlRpc.csproj">
+      <Project>{D556D0B7-A193-4610-8DD3-17B715F2C868}</Project>
+      <Name>Microsoft.Samples.XmlRpc</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="log4net.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Web\Resources\ResourceEn.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceEn.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Web\Resources\ResourceRu.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceRu.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <Target Name="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50718</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/PersonalWeb</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

@@ -1,0 +1,93 @@
+﻿* { margin:0px; 	padding:0px;}
+a {color:#650000;}
+a:hover {color:#5a5a5a;text-decoration:underline;}
+body {text-align:center; line-height:150%;	margin:0px;	padding:0px;font-family:Arial, Helvetica, sans-serif;	font-size:medium;color:#000000;background:url(../images/bgR.png) repeat-x left top #ffffff;}
+img{  border: none 0px; margin:0px;padding:0px;}
+.clear {margin:0px;padding:0px;height:0px;font-size:0px;	clear:both;}
+#center {margin-left: auto;  margin-right: auto; width: 995px;}
+/*** Special ****/
+.contacttext {list-style-type:none; }
+.contacttext li { padding: 5px 0px 5px 0px;}
+/******Top*********/
+.langbar{	margin-top:12px; margin-left:801px; font-size:small; position:absolute; z-index:1000; }
+.myname{margin-top:17px; margin-left:210px; position:absolute;  z-index:1000;}
+.subscription{margin-top:42px; margin-left:812px; position:absolute; width:150px; z-index:1000; }
+.langbar .ru{background: url(../images/icons/ru.gif) no-repeat 0px 2px;padding-left:20px;}
+.langbar .en{background: url(../images/icons/en.gif) no-repeat 0px 2px;	padding-left:20px;}
+.logo {	width:770px; height:90px;	padding-left:4px;	font-size:62px; font-weight:normal; z-index:1000; font-variant:normal; line-height: 68px;}
+.logo a {text-decoration:none; color: Black;}
+#branding {height:150px; padding-top:20px; position:absolute;}
+/********* Menu ************/
+ul.topNav  {margin:0px;padding:0px;	width:970px;}
+.topNav li{ float:left; display:inline-block;}
+.topNav li a{ float:left; font-family:tahoma, arial; font-size:11px; color:#FFFFFF; text-align:center; line-height:35px; display:inline-block; text-decoration:none;	 background:#313131; padding-left:12px; padding-right:12px; margin-top:5px; border-right:1px solid #FFFFFF;}
+.topNav li a:hover{background:#F57E29;	color:#ffffff;	text-decoration:none;	}
+.topNav li a.topNavAct{background:#FFFFFF;	color:#000000;text-decoration:none;	height:40px;	position:relative;	top:-5px;}
+/***Main content**/
+#wrapper {	margin:0px;padding: 0px 25px;width:945px;padding-bottom:50px;	text-align:left;}
+.contant {width:970px;padding-top:200px;font-family:Georgia, "Times New Roman", Times, serif;}
+.contant h1{font-size:200%;color:#3a3a3a;font-weight:normal;	padding-bottom:20px;	padding-top:10px; line-height:normal;}
+.contantleft {width:700px;float:left;}
+.smalltext{font-size: 80%;}
+.contant .postwrapper {padding:0px 0px 80px 0px;}
+blockquote { margin: 1em 3em; padding: .5em 1em; 	border-left: 5px solid #fce27c; background-color: #f6ebc1; }
+blockquote p { margin: 0; }
+/****** Footer ***********/
+footer #footerContainer {background:url(../images/footerContainerBgR.png) repeat-x left top;height:50px;line-height:50px;font-size:12px;font-family:Georgia, "Times New Roman", Times, serif;color:#B7B7B7;	width:100%;	text-align:left;}
+footer #footerContainer p{	width:970px; margin:auto; padding:0px 10px;}
+footer #footerContainer p label{	float:right;}
+/***** Side bar (twitters) *******/
+.sideBar{  width:240px;float:left;	margin-left:10px; font-size:small;line-height:130%}
+.sideBar h3{margin:0px;padding:0px 0px 5px 0px;   font-family:Georgia, "Times New Roman", Times, serif;	font-size:180%;	color:#3A3A3A;}
+.sideBar ul {margin:0px;padding:0px;	list-style:none;}
+/***** Bottom *******/
+.footerForm {	width:925px;	padding: 20px;	color: black;	}
+.footerForm legend { font-weight:bold; color: #4a4a4a; padding: 5px; font-size:large;}
+.footerForm .info {font-size:small; color:#b7b7b7; line-height:100%}
+.footerFormR {width:285px;margin-right:10px;float:left;margin-top:20px;}
+.footerFormR1 {	width:612px;	margin-right:10px;	float:left;	margin-top:20px;}
+.footerForm p{	margin: 0px 0px 5px 0px;}
+.footerForm p label{		color: #6a6a6a; padding-bottom:2px;}
+.footerForm input[type=text], .footerForm input[type=email], .footerForm input[type=url] {background:#FFFFFF;border:solid 1px #b7b7b7;	padding:6px;	width:274px;	height:20px;	padding-top:4px;	font-size:18px;font-weight:normal;}
+.footerForm textarea {	background:#FFFFFF;	border:solid 1px #b7b7b7;	padding:6px;	width:600px;	padding-top:6px;	font-size:18px;	font-weight:normal;}
+input.footerSubmit {background-color:#AEAEAE;	color:Black;	border:none;	width:108px;	height:37px;	font-size:18px;	font-weight:normal;	float:right;	cursor:pointer;}
+input.footerPreview {background-color:#CECECE;	color:Black;	border:none;	width:138px;	height:37px;	font-size:18px;	font-weight:normal;	float:right;	cursor:pointer; margin-right:10px;}
+div.footerBusy {	height:37px;float:right; padding-top:5px; display:none;}
+.footerForm div.notification{display:none;}
+.footerForm div.notification h4{text-align:left;color:#EAAB15; padding: 5px 0px 0px 0px; line-height:100%;}
+/*** Comment View ****/
+.comment fieldset {padding: 10px;}
+.comment fieldset.my {padding: 10px; border: solid 2px #4a4a4a;}
+.comment fieldset legend { font-size:large; margin-left: 10px; padding:2px; }
+.comment .commenttext {padding-top:10px;padding-bottom:10px;padding-left:10px; float:right; width:850px;}
+.comment .commentavatar {width: 80px; height: 80px; float:left; }
+/*** Post ****/
+
+h3 {font-family:Arial, Helvetica, sans-serif;}
+.post p{padding: 10px 0px 10px 0px;}
+.post h1{font-size:180%;color:#3a3a3a;font-weight:normal;padding-bottom:20px;padding-top:20px;}
+.post h2{font-size:150%;color:#3a3a3a;font-weight:normal;padding-bottom:15px;padding-top:15px;padding-left:10px;}
+.post h3{font-size:120%;color:#3a3a3a;font-weight:normal;padding-bottom:10px;padding-top:10px;padding-left:20px;}
+.post h4{color:#3a3a3a;font-weight:bold;padding-bottom:10px;padding-top:5px;}
+.post ul {padding:5px 0px 5px 30px; list-style-type:disc; }
+.post ol {padding:5px 0px 5px 30px;}
+.post li { }
+/*** Right Menu ***/
+.items {margin:0px;padding:0px;	margin-bottom:25px}
+.items ul li{padding-top:3px; background:url(../images/sideBarArrow.png) no-repeat 5px 12px;display:block;border-bottom:1px  dotted #CBCBCB;padding-left:20px;font-size:normal;}
+.items ul li a{color:#650000;text-decoration:none;font-weight:bold;}
+.items ul li a:hover{color:#3A3A3A;text-decoration:underline;}
+/*** Tag cloud ***/
+ ul.tags { margin:1em 0;padding:.5em 10px;text-align:center;background:#EBE8D9;	}
+.tags li{	margin:0;padding: 0px 0px 3px 0px;list-style:none;display:inline; }
+.tags li a{	text-decoration:none;padding:0 5px; white-space: nowrap; }
+.tag1{font-size:100%;}
+.tag2{font-size:110%;}
+.tag3{font-size:120%;}
+.tag4{font-size:130%;}
+.tag5{font-size:140%;}
+.tag6{font-size:150%;}
+.tag7{font-size:160%;}
+.tag8{font-size:170%;}
+.tag9{font-size:180%;}
+.tag10{font-size:190%;}

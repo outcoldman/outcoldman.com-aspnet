@@ -1,0 +1,53 @@
+﻿@{
+	ViewBag.Title = Html.GetResource("Tools") ;
+}
+
+
+
+    <div class="items">
+	  <h1>@Html.GetResource("Tools") </h1>
+	  <ul>
+		<li>
+			<a href="http://ctt.codeplex.com/">Config Transformation Tool</a>
+			<p>
+				@Html.GetResource("ConfigTransformationTool") 
+			</p>
+		 </li>
+         <li>
+		 	@Html.ActionLink(Html.GetResource("RegExTitle"), "regex", "tools")
+			<p>
+				@Html.GetResource("RegExInfo")
+			</p>
+		 </li>
+         <li>
+		 	@Html.ActionLink(Html.GetResource("ShowIPTitle"), "userip", "showip")
+			<p>
+				@Html.GetResource("ShowIPInfo")
+			</p>
+		 </li>
+		 <li>
+		 	@Html.ActionLink(Html.GetResource("KeysExtenderTitle"), "keys", "tools")
+			<p>
+				@Html.GetResource("KeysExtenderInfo")
+			</p>
+		 </li>
+		 <li>
+		 	@Html.ActionLink(Html.GetResource("TwitterStatisticTitle"), "twitterstatistic", "tools")
+			<p>
+				@Html.GetResource("TwitterStatisticInfo")
+			</p>
+		 </li>
+		 <li>
+		 	@Html.ActionLink(Html.GetResource("CodeHighlighterTitle"), "CodeHighlighter", "tools")
+			<p>
+				@Html.GetResource("CodeHighlighterInfo")
+			</p>
+		 </li>
+        </ul>
+	  </div>
+
+	    @Html.Partial("Advertising") 
+
+
+
+

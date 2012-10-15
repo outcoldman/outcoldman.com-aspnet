@@ -1,0 +1,69 @@
+﻿@model System.Collections.Generic.List<PersonalWeb.Model.Repositories.BlogPostModel>
+
+@{
+	Layout = "~/Views/Shared/_Site.cshtml";
+	ViewBag.Title = "Blog Post List";
+}
+
+
+	<p>
+        @Html.ActionLink("Create New", "create")  | 
+		@Html.ActionLink("Comments", "list", "comment")  
+    </p>
+
+    <h2>Blog Post List</h2>
+
+	@Html.CreatePager((int)ViewData["selectedPage"], (int)ViewData["pagesCount"])
+
+    <table style="width:100%;">
+        <tr>
+            <th style="width:50%;">
+                Title
+            </th>
+            <th>
+                Language
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                IsPublic
+            </th>
+			<th></th>
+        </tr>
+		@{
+			int i = 0; }
+    @{ foreach (var item in Model) { 
+    
+        <tr style='background-color:@((i++) % 2 == 0 ? "#f4f4f4" : "white") ;'>
+            <td>
+                @item.BlogPost.Title 
+            </td>
+            <td>
+                @item.BlogPost.Language 
+            </td>
+            <td>
+				<time datetime="@item.BlogPost.Date.ToString("o")" pubdate="pubdate">@item.BlogPost.Date.ToString("dd.MM.yyyy HH:mm") UTC</time>
+            </td>
+            <td>
+                @item.BlogPost.IsPublic 
+            </td>
+			<td>
+                @Html.ActionLink("Edit", "itemedit", new { id = item.BlogPost.PostID }) |
+                @Html.ActionLink("Show", "show", new { id = item.BlogPost.PostID }) | 
+				@Html.ActionLink("Delete", "delete", new { id = item.BlogPost.PostID }) |
+				@Html.ActionLink("Publicate", "publicate", new { id = item.BlogPost.PostID })  
+
+            </td>
+        </tr>
+    
+     } }
+
+    </table>
+
+    
+
+
+
+
+
