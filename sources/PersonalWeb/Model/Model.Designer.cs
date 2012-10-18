@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -154,6 +155,7 @@ namespace PersonalWeb.Model
         private ObjectSet<Tag> _Tags;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
@@ -197,11 +199,11 @@ namespace PersonalWeb.Model
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
     
     /// <summary>
@@ -242,6 +244,7 @@ namespace PersonalWeb.Model
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -488,6 +491,7 @@ namespace PersonalWeb.Model
         partial void OnIsForExternalChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -558,6 +562,7 @@ namespace PersonalWeb.Model
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -592,6 +597,7 @@ namespace PersonalWeb.Model
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -838,6 +844,7 @@ namespace PersonalWeb.Model
         partial void OnIsSpamChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -902,6 +909,7 @@ namespace PersonalWeb.Model
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -930,6 +938,7 @@ namespace PersonalWeb.Model
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1008,6 +1017,7 @@ namespace PersonalWeb.Model
         partial void OnSubscriptionIDChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1050,6 +1060,7 @@ namespace PersonalWeb.Model
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1080,6 +1091,7 @@ namespace PersonalWeb.Model
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1182,6 +1194,7 @@ namespace PersonalWeb.Model
         partial void OnIsSentChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1224,6 +1237,7 @@ namespace PersonalWeb.Model
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1248,6 +1262,7 @@ namespace PersonalWeb.Model
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1302,6 +1317,7 @@ namespace PersonalWeb.Model
         partial void OnNameChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1328,8 +1344,10 @@ namespace PersonalWeb.Model
         }
 
         #endregion
+
     }
 
     #endregion
+
     
 }

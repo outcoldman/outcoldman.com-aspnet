@@ -2,12 +2,15 @@
 
 namespace PersonalWeb.Core.Util
 {
+    using System;
+
     public class NavigationHelper
     {
         public static string GetUrlWithHost(string url)
         {
-            return string.Format("{0}://{1}{2}", HttpContext.Current.Request.Url.Scheme,
-                                 HttpContext.Current.Request.Url.Host, PlaceSeparator(url));
+            Uri requestUri = HttpContext.Current.Request.Url;
+            return string.Format("{0}://{1}{2}", requestUri.Scheme,
+                                 requestUri.Authority, PlaceSeparator(url));
         }
 
         public static string GetSiteUrl(string url)

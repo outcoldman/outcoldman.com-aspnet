@@ -1,11 +1,18 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalWeb", "PersonalWeb\PersonalWeb.csproj", "{21AF1010-87A9-4563-90DD-1FD5CB4198C0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Samples.XmlRpc", "Microsoft.Samples.XmlRpc\Microsoft.Samples.XmlRpc.csproj", "{D556D0B7-A193-4610-8DD3-17B715F2C868}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalWeb.Tests", "PersonalWeb.Tests\PersonalWeb.Tests.csproj", "{42469506-F85F-49AB-9FCB-3E60F3EF92D6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{540F7D34-95B3-49F9-9283-8D26E9D3D765}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
