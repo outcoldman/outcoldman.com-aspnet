@@ -1,0 +1,10 @@
+﻿User-Agent: *
+Disallow: /ru/account/logon
+Disallow: /en/account/logon
+Disallow: /en/comment/add/
+Disallow: /ru/comment/add/
+Disallow: /​ru/​com​men​t/p​rev​iew​/
+Disallow: /​en/​com​men​t/p​rev​iew​/
+Disallow: /error/
+Allow: /
+

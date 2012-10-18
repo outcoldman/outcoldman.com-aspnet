@@ -1,0 +1,69 @@
+﻿@using PersonalWeb.Web.Controls
+@using PersonalWeb.Web.Resources
+@{
+	ViewBag.Title = Html.GetResource("KeysExtenderTitle");
+}
+
+
+
+<div class="post">
+    <h1>@Html.GetResource("KeysExtenderTitle")</h1>
+	@if (Html.IsRussian())
+       {
+	   <h2>Информация</h2> 
+ 
+	<p>В Windows 7, мне очень понравилась возможность использовать горячие клавиши Win + (Left | Right | Up | Bottom): </p> 
+	 
+	<ul> 
+		<li>Win + Left - расположить окно по левой области экрана  </li> 
+		 
+		<li>Win + Right - расположить окно по правой области экрана </li> 
+		 
+		<li>Win + Up -&nbsp;максимизировать окно </li> 
+		 
+		<li>Win + Bottom -&nbsp;окно в нормальное состояние </li> 
+	</ul> 
+	 
+	<p><img alt="Windows Keys Extender" height="400" hspace="0" src="http://outcoldman.ru/library/images/01/0000014.png" width="640" border="0" /></p> 
+	 
+	 <p>Сделать возможным использование этих горячих клавиш в Windows Vista and XP оказалось не так сложно. Так же приложение позволяет перемещать окна с одного монитора на другой.</p>
+
+	<h2>Скачать</h2> 
+	 
+	<p> Последнюю версию можно скачать с сайта <a href="http://keysextender.codeplex.com/releases/view/27553" rel="nofollow">codeplex.com</a>.</p> 
+
+	
+       } else
+       {
+
+	   <h2>Information</h2> 
+ 
+	<p>In Windows 7, I really liked an opportunity to change the position of the windows by pressing hotkeys Win + (Left | Right | Up | Bottom): </p> 
+	 
+	<ul> 
+		<li>Win + Left - window attached to the left side </li> 
+		 
+		<li>Win + Right - window attached to the right side </li> 
+		 
+		<li>Win + Up -&nbsp;window is maximized </li> 
+		 
+		<li>Win + Bottom -&nbsp;window in the normal state </li> 
+	</ul> 
+	 
+	<p><img alt="Windows Keys Extender" height="400" hspace="0" src="http://outcoldman.ru/library/images/01/0000014.png" width="640" border="0" /></p> 
+	 
+	 <p>Making this work with Windows Vista and XP was not a difficult task. Also application will give you an opportunity to move windows from one monitor to other.</p>
+
+	<h2>Download</h2> 
+	 
+	<p> You can download last version from <a href="http://keysextender.codeplex.com/releases/view/27553" rel="nofollow">codeplex.com</a>.</p> 
+
+	   
+       }
+
+	</div>
+
+ @Html.Partial("Advertising") 
+
+
+

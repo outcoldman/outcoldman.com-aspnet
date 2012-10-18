@@ -1,0 +1,26 @@
+﻿@using Microsoft.Web.Helpers
+@using PersonalWeb.Core.Util
+@using PersonalWeb.Web.Controls
+@using PersonalWeb.Web.Resources
+@model OutcoldSolutions.Web.Blog.Models.Comment
+
+<div class="comment" @(Model.CommentID <= 0 ? "id=preview" : string.Empty) >
+@{ bool fMyComment = string.Compare(Model.UserWeb, ConfigurationUtil.SiteUrl, true) == 0; }
+<fieldset @(fMyComment ? "class='my'" : string.Empty) >
+<legend > 
+	@if (string.IsNullOrWhiteSpace(Model.UserWeb)) {
+		@(!string.IsNullOrWhiteSpace(Model.UserName) ? Model.UserName : Html.GetResource("Anonymous"))
+	 } else {
+  <a href="@Model.UserWeb " @(fMyComment ? string.Empty : "rel=\"nofollow\"")>@(!string.IsNullOrWhiteSpace(Model.UserName) ? Model.UserName : Html.GetResource("Anonymous"))</a>
+   }
+  ( <time datetime="@Model.Date.ToString("o")">@Model.Date.ToString("dd.MM.yyyy HH:mm") UTC</time> )
+  <a id="@string.Format("comment_{0}", @Model.CommentID)" href="@NavigationHelper.GetSiteUrl(string.Format("/{0}/blog/show/{1}#comment_{2}", Html.GetLanguage(), Model.PostID, Model.CommentID)) " title="Link to comment">@(Model.CommentID <= 0 ? Html.GetResource("Preview") : "#")</a>
+  </legend>
+  <div class="commentavatar">
+	<img src="@Gravatar.GetUrl(Model.UserEmail)" alt="avatar" />
+  </div>
+  <div class="commenttext">
+  	@Html.Raw(Model.Body)
+  </div>
+    </fieldset>
+</div>

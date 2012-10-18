@@ -1,0 +1,104 @@
+﻿@model OutcoldSolutions.Web.Blog.Models.BlogPost
+@using OutcoldSolutions.Web.Blog.Models
+@using PersonalWeb.Core.Util
+@using PersonalWeb.Model
+@using PersonalWeb.Web.Controls
+@using PersonalWeb.Web.Resources
+@{
+	ViewBag.Title = Model.Title;
+}
+
+	<article>
+
+		<hgroup>
+			<h3 ><time datetime="@Model.Date.ToString("o")" pubdate="pubdate">@Model.Date.ToString("dd.MM.yyyy HH:mm") UTC</time></h3>
+			<h1>@Model.Title </h1>
+		</hgroup>
+		
+		<div class="post">
+		@Html.Raw(Model.HtmlText)
+		</div>
+
+	</article>
+
+	<p>
+		<a href="http://twitter.com/share" class="twitter-share-button" data-url="@NavigationHelper.GetSiteUrl(string.Format("/{0}/blog/show/{1}", Html.GetLanguage(), Model.PostID)) " data-count="horizontal" data-via="outcoldman">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+		@Html.Partial("FeedBurner") 
+	</p>
+
+	<div style="float:right;">
+		@Html.RenderTags(Model.Tags.ToList()) 
+	</div>
+
+	<br class="clear" />
+
+	 @Html.Partial("Advertising") 
+
+	<div>
+		@{ var posts = (List<BlogPost>)ViewData["simpleposts"]; }
+		@if (posts.Count > 0) { 
+		<div style="float:left; ">
+			<h4>@Html.GetResource("YouMightAlsoLike")</h4>
+				<div class="items">
+					<ul>
+						@foreach (BlogPost post in posts)
+						{ <li>@Html.ActionLink(post.Title, "show", "blog", new {id = post.PostID, lang = post.Language}, null) </li> } 
+						 
+					</ul>
+				</div>
+		</div>
+		}
+		<div style="float:right">
+		 @Html.Partial("LinksPartial") 
+		</div>
+	</div>
+
+	<br class="clear" />
+	@{ var comments = (List<Comment>) ViewData["comments"]; }
+	
+	<h2>@Html.GetResource("Comments")  (@comments.Count)</h2>
+	<div id="comments">
+	@foreach (Comment comment in comments) {
+		@Html.Partial("CommentViewItem", comment) 
+ }
+	</div>
+
+	
+
+	<a id="addcomment"></a>
+
+  <fieldset class="footerForm">
+	<legend>@Html.GetResource("AddComment") </legend>
+	<p class="info">@Html.Raw(Html.GetResource("NotificationInformation"))</p>
+	<div id="notification" class="notification"><h4></h4></div>
+	<div class="footerFormR">
+	   <p><label for="Name">@Html.GetResource("Name"):</label><input type="text" id="Name" placeholder="@Html.GetResource("InputName")" /></p>
+	   <p><label for="Email">@Html.GetResource("Email"):</label><input type="email" id="Email" placeholder="@Html.GetResource("InputEmail")" /></p>
+	   <p><label for="WebSite">@Html.GetResource("Web"):</label><input type="url" id="WebSite" placeholder="@Html.GetResource("InputWeb")" /></p>
+		<p><span><input type="checkbox" id="commentNeedInform" value="false" />&nbsp;<label for="commentNeedInform">@Html.GetResource("SendNotifications")</label></span></p>
+	 </div>
+	 <div class="footerFormR1">
+	   <p><label for="commentBody">@Html.GetResource("Body"):</label><textarea id="commentBody" cols="4" rows="10" placeholder="@Html.GetResource("InputComment")" ></textarea></p>
+	   
+		<input  type="button" class="footerSubmit" id="addComment" value="@Html.GetResource("Add")" />
+
+		<input  type="button" class="footerPreview" id="showPreview" value="@Html.GetResource("Preview")" />
+
+		<div class="footerBusy" id="busyIndicator" >
+			<img alt="busy"  src="@NavigationHelper.GetSiteUrl("/Resources/images/busy.gif")" />&nbsp;
+		</div>
+	  </div>
+  </fieldset>
+
+<script type="text/javascript">
+	var fillBodyComment = "@Html.Encode(Html.GetResource("FillBodyComment")) <br /><br />";
+	var fillEmailComment = "@Html.Encode(Html.GetResource("FillEmailComment")) <br /><br />";
+	var commentAddUrl = "@NavigationHelper.GetSiteUrl(string.Format("/{0}/comment/add/{1}", Html.GetLanguage(), Model.PostID))";
+	var commentPreviewUrl = "@NavigationHelper.GetSiteUrl(string.Format("/{0}/comment/preview/{1}", Html.GetLanguage(), Model.PostID))";
+	var couldntAddComment = "@Html.Encode(Html.GetResource("CouldntAddComment"))";
+	var couldntShowPreview = "@Html.Encode(Html.GetResource("CouldntShowPreview"))";
+</script>
+<script type="text/javascript" src="@NavigationHelper.GetSiteUrl("/resources/scripts/ItemView.js")"></script>
+
+
+

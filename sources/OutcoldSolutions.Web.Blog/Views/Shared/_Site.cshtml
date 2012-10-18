@@ -1,0 +1,78 @@
+﻿@using PersonalWeb.Core.Util
+@using PersonalWeb.Web.Controls
+@using PersonalWeb.Web.Resources
+<!DOCTYPE html >
+<html lang="@Html.GetLanguage()">
+<head>
+	<meta charset="utf-8" />
+	<title>@ViewBag.Title</title>
+	<link href="@NavigationHelper.GetSiteUrl("/Content/Site.css")" rel="stylesheet"  />
+	<link rel="shortcut icon" href="@NavigationHelper.GetSiteUrl("/favicon.ico")" />
+	<meta name="google-site-verification" content="j5544u2ZNn-At1ttQbboTFxYdMtOymNVHavF8e6D-Rs" />
+	<meta name='yandex-verification' content='78712c982e7b6576' />
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" ></script>
+	<script type="text/javascript" src="@NavigationHelper.GetSiteUrl("/Scripts/jquery.cookie.js")"></script>
+	<script type="text/javascript" src="@NavigationHelper.GetSiteUrl("/Scripts/modernizr-2.5.3.js")"></script>
+	<meta name="revisit-after" content="2 days" />
+	<meta name="robots" content="ALL" />
+	<meta name="author" content="Powered: outcoldman (Denis Gladkikh), Design conception: VectorArt(http://vectorart.org)" />
+	<meta name="description" content="@(ViewData["description"] == null ? "Denis Gladkikh (outcoldman) Personal Web Site" : ViewData["description"])" />
+	<meta name="keywords" content="@(ViewData["keywords"] == null ? ".NET, WPF, Silverlight, C#, ASP.NET, MVC, XAML, outcoldman, Denis Gladkikh" : (ViewData["keywords"]))" />
+	<link rel="openid.server" href="http://www.myopenid.com/server"/>
+	<link rel="openid.delegate" href="http://outcoldman.myopenid.com/"/>
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Outcoldman@(Html.IsRussian() ? "" : "_en")" /> 
+	@RenderSection("Head", required: false)
+</head>
+<body>
+
+<div id="center">
+	<div id="wrapper">
+		<div class="myname">
+			Denis Gladkikh
+		</div>
+		<div class="langbar">
+			<a class="ru" href="@NavigationHelper.GetSiteUrl("/ru")">Russian</a>&nbsp;&nbsp;
+				|&nbsp;&nbsp;<a class="en" href="@NavigationHelper.GetSiteUrl("/en")">English</a>
+		</div>
+		<div class="subscription"  >
+
+@Html.Partial("LinksPartial")
+
+		</div>
+		<div id="branding">
+			<div class="logo">
+				<a href="@ConfigurationUtil.SiteUrl">outcoldman</a>
+			</div>
+			<nav>
+
+@Html.CreateMainMenu()
+
+			</nav>
+			<br class="clear" />
+		</div>
+		<div class="contant" >
+	   
+@RenderBody()
+		
+		</div>
+		<br class="clear"/>
+	</div>
+	<footer >
+		<div id="footerContainer">
+			<p>
+@Html.GetResource("ContentOfSite")
+				<label>
+					Denis Gladkikh (outcoldman) © 2010
+				</label>
+			</p>
+		</div>
+	</footer>
+
+@RenderSection("BottomContent", required: false)
+
+</div>
+<script type="text/javascript" src="@NavigationHelper.GetSiteUrl("/Scripts/Master.js")"></script>
+</body>
+</html>
+
+

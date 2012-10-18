@@ -1,0 +1,20 @@
+﻿@using PersonalWeb.Web.Resources
+@model PersonalWeb.Model.UnsubscribeModel
+
+
+@{
+	ViewBag.Title = "outcoldman: " + Html.GetResource("UnsubscribeTitle");
+}
+
+
+
+
+    <h2>@Html.ActionLink(Model.BlogTitle, "show", "blog", new { id = Model.PostId }, null)</h2>
+	<p>@Html.GetResource("UnsubscribeQuestion")</p>
+	<br class="clear" />
+	@using (Html.BeginForm()) {
+	<input type="submit" class="footerSubmit" value="@Html.GetResource("Unsubscribe") " style="float:left;" />
+	 }
+
+
+

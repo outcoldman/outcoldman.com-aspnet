@@ -1,0 +1,36 @@
+﻿@using PersonalWeb.Core.Util
+@using PersonalWeb.Web.Controls
+@using PersonalWeb.Web.Resources
+@{
+	ViewBag.Title = Html.GetResource("RegExTitle");
+}
+
+   <h2>@Html.GetResource("RegExTitle")</h2>
+	<p>
+	@Html.GetResource("RegExInfo")
+	</p>
+	<br />
+	<fieldset class="footerForm">
+		<div id="notification" class="notification"><h4></h4></div>
+		<p>@Html.GetResource("RegEx"):</p>
+		<p><input type="text" id="regex" style="width:60%;" /></p>
+		<p>@Html.GetResource("Input"):</p>
+		<p><textarea id="checkstring" cols="4" rows="10" ></textarea></p>
+		<input  type="button" class="footerSubmit" id="tryButton" value="@Html.GetResource("Execute")" />
+		<div class="footerBusy" id="busyIndicator" >
+			<img alt="busy"  src="@NavigationHelper.GetSiteUrl("/Resources/images/busy.gif") " />&nbsp;
+		</div>
+  	 </fieldset>
+ 
+  @Html.Partial("Advertising") 
+
+ <script type="text/javascript">
+ var CouldntExecuteMessage = '@Html.Encode(Html.GetResource("CouldntExecute")):';
+ var RegExCallbackUrl = '@NavigationHelper.GetSiteUrl(string.Format("/{0}/tools/regex/", Html.GetLanguage()))';
+</script>
+<script type="text/javascript" src="@NavigationHelper.GetSiteUrl("/resources/scripts/RegEx.js")"></script>
+
+
+
+
+
