@@ -181,7 +181,6 @@
     <Compile Include="Core\Util\Parser.cs" />
     <Compile Include="Core\Util\StringUtils.cs" />
     <Compile Include="Core\ValidateLangAttribute.cs" />
-    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

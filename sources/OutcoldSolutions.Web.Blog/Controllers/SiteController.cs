@@ -46,13 +46,6 @@ namespace OutcoldSolutions.Web.Blog.Controllers
         }
 
         [CustomOutputCache]
-        [ValidateLang]
-        public ActionResult Search()
-        {
-            return this.View();
-        }
-
-        [CustomOutputCache]
         public ActionResult OpenId()
         {
             return this.View();

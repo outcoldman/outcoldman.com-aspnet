@@ -10,6 +10,8 @@ namespace OutcoldSolutions.Web.Blog
 
     using OutcoldSolutions.Web.Blog.Controllers;
 
+    using WebMatrix.WebData;
+
     public class MvcApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
@@ -20,6 +22,8 @@ namespace OutcoldSolutions.Web.Blog
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+
+            WebSecurity.InitializeDatabaseConnection("LocalDatabase", "UserProfile", "UserId", "UserName", autoCreateTables: false);
 
             IDependencyResolverContainer container = new DependencyResolverContainer();
             using (var registration = container.Registration())

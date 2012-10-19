@@ -6,13 +6,11 @@ namespace OutcoldSolutions.Web.Blog.Controllers
 {
     using System.Web.Mvc;
 
-    using OutcoldSolutions.Web.Blog.Filters;
     using OutcoldSolutions.Web.Blog.Models;
 
     using WebMatrix.WebData;
 
     [Authorize]
-    [InitializeSimpleMembership]
     public class AccountController : Controller
     {
         // GET: /Account/Login
