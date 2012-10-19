@@ -11,5 +11,5 @@ StyleCop.Cache
 packages
 TestResults
 FakesAssemblies
-sources/PersonalWeb/Library/
-sources/PersonalWeb/App_Data/
+sources/OutcoldSolutions.Web.Blog/Library/
+sources/OutcoldSolutions.Web.Blog/App_Data/
