@@ -13,13 +13,9 @@ namespace OutcoldSolutions.Web.Blog
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-            //routes.MapRoute(
-            //    name: "Default",
-            //    url: "{controller}/{action}/{id}",
-            //    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional });
-
-
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapRoute("Account", "account/login", new { controller = "Account", action = "Login" });
 
             routes.MapRoute("ShowIP", "ip/", new { controller = "ShowIP", action = "UserIP" });
 

@@ -17,17 +17,17 @@ namespace OutcoldSolutions.Web.Blog.Controllers
     {
         // GET: /Account/Login
         [AllowAnonymous]
-        public ActionResult LogOn(string returnUrl)
+        public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            return this.View("LogOn");
+            return this.View("Login");
         }
 
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult LogOn(LogOnModel model, string returnUrl)
+        // [ValidateAntiForgeryToken]
+        public ActionResult Login(LogOnModel model, string returnUrl)
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
@@ -36,7 +36,7 @@ namespace OutcoldSolutions.Web.Blog.Controllers
 
             // If we got this far, something failed, redisplay form
             ModelState.AddModelError(string.Empty, "The user name or password provided is incorrect.");
-            return this.View("LogOn", model);
+            return this.View("Login", model);
         }
 
         private ActionResult RedirectToLocal(string returnUrl)

@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="PersonalWeb.Web.Metablog.MetaWeblog" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="OutcoldSolutions.Web.Blog.Metablog.MetaWeblog" %>

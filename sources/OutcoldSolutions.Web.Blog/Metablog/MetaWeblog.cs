@@ -10,11 +10,12 @@ namespace OutcoldSolutions.Web.Blog.Metablog
     using System.IO;
     using System.Linq;
     using System.Security.Authentication;
-    using System.Web.Security;
 
     using OutcoldSolutions.Web.Blog.Core.Util;
     using OutcoldSolutions.Web.Blog.Models;
     using OutcoldSolutions.Web.Blog.Models.Repositories;
+
+    using WebMatrix.WebData;
 
     public class MetaWeblog : IMetaWeblog
     {
@@ -265,7 +266,8 @@ namespace OutcoldSolutions.Web.Blog.Metablog
 
         private static void ValidateUser(string username, string password)
         {
-            bool isValid = Membership.ValidateUser(username, password);
+            // TODO: Fix user check
+            bool isValid = WebSecurity.UserExists(username);
             if (!isValid)
             {
                 string message = string.Format("User is not valid : {0}", username);

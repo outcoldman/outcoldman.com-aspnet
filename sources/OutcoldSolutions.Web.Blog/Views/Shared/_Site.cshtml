@@ -6,12 +6,11 @@
 <head>
 	<meta charset="utf-8" />
 	<title>@ViewBag.Title</title>
-	<link href="@NavigationHelper.GetSiteUrl("/Content/Site.css")" rel="stylesheet"  />
-	<link rel="shortcut icon" href="@NavigationHelper.GetSiteUrl("/favicon.ico")" />
+	@Styles.Render("~/Content/css")
+	<link rel="shortcut icon" href="~/favicon.ico" />
 	<meta name="google-site-verification" content="j5544u2ZNn-At1ttQbboTFxYdMtOymNVHavF8e6D-Rs" />
-	<meta name='yandex-verification' content='78712c982e7b6576' />
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" ></script>
-	<script type="text/javascript" src="@NavigationHelper.GetSiteUrl("/Scripts/jquery.cookie.js")"></script>
+    <meta name='yandex-verification' content='78712c982e7b6576' />
+    @Scripts.Render("~/bundles/jquery")
 	<script type="text/javascript" src="@NavigationHelper.GetSiteUrl("/Scripts/modernizr-2.5.3.js")"></script>
 	<meta name="revisit-after" content="2 days" />
 	<meta name="robots" content="ALL" />

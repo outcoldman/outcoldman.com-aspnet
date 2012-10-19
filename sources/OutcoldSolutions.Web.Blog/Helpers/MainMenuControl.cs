@@ -46,18 +46,9 @@ namespace OutcoldSolutions.Web.Blog.Helpers
                                 true
                         }, 
                     new MainMenu(
-                        helper.GetResource("Tools").ToUpper(), "index", "tools")
-                        {
-                            IsSelectByController
-                                =
-                                true
-                        }, 
-                    new MainMenu(
                         helper.GetResource("AboutMe").ToUpper(), "aboutme", "site"), 
                     new MainMenu(
-                        helper.GetResource("Contacts").ToUpper(), "links", "site"), 
-                    new MainMenu(
-                        helper.GetResource("Search").ToUpper(), "search", "site")
+                        helper.GetResource("Contacts").ToUpper(), "links", "site")
                 };
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.AppendLine("<ul class='topNav'>");

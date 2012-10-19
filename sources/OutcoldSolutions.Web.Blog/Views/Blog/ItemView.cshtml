@@ -1,4 +1,5 @@
 ﻿@model OutcoldSolutions.Web.Blog.Models.BlogPost
+@using Microsoft.Web.Helpers
 @using OutcoldSolutions.Web.Blog.Core.Util
 @using OutcoldSolutions.Web.Blog.Helpers
 @using OutcoldSolutions.Web.Blog.Models
@@ -20,10 +21,11 @@
 
 	</article>
 
-	<p>
-		<a href="http://twitter.com/share" class="twitter-share-button" data-url="@NavigationHelper.GetSiteUrl(string.Format("/{0}/blog/show/{1}", Html.GetLanguage(), Model.PostID)) " data-count="horizontal" data-via="outcoldman">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-		@Html.Partial("FeedBurner") 
-	</p>
+<p>
+    @Twitter.TweetButton(dataCount: "horizontal", url: NavigationHelper.GetSiteUrl(string.Format("/{0}/blog/show/{1}", Html.GetLanguage(), Model.PostID)))
+    @*@Facebook.LikeButton(href: NavigationHelper.GetSiteUrl(string.Format("/{0}/blog/show/{1}", Html.GetLanguage(), Model.PostID)), buttonLayout: "button_count")*@
+    @Html.Partial("FeedBurner") 
+</p>
 
 	<div style="float:right;">
 		@Html.RenderTags(Model.Tags.ToList()) 

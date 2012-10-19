@@ -1,4 +1,5 @@
-﻿@model System.Collections.Generic.IEnumerable<OutcoldSolutions.Web.Blog.Models.Repositories.BlogPostModel>
+﻿@model IEnumerable<BlogPostModel>
+@using Microsoft.Web.Helpers
 @using OutcoldSolutions.Web.Blog.Core.Util
 @using OutcoldSolutions.Web.Blog.Models.Repositories
 @using OutcoldSolutions.Web.Blog.Resources
@@ -42,42 +43,17 @@
 			<li>@Html.ActionLink(tag.Name, "tag", "blog", new {id = tag.TagID}, new {@class = "tag" + tag.TagType, rel = "tag"}) </li>
 			}}
 	</ul>
-
-	<script src="http://widgets.twimg.com/j/2/widget.js"></script>
-	<script>
-		new TWTR.Widget({
-			version: 2,
-			type: 'profile',
-			rpp: 5,
-			interval: 6000,
-			width: 240,
-			height: 300,
-			theme: {
-				shell: {
-					background: '#919191',
-					color: '#ffffff'
-				},
-				tweets: {
-					background: '#ebe8d9',
-					color: '#5a5a5a',
-					links: '#650000'
-				}
-			},
-			features: {
-				scrollbar: false,
-				loop: false,
-				live: false,
-				hashtags: true,
-				timestamp: true,
-				avatars: false,
-				behavior: 'all'
-			}
-		}).render().setUser('outcoldman').start();
-	</script>
-
-	<script type="text/javascript" src="http://www.google.ru/reader/ui/publisher-en.js"></script>
-	<script type="text/javascript" src="http://www.google.ru/reader/public/javascript/user/04120000459178368630/state/com.google/broadcast?n=5&amp;callback=GRC_p(%7Bc%3A%22gray%22%2Ct%3A%22My%20Read%20Feed%22%2Cs%3A%22true%22%2Cn%3A%22true%22%2Cb%3A%22false%22%7D)%3Bnew%20GRC"></script>
     
+    @Twitter.Profile(
+        "outcoldman", 
+        width: 240, 
+        backgroundShellColor: "#919191", 
+        shellColor: "#ffffff", 
+        tweetsBackgroundColor: "#ebe8d9", 
+        tweetsColor: "#5a5a5a", 
+        tweetsLinksColor: "#650000", 
+        behavior: "all")
+
 </div>
 <br class="clear" />
 @Html.Partial("Advertising") 
