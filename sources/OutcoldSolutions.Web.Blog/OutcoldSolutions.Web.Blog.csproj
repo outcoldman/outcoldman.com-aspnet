@@ -65,8 +65,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Nuget.Core.1.6.2\lib\net40\NuGet.Core.dll</HintPath>
     </Reference>
-    <Reference Include="OutcoldSolutions.Framework">
-      <HintPath>..\packages\OutcoldSolutions.Framework.1.0.21014.31716\lib\portable-win+net45+sl40+wp71\OutcoldSolutions.Framework.dll</HintPath>
+    <Reference Include="OutcoldSolutions.Framework, Version=1.0.21019.17119, Culture=neutral, PublicKeyToken=b9b87f97060f149d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\OutcoldSolutions.Framework.1.0.21019.17119\lib\portable-win+net45+sl40+wp71\OutcoldSolutions.Framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -152,6 +153,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="CustomDependencyResolver.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
@@ -281,19 +283,6 @@
     </Content>
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Images\accent.png" />
-    <Content Include="Images\bullet.png" />
-    <Content Include="Images\heroAccent.png" />
-    <Content Include="Images\orderedList0.png" />
-    <Content Include="Images\orderedList1.png" />
-    <Content Include="Images\orderedList2.png" />
-    <Content Include="Images\orderedList3.png" />
-    <Content Include="Images\orderedList4.png" />
-    <Content Include="Images\orderedList5.png" />
-    <Content Include="Images\orderedList6.png" />
-    <Content Include="Images\orderedList7.png" />
-    <Content Include="Images\orderedList8.png" />
-    <Content Include="Images\orderedList9.png" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\_Public.cshtml" />

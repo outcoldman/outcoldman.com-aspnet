@@ -8,7 +8,7 @@ namespace OutcoldSolutions.Web.Blog
     using System.Web.Optimization;
     using System.Web.Routing;
 
-    using OutcoldSolutions.Web.Blog.Core.Util;
+    using OutcoldSolutions.Web.Blog.Controllers;
 
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -21,11 +21,30 @@ namespace OutcoldSolutions.Web.Blog
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
 
-            this.Application.Lock();
-            if (ConfigurationUtil.GetSettings("SendNotifications", true))
+            IDependencyResolverContainer container = new DependencyResolverContainer();
+            using (var registration = container.Registration())
             {
-                // this.Application["notificationSender"] = new NotificationSender();
+                registration.Register<IDependencyResolver>()
+                    .AsSingleton<CustomDependencyResolver>();
+                registration.Register<AccountController>();
+                registration.Register<BlogController>();
+                registration.Register<CommentController>();
+                registration.Register<ErrorController>();
+                registration.Register<LiveJournalController>();
+                registration.Register<RssController>();
+                registration.Register<SiteController>();
+                registration.Register<StartController>();
             }
+
+            DependencyResolver.SetResolver(container.Resolve<IDependencyResolver>());
+
+            this.Application.Lock();
+            this.Application[container.GetType().FullName] = container;
+
+            //if (ConfigurationUtil.GetSettings("SendNotifications", true))
+            //{
+                // this.Application["notificationSender"] = new NotificationSender();
+            //}
 
             this.Application.UnLock();
         }
