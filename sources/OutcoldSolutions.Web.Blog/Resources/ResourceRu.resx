@@ -138,12 +138,6 @@
   <data name="CellPhone" xml:space="preserve">
     <value>Мобильный телефон</value>
   </data>
-  <data name="CodeHighlighterInfo" xml:space="preserve">
-    <value>Вы можете использовать эту страницу для подсветки исходного кода (Based on Code Snippet plugin for Windows Live Writer).</value>
-  </data>
-  <data name="CodeHighlighterTitle" xml:space="preserve">
-    <value>Подсветка синтаксиса</value>
-  </data>
   <data name="CommentAdded" xml:space="preserve">
     <value>Комментарий успешно добавлен. </value>
   </data>
@@ -155,9 +149,6 @@
   </data>
   <data name="Comments" xml:space="preserve">
     <value>Комментарии</value>
-  </data>
-  <data name="ConfigTransformationTool" xml:space="preserve">
-    <value>Возможность использовать XDT трансформацию, которая появилась в ASP.NET 4 для любых файлов.</value>
   </data>
   <data name="Contacts" xml:space="preserve">
     <value>Контакты</value>
@@ -195,12 +186,6 @@
   <data name="FindMore" xml:space="preserve">
     <value>Для прочтения остальных записей перейдите на страницу {0}...</value>
   </data>
-  <data name="FormattedCodeExample" xml:space="preserve">
-    <value>Formatted Code (Example):</value>
-  </data>
-  <data name="FormattedCodeHtml" xml:space="preserve">
-    <value>Formatted Code (Html):</value>
-  </data>
   <data name="HomePage" xml:space="preserve">
     <value>Домашняя</value>
   </data>
@@ -219,20 +204,11 @@
   <data name="InputWeb" xml:space="preserve">
     <value>Введите web адрес</value>
   </data>
-  <data name="KeysExtenderInfo" xml:space="preserve">
-    <value>Приложение даст возможноть использовать горячие клавиши Win + (Left | Right | Up | Bottom) в Windows XP и Vista</value>
-  </data>
-  <data name="KeysExtenderTitle" xml:space="preserve">
-    <value>Windows Keys Extender</value>
-  </data>
   <data name="LeaveAcomment" xml:space="preserve">
     <value>Комментировать</value>
   </data>
   <data name="Location" xml:space="preserve">
     <value>Местоположение</value>
-  </data>
-  <data name="MatchResult" xml:space="preserve">
-    <value>Совпадение {0} (Индекс {1}) - '{2}' &lt;br/&gt;</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Имя</value>
@@ -279,15 +255,6 @@
   <data name="ReadMoreRss" xml:space="preserve">
     <value>Читать дальше... (redirect to http://outcoldman.ru)</value>
   </data>
-  <data name="RegEx" xml:space="preserve">
-    <value>Регулярное выражение</value>
-  </data>
-  <data name="RegExInfo" xml:space="preserve">
-    <value>Вы можете использовать эту страницу для тестирования регулярных выражений</value>
-  </data>
-  <data name="RegExTitle" xml:space="preserve">
-    <value>Регулярные выражения</value>
-  </data>
   <data name="Search" xml:space="preserve">
     <value>Поиск</value>
   </data>
@@ -296,27 +263,6 @@
   </data>
   <data name="SendNotifications" xml:space="preserve">
     <value>Уведомлять о новых комментариях</value>
-  </data>
-  <data name="ShowIPInfo" xml:space="preserve">
-    <value>Вы можете использовать эту страницу для того чтобы узнать свой IP адрес</value>
-  </data>
-  <data name="ShowIPTitle" xml:space="preserve">
-    <value>Показать IP адрес</value>
-  </data>
-  <data name="SourceCode" xml:space="preserve">
-    <value>Source code:</value>
-  </data>
-  <data name="SourceCodeType" xml:space="preserve">
-    <value>Type:</value>
-  </data>
-  <data name="Tools" xml:space="preserve">
-    <value>Приложения</value>
-  </data>
-  <data name="TwitterStatisticInfo" xml:space="preserve">
-    <value>Приложение для подсчета статистики по используемым хеш-тегам, словам и пользователям в ваших твиттах</value>
-  </data>
-  <data name="TwitterStatisticTitle" xml:space="preserve">
-    <value>Twitter Cloud</value>
   </data>
   <data name="Unsubscribe" xml:space="preserve">
     <value>Отписаться</value>

@@ -138,12 +138,6 @@
   <data name="CellPhone" xml:space="preserve">
     <value>Cell phone</value>
   </data>
-  <data name="CodeHighlighterInfo" xml:space="preserve">
-    <value>You can use this page for higlight source code for web pages (Based on Code Snippet plugin for Windows Live Writer).</value>
-  </data>
-  <data name="CodeHighlighterTitle" xml:space="preserve">
-    <value>Code Highlighter Tool</value>
-  </data>
   <data name="CommentAdded" xml:space="preserve">
     <value>Comment sucessefully posted.</value>
   </data>
@@ -155,9 +149,6 @@
   </data>
   <data name="Comments" xml:space="preserve">
     <value>Comments</value>
-  </data>
-  <data name="ConfigTransformationTool" xml:space="preserve">
-    <value>Config Transformation Tool gives opportunity to use XDT Transformation Syntax like at Deployment Web Application Project (VS 2010) for any files.</value>
   </data>
   <data name="Contacts" xml:space="preserve">
     <value>Contacts</value>
@@ -195,12 +186,6 @@
   <data name="FindMore" xml:space="preserve">
     <value>If you want to find more, go to the {0} page...</value>
   </data>
-  <data name="FormattedCodeExample" xml:space="preserve">
-    <value>Formatted Code (Example):</value>
-  </data>
-  <data name="FormattedCodeHtml" xml:space="preserve">
-    <value>Formatted Code (Html):</value>
-  </data>
   <data name="HomePage" xml:space="preserve">
     <value>Home page</value>
   </data>
@@ -219,20 +204,11 @@
   <data name="InputWeb" xml:space="preserve">
     <value>Input your web</value>
   </data>
-  <data name="KeysExtenderInfo" xml:space="preserve">
-    <value>Application give you an opportunity to change the position of the windows by pressing hotkeys Win + (Left | Right | Up | Bottom) in Windows XP or Vista</value>
-  </data>
-  <data name="KeysExtenderTitle" xml:space="preserve">
-    <value>Windows Keys Extender</value>
-  </data>
   <data name="LeaveAcomment" xml:space="preserve">
     <value>Leave a comment</value>
   </data>
   <data name="Location" xml:space="preserve">
     <value>Location</value>
-  </data>
-  <data name="MatchResult" xml:space="preserve">
-    <value>Match {0} (Index {1}) - '{2}' &lt;br/&gt;</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
@@ -279,15 +255,6 @@ For unsubscribe please use current link &lt;a href="{2}"&gt;{2}&lt;/a&gt;.
   <data name="ReadMoreRss" xml:space="preserve">
     <value>Read more... (redirect to http://outcoldman.ru)</value>
   </data>
-  <data name="RegEx" xml:space="preserve">
-    <value>Regular Expression</value>
-  </data>
-  <data name="RegExInfo" xml:space="preserve">
-    <value>You can use this page for testing regular expressions</value>
-  </data>
-  <data name="RegExTitle" xml:space="preserve">
-    <value>Regular Expressions</value>
-  </data>
   <data name="Search" xml:space="preserve">
     <value>Search</value>
   </data>
@@ -296,27 +263,6 @@ For unsubscribe please use current link &lt;a href="{2}"&gt;{2}&lt;/a&gt;.
   </data>
   <data name="SendNotifications" xml:space="preserve">
     <value>Notify me about new comments</value>
-  </data>
-  <data name="ShowIPInfo" xml:space="preserve">
-    <value>You can use this page to know your IP address</value>
-  </data>
-  <data name="ShowIPTitle" xml:space="preserve">
-    <value>Show IP</value>
-  </data>
-  <data name="SourceCode" xml:space="preserve">
-    <value>Source code:</value>
-  </data>
-  <data name="SourceCodeType" xml:space="preserve">
-    <value>Type:</value>
-  </data>
-  <data name="Tools" xml:space="preserve">
-    <value>Tools</value>
-  </data>
-  <data name="TwitterStatisticInfo" xml:space="preserve">
-    <value>Application give you an opportunity to get statistic about most frequently used hashtags, user nicks and words in your twitts</value>
-  </data>
-  <data name="TwitterStatisticTitle" xml:space="preserve">
-    <value>Twitter Cloud</value>
   </data>
   <data name="Unsubscribe" xml:space="preserve">
     <value>Отписаться</value>

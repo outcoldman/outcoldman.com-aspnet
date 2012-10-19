@@ -124,24 +124,6 @@ namespace OutcoldSolutions.Web.Blog.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You can use this page for higlight source code for web pages (Based on Code Snippet plugin for Windows Live Writer)..
-        /// </summary>
-        internal static string CodeHighlighterInfo {
-            get {
-                return ResourceManager.GetString("CodeHighlighterInfo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Code Highlighter Tool.
-        /// </summary>
-        internal static string CodeHighlighterTitle {
-            get {
-                return ResourceManager.GetString("CodeHighlighterTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Comment sucessefully posted..
         /// </summary>
         internal static string CommentAdded {
@@ -174,15 +156,6 @@ namespace OutcoldSolutions.Web.Blog.Resources {
         internal static string Comments {
             get {
                 return ResourceManager.GetString("Comments", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Config Transformation Tool gives opportunity to use XDT Transformation Syntax like at Deployment Web Application Project (VS 2010) for any files..
-        /// </summary>
-        internal static string ConfigTransformationTool {
-            get {
-                return ResourceManager.GetString("ConfigTransformationTool", resourceCulture);
             }
         }
         
@@ -295,24 +268,6 @@ namespace OutcoldSolutions.Web.Blog.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Formatted Code (Example):.
-        /// </summary>
-        internal static string FormattedCodeExample {
-            get {
-                return ResourceManager.GetString("FormattedCodeExample", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Formatted Code (Html):.
-        /// </summary>
-        internal static string FormattedCodeHtml {
-            get {
-                return ResourceManager.GetString("FormattedCodeHtml", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Home page.
         /// </summary>
         internal static string HomePage {
@@ -367,24 +322,6 @@ namespace OutcoldSolutions.Web.Blog.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Application give you an opportunity to change the position of the windows by pressing hotkeys Win + (Left | Right | Up | Bottom) in Windows XP or Vista.
-        /// </summary>
-        internal static string KeysExtenderInfo {
-            get {
-                return ResourceManager.GetString("KeysExtenderInfo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Windows Keys Extender.
-        /// </summary>
-        internal static string KeysExtenderTitle {
-            get {
-                return ResourceManager.GetString("KeysExtenderTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Leave a comment.
         /// </summary>
         internal static string LeaveAcomment {
@@ -399,15 +336,6 @@ namespace OutcoldSolutions.Web.Blog.Resources {
         internal static string Location {
             get {
                 return ResourceManager.GetString("Location", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Match {0} (Index {1}) - &apos;{2}&apos; &lt;br/&gt;.
-        /// </summary>
-        internal static string MatchResult {
-            get {
-                return ResourceManager.GetString("MatchResult", resourceCulture);
             }
         }
         
@@ -511,33 +439,6 @@ namespace OutcoldSolutions.Web.Blog.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Regular Expression.
-        /// </summary>
-        internal static string RegEx {
-            get {
-                return ResourceManager.GetString("RegEx", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You can use this page for testing regular expressions.
-        /// </summary>
-        internal static string RegExInfo {
-            get {
-                return ResourceManager.GetString("RegExInfo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Regular Expressions.
-        /// </summary>
-        internal static string RegExTitle {
-            get {
-                return ResourceManager.GetString("RegExTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Search.
         /// </summary>
         internal static string Search {
@@ -561,69 +462,6 @@ namespace OutcoldSolutions.Web.Blog.Resources {
         internal static string SendNotifications {
             get {
                 return ResourceManager.GetString("SendNotifications", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You can use this page to know your IP address.
-        /// </summary>
-        internal static string ShowIPInfo {
-            get {
-                return ResourceManager.GetString("ShowIPInfo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Show IP.
-        /// </summary>
-        internal static string ShowIPTitle {
-            get {
-                return ResourceManager.GetString("ShowIPTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Source code:.
-        /// </summary>
-        internal static string SourceCode {
-            get {
-                return ResourceManager.GetString("SourceCode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Type:.
-        /// </summary>
-        internal static string SourceCodeType {
-            get {
-                return ResourceManager.GetString("SourceCodeType", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tools.
-        /// </summary>
-        internal static string Tools {
-            get {
-                return ResourceManager.GetString("Tools", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Application give you an opportunity to get statistic about most frequently used hashtags, user nicks and words in your twitts.
-        /// </summary>
-        internal static string TwitterStatisticInfo {
-            get {
-                return ResourceManager.GetString("TwitterStatisticInfo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Twitter Cloud.
-        /// </summary>
-        internal static string TwitterStatisticTitle {
-            get {
-                return ResourceManager.GetString("TwitterStatisticTitle", resourceCulture);
             }
         }
         
