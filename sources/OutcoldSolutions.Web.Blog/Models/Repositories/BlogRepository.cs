@@ -1,4 +1,8 @@
-﻿namespace OutcoldSolutions.Web.Blog.Models.Repositories
+﻿// --------------------------------------------------------------------------------------------------------------------
+// Outcold Solutions (http://outcoldman.ru)
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace OutcoldSolutions.Web.Blog.Models.Repositories
 {
     using System;
     using System.Collections.Generic;
@@ -11,16 +15,21 @@
     [Flags]
     public enum BlogPostLoadFlag
     {
-        OnlyMainData = 0,
-        LoadAbstraction = 1,
-        LoadBody = 2,
-        LoadTags = 4,
+        OnlyMainData = 0, 
+
+        LoadAbstraction = 1, 
+
+        LoadBody = 2, 
+
+        LoadTags = 4, 
+
         FullLoad = LoadAbstraction | LoadBody | LoadTags
     }
 
     public class BlogPostModel
     {
         public BlogPost BlogPost { get; set; }
+
         public int CommentsCount { get; set; }
     }
 
@@ -54,6 +63,7 @@
             {
                 objectQuery = objectQuery.Include("Tags");
             }
+
             return objectQuery;
         }
 
@@ -64,11 +74,11 @@
 
         public void Save(BlogPost post, string tagsLine)
         {
-            IEnumerable<string> tags = tagsLine.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries).Select(x => x.Trim());
+            IEnumerable<string> tags =
+                tagsLine.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries).Select(x => x.Trim());
 
             if (post.PostID > 0)
             {
-
                 List<Tag> tagsToRemove = new List<Tag>();
                 foreach (Tag postTag in post.Tags)
                 {
@@ -77,6 +87,7 @@
                         tagsToRemove.Add(postTag);
                     }
                 }
+
                 foreach (var tag in tagsToRemove)
                 {
                     post.Tags.Remove(tag);
@@ -100,9 +111,10 @@
                     Tag tagDb = this.DataContext.Tags.SingleOrDefault(x => x.Name.ToLower() == tag);
                     if (tagDb == null)
                     {
-                        tagDb = new Tag { Name = strTag, TagID = (++maxTagId) };
+                        tagDb = new Tag { Name = strTag, TagID = ++maxTagId };
                         this.DataContext.Tags.AddObject(tagDb);
                     }
+
                     post.Tags.Add(tagDb);
                 }
             }
@@ -124,8 +136,12 @@
         {
             ObjectQuery<BlogPost> objectQuery = this.GetBlogPostsObjectQuery();
 
-            return objectQuery.OrderByDescending(x => x.Date).Skip((pageIndex - 1) * pageSize).Take(pageSize).Select(
-                        x => new BlogPostModel { BlogPost = x, CommentsCount = x.Comments.Count }).ToList();
+            return
+                objectQuery.OrderByDescending(x => x.Date)
+                    .Skip((pageIndex - 1) * pageSize)
+                    .Take(pageSize)
+                    .Select(x => new BlogPostModel { BlogPost = x, CommentsCount = x.Comments.Count })
+                    .ToList();
         }
 
         public int GetPostsCount()
@@ -142,7 +158,10 @@
         public List<Comment> GetComments(int pageIndex, int pageSize)
         {
             return
-                this.DataContext.Comments.OrderByDescending(x => x.Date).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+                this.DataContext.Comments.OrderByDescending(x => x.Date)
+                    .Skip((pageIndex - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToList();
         }
 
         public int GetCommentsCount()
@@ -171,7 +190,18 @@ INNER JOIN
 	ORDER BY X.Count DESC, X.Date DESC
 ) AS X on b.PostID = X.PostID
 
-			", new SqlCeParameter { ParameterName = "postID", Value = postId }, new SqlCeParameter { ParameterName = "datetime", Value = DateTime.Now.ToUniversalTime() }).ToList();
+			", new SqlCeParameter { ParameterName = "postID", Value = postId }, new SqlCeParameter
+                    {
+                        ParameterName = "datetime", 
+                        Value
+                            =
+                            DateTime
+                            .Now
+                            .ToUniversalTime
+                            (
+                                )
+                    })
+                .ToList();
         }
 
         #endregion
@@ -189,10 +219,14 @@ INNER JOIN
             ObjectQuery<BlogPost> objectQuery = this.GetBlogPostsObjectQuery();
 
             DateTime dateTime = DateTime.Now.ToUniversalTime();
-            var result = objectQuery.Where(x => x.Language == lang && x.IsPublic && x.Date <= dateTime)
-                .OrderByDescending(x => x.Date).Take(count).Select(
-                    x => new BlogPostModel { BlogPost = x, CommentsCount = x.Comments.Where(c => !c.IsSpam).Count() }).
-                ToList();
+            var result =
+                objectQuery.Where(x => x.Language == lang && x.IsPublic && x.Date <= dateTime)
+                    .OrderByDescending(x => x.Date)
+                    .Take(count)
+                    .Select(
+                        x =>
+                        new BlogPostModel { BlogPost = x, CommentsCount = x.Comments.Where(c => !c.IsSpam).Count() })
+                    .ToList();
             if (this.NeedToLoadTags())
             {
                 foreach (var blogPostModel in result)
@@ -200,6 +234,7 @@ INNER JOIN
                     blogPostModel.BlogPost.Tags.Load();
                 }
             }
+
             return result;
         }
 
@@ -215,10 +250,12 @@ INNER JOIN
 
             DateTime dateTime = DateTime.Now.ToUniversalTime();
             return
-                objectQuery.Where(x => x.Language == lang && (!isExternal || x.IsForExternal) && x.IsPublic && x.Date <= dateTime)
-                            .OrderByDescending(x => x.Date).Take(10).ToList();
+                objectQuery.Where(
+                    x => x.Language == lang && (!isExternal || x.IsForExternal) && x.IsPublic && x.Date <= dateTime)
+                    .OrderByDescending(x => x.Date)
+                    .Take(10)
+                    .ToList();
         }
-
 
         public List<BlogPostModel> GetPosts(int pageIndex, int pageSize, string lang)
         {
@@ -231,8 +268,10 @@ INNER JOIN
                                               orderby post.Date descending
                                               select post).Skip((pageIndex - 1) * pageSize).Take(pageSize);
 
-            var result = blogPosts.Select(x => new BlogPostModel { BlogPost = x, CommentsCount = x.Comments.Where(c => !c.IsSpam).Count() }).
-                        ToList();
+            var result =
+                blogPosts.Select(
+                    x => new BlogPostModel { BlogPost = x, CommentsCount = x.Comments.Where(c => !c.IsSpam).Count() })
+                    .ToList();
 
             if (this.NeedToLoadTags())
             {
@@ -259,8 +298,13 @@ INNER JOIN
         {
             var posts = this.GetPostsByTagQuery(lang, tagId);
 
-            var result = posts.Skip((pageIndex - 1) * pageSize).Take(pageSize).Select(
-                        x => new BlogPostModel { BlogPost = x, CommentsCount = x.Comments.Where(c => !c.IsSpam).Count() }).ToList();
+            var result =
+                posts.Skip((pageIndex - 1) * pageSize)
+                    .Take(pageSize)
+                    .Select(
+                        x =>
+                        new BlogPostModel { BlogPost = x, CommentsCount = x.Comments.Where(c => !c.IsSpam).Count() })
+                    .ToList();
             if (this.NeedToLoadTags())
             {
                 foreach (var blogPostModel in result)
@@ -268,6 +312,7 @@ INNER JOIN
                     blogPostModel.BlogPost.Tags.Load();
                 }
             }
+
             return result;
         }
 
@@ -283,9 +328,11 @@ INNER JOIN
             ObjectQuery<BlogPost> objectQuery = this.GetBlogPostsObjectQuery();
 
             DateTime universalTime = DateTime.Now.ToUniversalTime();
-            return objectQuery.Where(
-                x => x.Tags.Any(t => t.TagID == tagId) && x.Language == lang && x.IsPublic && x.Date <= universalTime).
-                OrderByDescending(x => x.Date);
+            return
+                objectQuery.Where(
+                    x =>
+                    x.Tags.Any(t => t.TagID == tagId) && x.Language == lang && x.IsPublic && x.Date <= universalTime)
+                    .OrderByDescending(x => x.Date);
         }
 
         public Tag GetTag(int tagId)
@@ -299,7 +346,9 @@ INNER JOIN
 
             float step;
 
-            using (SqlCeConnection connection = new SqlCeConnection(ConfigurationUtil.GetConnectionString("LocalDatabase").ConnectionString))
+            using (
+                SqlCeConnection connection =
+                    new SqlCeConnection(ConfigurationUtil.GetConnectionString("LocalDatabase").ConnectionString))
             {
                 connection.Open();
 
@@ -350,8 +399,6 @@ order by y.Name
                 }
             }
 
-
-
             return result;
         }
 
@@ -359,17 +406,18 @@ order by y.Name
 
         #region Comments
 
+        private static readonly object _locker = new object();
+
         public bool CheckComment(Comment comment)
         {
-            var comments = this.DataContext.Comments.Where(x =>
-                                       x.PostID == comment.PostID & x.UserAgent == comment.UserAgent &
-                                       x.UserEmail == comment.UserEmail &
-                                       x.UserIP == comment.UserIP & x.UserWeb == comment.UserWeb).Select(x => x.Body).AsEnumerable();
+            var comments =
+                this.DataContext.Comments.Where(
+                    x =>
+                    x.PostID == comment.PostID & x.UserAgent == comment.UserAgent & x.UserEmail == comment.UserEmail
+                    & x.UserIP == comment.UserIP & x.UserWeb == comment.UserWeb).Select(x => x.Body).AsEnumerable();
 
             return !comments.Contains(comment.Body);
         }
-
-        private static object _locker = new object();
 
         public void AddComment(Comment comment, CommentSubscription subscription)
         {
@@ -379,7 +427,10 @@ order by y.Name
                 comment.CommentID = ++maxCommentId;
                 this.DataContext.Comments.AddObject(comment);
                 if (subscription != null)
+                {
                     this.DataContext.CommentSubscriptions.AddObject(subscription);
+                }
+
                 this.DataContext.SaveChanges();
                 this.SetNotifications(comment);
             }
@@ -387,14 +438,13 @@ order by y.Name
 
         public void SetNotifications(Comment comment)
         {
-            using (SqlCeConnection connection = new SqlCeConnection(ConfigurationUtil.GetConnectionString("LocalDatabase").ConnectionString))
+            using (
+                SqlCeConnection connection =
+                    new SqlCeConnection(ConfigurationUtil.GetConnectionString("LocalDatabase").ConnectionString))
             {
                 connection.Open();
 
-                using (
-                    SqlCeCommand command =
-                        new SqlCeCommand(
-                            string.Format(@"
+                using (SqlCeCommand command = new SqlCeCommand(string.Format(@"
 insert into Notification(CommentID, Email)
 select x.CommentID, x.Email
 	from 
@@ -423,7 +473,8 @@ select x.CommentID, x.Email
         public bool CheckSubscriptionExist(int postID, string email)
         {
             return
-                this.DataContext.CommentSubscriptions.Count(x => x.PostID == postID && x.Email.ToLower() == email.ToLower()) > 0;
+                this.DataContext.CommentSubscriptions.Count(
+                    x => x.PostID == postID && x.Email.ToLower() == email.ToLower()) > 0;
         }
 
         public CommentSubscription LoadSubscription(Guid id)
@@ -434,8 +485,9 @@ select x.CommentID, x.Email
         public UnsubscribeModel LoadUnsubscribeModel(Guid id)
         {
             return
-                this.DataContext.CommentSubscriptions.Where(x => x.SubscriptionID == id).Select(
-                    s => new UnsubscribeModel { BlogTitle = s.BlogPost.Title, PostId = s.PostID }).SingleOrDefault();
+                this.DataContext.CommentSubscriptions.Where(x => x.SubscriptionID == id)
+                    .Select(s => new UnsubscribeModel { BlogTitle = s.BlogPost.Title, PostId = s.PostID })
+                    .SingleOrDefault();
         }
 
         public void DeleteSubscribtion(CommentSubscription commentSubscription)
@@ -453,14 +505,15 @@ select x.CommentID, x.Email
             DateTime dateTime = DateTime.Now.ToUniversalTime();
 
             return
-                this.DataContext.BlogPosts.Where(x => x.IsPublic && x.Date <= dateTime).OrderByDescending(x => x.Date).Select(
-                    x => new SiteMapBlogItem { BlogId = x.PostID, Language = x.Language }).ToList();
+                this.DataContext.BlogPosts.Where(x => x.IsPublic && x.Date <= dateTime)
+                    .OrderByDescending(x => x.Date)
+                    .Select(x => new SiteMapBlogItem { BlogId = x.PostID, Language = x.Language })
+                    .ToList();
         }
 
         #endregion
 
         #region Helpers
-
 
         private bool NeedToLoadTags()
         {
@@ -473,7 +526,9 @@ select x.CommentID, x.Email
     public class GetTopTagsResult
     {
         public int TagID { get; set; }
+
         public string Name { get; set; }
+
         public int TagType { get; set; }
     }
 }

@@ -1,4 +1,8 @@
-﻿namespace OutcoldSolutions.Web.Blog.Helpers
+﻿// --------------------------------------------------------------------------------------------------------------------
+// Outcold Solutions (http://outcoldman.ru)
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace OutcoldSolutions.Web.Blog.Helpers
 {
     using System;
     using System.Text;
@@ -8,65 +12,89 @@
     using OutcoldSolutions.Web.Blog.Resources;
 
     public static class TagsPagesControl
-	{
-		public const int ItemsPerPage = 10;
-		public const int PageCenter = 5;
+    {
+        public const int ItemsPerPage = 10;
 
-		public static MvcHtmlString CreateTagsPager(this HtmlHelper helper, int selectedPage, int pagesCount)
-		{
-			if (pagesCount <= 1)
-				return MvcHtmlString.Create(string.Empty);
+        public const int PageCenter = 5;
 
-			StringBuilder stringBuilder = new StringBuilder();
-			stringBuilder.Append("<table><tr>");
-			stringBuilder.AppendFormat("<td>{0}&nbsp;&nbsp;</td>", helper.GetResource("Page"));
+        public static MvcHtmlString CreateTagsPager(this HtmlHelper helper, int selectedPage, int pagesCount)
+        {
+            if (pagesCount <= 1)
+            {
+                return MvcHtmlString.Create(string.Empty);
+            }
 
-			if (GetNeedStartPoints(selectedPage))
-			{
-				stringBuilder.AppendFormat("<td style='border:none;'>...&nbsp;&nbsp;</td>");
-			}
-			for (int i = GetStartPage(selectedPage); i <= GetEndPage(selectedPage, pagesCount); i++)
-			{
-				if (i == selectedPage)
-					stringBuilder.AppendFormat("<td style='border:none;'>{0}&nbsp;&nbsp;</td>", i);
-				else
-					stringBuilder.AppendFormat("<td style='border:none;'>{0}&nbsp;&nbsp;</td>", CreateLink(helper, i));
-			}
-			if (GetNeedEndPoints(selectedPage, pagesCount))
-			{
-				stringBuilder.AppendFormat("<td style='border:none;'>...&nbsp;&nbsp;</td>");
-			}
-			stringBuilder.Append("</tr></table>");
-			return MvcHtmlString.Create(stringBuilder.ToString());
-		}
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.Append("<table><tr>");
+            stringBuilder.AppendFormat("<td>{0}&nbsp;&nbsp;</td>", helper.GetResource("Page"));
 
-		private static string CreateLink(HtmlHelper helper, int page)
-		{
-			return string.Format("<a href='{0}'>{1}</a>", NavigationHelper.GetSiteUrl(string.Format("/{0}/blog/tag/{1}/{2}", helper.GetLanguage(), helper.ViewContext.RequestContext.RouteData.Values["tagid"].To(string.Empty), page)), page);
-		}
+            if (GetNeedStartPoints(selectedPage))
+            {
+                stringBuilder.AppendFormat("<td style='border:none;'>...&nbsp;&nbsp;</td>");
+            }
 
-		private static int GetStartPage(int selectedPage)
-		{
-			if (selectedPage <= PageCenter)
-				return 1;
-			return selectedPage - PageCenter;
-		}
+            for (int i = GetStartPage(selectedPage); i <= GetEndPage(selectedPage, pagesCount); i++)
+            {
+                if (i == selectedPage)
+                {
+                    stringBuilder.AppendFormat("<td style='border:none;'>{0}&nbsp;&nbsp;</td>", i);
+                }
+                else
+                {
+                    stringBuilder.AppendFormat("<td style='border:none;'>{0}&nbsp;&nbsp;</td>", CreateLink(helper, i));
+                }
+            }
 
-		private static bool GetNeedStartPoints(int selectedPage)
-		{
-			return GetStartPage(selectedPage) != 1;
-		}
+            if (GetNeedEndPoints(selectedPage, pagesCount))
+            {
+                stringBuilder.AppendFormat("<td style='border:none;'>...&nbsp;&nbsp;</td>");
+            }
 
-		public static int GetEndPage(int selectedPage, int pagesCount)
-		{
-			if (pagesCount <= (selectedPage + PageCenter))
-				return pagesCount;
-			return Math.Min(Math.Max(selectedPage, PageCenter) + PageCenter, pagesCount);
-		}
+            stringBuilder.Append("</tr></table>");
+            return MvcHtmlString.Create(stringBuilder.ToString());
+        }
 
-		public static bool GetNeedEndPoints(int selectedPage, int pagesCount)
-		{
-			return GetEndPage(selectedPage, pagesCount) != pagesCount;
-		}
-	}
+        private static string CreateLink(HtmlHelper helper, int page)
+        {
+            return string.Format(
+                "<a href='{0}'>{1}</a>", 
+                NavigationHelper.GetSiteUrl(
+                    string.Format(
+                        "/{0}/blog/tag/{1}/{2}", 
+                        helper.GetLanguage(), 
+                        helper.ViewContext.RequestContext.RouteData.Values["tagid"].To(string.Empty), 
+                        page)), 
+                page);
+        }
+
+        private static int GetStartPage(int selectedPage)
+        {
+            if (selectedPage <= PageCenter)
+            {
+                return 1;
+            }
+
+            return selectedPage - PageCenter;
+        }
+
+        private static bool GetNeedStartPoints(int selectedPage)
+        {
+            return GetStartPage(selectedPage) != 1;
+        }
+
+        public static int GetEndPage(int selectedPage, int pagesCount)
+        {
+            if (pagesCount <= (selectedPage + PageCenter))
+            {
+                return pagesCount;
+            }
+
+            return Math.Min(Math.Max(selectedPage, PageCenter) + PageCenter, pagesCount);
+        }
+
+        public static bool GetNeedEndPoints(int selectedPage, int pagesCount)
+        {
+            return GetEndPage(selectedPage, pagesCount) != pagesCount;
+        }
+    }
 }

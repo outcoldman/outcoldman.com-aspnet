@@ -1,13 +1,17 @@
-﻿namespace OutcoldSolutions.Web.Blog.Models
+﻿// --------------------------------------------------------------------------------------------------------------------
+// Outcold Solutions (http://outcoldman.ru)
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace OutcoldSolutions.Web.Blog.Models
 {
-	partial class Tag
-	{
-		public string LowerName
-		{
-			get
-			{
-				return Name.ToLower();
-			}
-		}
-	}
+    partial class Tag
+    {
+        public string LowerName
+        {
+            get
+            {
+                return this.Name.ToLower();
+            }
+        }
+    }
 }

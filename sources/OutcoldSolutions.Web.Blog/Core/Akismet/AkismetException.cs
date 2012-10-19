@@ -1,22 +1,23 @@
-﻿namespace OutcoldSolutions.Web.Blog.Core.Akismet
+﻿// --------------------------------------------------------------------------------------------------------------------
+// Outcold Solutions (http://outcoldman.ru)
+// --------------------------------------------------------------------------------------------------------------------
+namespace OutcoldSolutions.Web.Blog.Core.Akismet
 {
     using System;
 
     /// <summary>
-  /// General exception which occured in Akismet
-  /// </summary>
-  public class AkismetException : ApplicationException
-  {
-    internal AkismetException(string msg)
-      : base(msg)
+    /// General exception which occured in Akismet
+    /// </summary>
+    public class AkismetException : ApplicationException
     {
+        internal AkismetException(string msg)
+            : base(msg)
+        {
+        }
 
+        internal AkismetException(string msg, Exception innerException)
+            : base(msg, innerException)
+        {
+        }
     }
-
-    internal AkismetException(string msg, Exception innerException)
-      : base(msg, innerException)
-    {
-
-    }
-  }
 }

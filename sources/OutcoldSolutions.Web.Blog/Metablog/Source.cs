@@ -1,14 +1,18 @@
-﻿namespace OutcoldSolutions.Web.Blog.Metablog
+﻿// --------------------------------------------------------------------------------------------------------------------
+// Outcold Solutions (http://outcoldman.ru)
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace OutcoldSolutions.Web.Blog.Metablog
 {
     using System.Runtime.Serialization;
 
     [DataContract]
-	public class Source
-	{
-		[DataMember(Name = "name")]
-		public string Name;
+    public class Source
+    {
+        [DataMember(Name = "name")]
+        public string Name;
 
-		[DataMember(Name = "url")]
-		public string Url;
-	}
+        [DataMember(Name = "url")]
+        public string Url;
+    }
 }

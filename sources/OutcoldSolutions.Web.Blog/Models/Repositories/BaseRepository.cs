@@ -1,8 +1,12 @@
-﻿namespace OutcoldSolutions.Web.Blog.Models.Repositories
+﻿// --------------------------------------------------------------------------------------------------------------------
+// Outcold Solutions (http://outcoldman.ru)
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace OutcoldSolutions.Web.Blog.Models.Repositories
 {
     using System;
-    using System.Transactions;
     using System.Diagnostics;
+    using System.Transactions;
 
     /// <summary>
     /// 	Default(Base) ModelDataContext Repository
@@ -16,7 +20,10 @@
 
         public BaseRepository(LocalDatabaseEntities dataContext)
         {
-            if (dataContext == null) throw new ArgumentNullException("dataContext");
+            if (dataContext == null)
+            {
+                throw new ArgumentNullException("dataContext");
+            }
 
             this.DataContext = dataContext;
             this.DataContext.ContextOptions.LazyLoadingEnabled = false;
@@ -33,7 +40,9 @@
         public void Dispose()
         {
             if (this.DataContext != null)
+            {
                 this.DataContext.Dispose();
+            }
         }
 
         #endregion

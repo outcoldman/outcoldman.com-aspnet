@@ -1,4 +1,8 @@
-﻿namespace OutcoldSolutions.Web.Blog.Controllers
+﻿// --------------------------------------------------------------------------------------------------------------------
+// Outcold Solutions (http://outcoldman.ru)
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace OutcoldSolutions.Web.Blog.Controllers
 {
     using System.Web.Mvc;
 

@@ -1,7 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // Outcold Solutions (http://outcoldman.ru)
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace OutcoldSolutions.Web.Blog.Core.Util
 {
     using System;
@@ -10,45 +9,68 @@ namespace OutcoldSolutions.Web.Blog.Core.Util
 
     public static class ConfigurationUtil
     {
-        
         public static ConnectionStringSettings ConnectionStringMain
         {
-            get { return GetConnectionString(MainConnectionString); }
+            get
+            {
+                return GetConnectionString(MainConnectionString);
+            }
         }
 
         public static int DefaultCacheValue
         {
-            get { return GetSettings("DefaultCacheValue", 60); }
+            get
+            {
+                return GetSettings("DefaultCacheValue", 60);
+            }
         }
 
         public static string Me
         {
-            get { return GetSettings("MeUsername", "outcoldman"); }
+            get
+            {
+                return GetSettings("MeUsername", "outcoldman");
+            }
         }
 
         public static string MeEmail
         {
-            get { return GetSettings("MeEmail", "outcoldman@gmail.com"); }
+            get
+            {
+                return GetSettings("MeEmail", "outcoldman@gmail.com");
+            }
         }
 
         public static string SiteUrl
         {
-            get { return GetSettings("SiteUrl", "http://outcoldman.ru"); }
+            get
+            {
+                return GetSettings("SiteUrl", "http://outcoldman.ru");
+            }
         }
 
         public static string LivejournalEmail
         {
-            get { return GetSettings("LivejournalEmail", "outcoldman+outcoldan@post.livejournal.com"); }
+            get
+            {
+                return GetSettings("LivejournalEmail", "outcoldman+outcoldan@post.livejournal.com");
+            }
         }
 
         public static string MainConnectionString
         {
-            get { return GetSettings("MainConnectionString", "Main"); }
+            get
+            {
+                return GetSettings("MainConnectionString", "Main");
+            }
         }
 
         private static ConnectionStringSettingsCollection ConnectionStrings
         {
-            get { return ConfigurationManager.ConnectionStrings; }
+            get
+            {
+                return ConfigurationManager.ConnectionStrings;
+            }
         }
 
         public static ConnectionStringSettings GetConnectionString(string connectionStringName)
@@ -56,7 +78,8 @@ namespace OutcoldSolutions.Web.Blog.Core.Util
             ConnectionStringSettings settings = ConnectionStrings[connectionStringName];
             if (settings == null)
             {
-                throw new InvalidOperationException(string.Format("Connection string '{0}' not found!", connectionStringName));
+                throw new InvalidOperationException(
+                    string.Format("Connection string '{0}' not found!", connectionStringName));
             }
 
             return settings;
@@ -94,7 +117,12 @@ namespace OutcoldSolutions.Web.Blog.Core.Util
             }
             catch (Exception ex)
             {
-                string message = string.Format("Failed to parse configured value '{1}' for {0}. Using {2} as default value.", name, value, defaultValue);
+                string message =
+                    string.Format(
+                        "Failed to parse configured value '{1}' for {0}. Using {2} as default value.", 
+                        name, 
+                        value, 
+                        defaultValue);
                 Trace.TraceError(ex.ToString());
                 Trace.TraceError(message);
 

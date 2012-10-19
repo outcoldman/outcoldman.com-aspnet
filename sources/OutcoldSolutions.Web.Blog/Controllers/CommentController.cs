@@ -253,7 +253,7 @@ namespace OutcoldSolutions.Web.Blog.Controllers
                 int pageIndex = id ?? 1;
                 this.ViewData["selectedPage"] = pageIndex;
                 int postsCount = repository.GetCommentsCount();
-                this.ViewData["pagesCount"] = postsCount / PagesControl.ItemsPerPage
+                this.ViewData["pagesCount"] = (postsCount / PagesControl.ItemsPerPage)
                                               + (postsCount % PagesControl.ItemsPerPage == 0 ? 0 : 1);
                 return this.View("List", repository.GetComments(pageIndex, PagesControl.ItemsPerPage));
             }

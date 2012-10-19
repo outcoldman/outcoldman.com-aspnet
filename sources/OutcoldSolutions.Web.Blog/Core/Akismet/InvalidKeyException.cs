@@ -1,27 +1,29 @@
-﻿namespace OutcoldSolutions.Web.Blog.Core.Akismet
+﻿// --------------------------------------------------------------------------------------------------------------------
+// Outcold Solutions (http://outcoldman.ru)
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace OutcoldSolutions.Web.Blog.Core.Akismet
 {
     using System;
 
     /// <summary>
-  /// Akismet didn't accept your API key
-  /// </summary>
-  public class InvalidKeyException : AkismetException
-  {
-    internal InvalidKeyException()
-      : base("Your API key is not valid.")
+    /// Akismet didn't accept your API key
+    /// </summary>
+    public class InvalidKeyException : AkismetException
     {
+        internal InvalidKeyException()
+            : base("Your API key is not valid.")
+        {
+        }
 
+        internal InvalidKeyException(string msg)
+            : base(msg)
+        {
+        }
+
+        internal InvalidKeyException(string msg, Exception innerException)
+            : base(msg, innerException)
+        {
+        }
     }
-    internal InvalidKeyException(string msg)
-      : base(msg)
-    {
-
-    }
-
-    internal InvalidKeyException(string msg, Exception innerException)
-      : base(msg, innerException)
-    {
-
-    }
-  }
 }
