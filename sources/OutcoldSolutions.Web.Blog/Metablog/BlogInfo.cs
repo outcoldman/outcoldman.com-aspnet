@@ -1,8 +1,8 @@
-﻿using System.Runtime.Serialization;
-
-namespace PersonalWeb.Web.Metablog
+﻿namespace OutcoldSolutions.Web.Blog.Metablog
 {
-	[DataContract(Namespace = "http://www.blogger.com/developers/api/1_docs/")]
+    using System.Runtime.Serialization;
+
+    [DataContract(Namespace = "http://www.blogger.com/developers/api/1_docs/")]
 	public class BlogInfo
 	{
 		[DataMember(Name = "blogid")]

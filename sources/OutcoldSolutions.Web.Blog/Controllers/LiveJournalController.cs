@@ -1,15 +1,16 @@
-﻿using System.Web.Mvc;
-using PersonalWeb.Model.Repositories;
-
-namespace PersonalWeb.Controllers
+﻿namespace OutcoldSolutions.Web.Blog.Controllers
 {
-  public class LiveJournalController : Controller
+    using System.Web.Mvc;
+
+    using OutcoldSolutions.Web.Blog.Models.Repositories;
+
+    public class LiveJournalController : Controller
   {
-    [OutputCacheAttribute(Duration = 1800, VaryByParam = "none")]
+    [OutputCache(Duration = 1800, VaryByParam = "none")]
     public ActionResult Friends()
     {
       LivejournalRepository repository = new LivejournalRepository();
-      return View(repository.LoadFeeds());
+      return this.View(repository.LoadFeeds());
     }
   }
 }

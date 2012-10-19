@@ -1,11 +1,12 @@
-﻿using System.Security.Principal;
-using System.Web;
-using System.Web.Mvc;
-using PersonalWeb.Core.Util;
-
-namespace PersonalWeb.Web.Controls
+﻿namespace OutcoldSolutions.Web.Blog.Helpers
 {
-	public static class UserHelper
+    using System.Security.Principal;
+    using System.Web;
+    using System.Web.Mvc;
+
+    using OutcoldSolutions.Web.Blog.Core.Util;
+
+    public static class UserHelper
 	{
 		public static bool IsMe(this HtmlHelper helper)
 		{

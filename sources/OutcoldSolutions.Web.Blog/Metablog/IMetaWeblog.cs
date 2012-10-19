@@ -1,8 +1,8 @@
-﻿using System.ServiceModel;
-
-namespace PersonalWeb.Web.Metablog
+﻿namespace OutcoldSolutions.Web.Blog.Metablog
 {
-	[ServiceContract(Namespace = "http://www.xmlrpc.com/metaWeblogApi")]
+    using System.ServiceModel;
+
+    [ServiceContract(Namespace = "http://www.xmlrpc.com/metaWeblogApi")]
 	public interface IMetaWeblog
 	{
 		[OperationContract(Action = "metaWeblog.newPost")]

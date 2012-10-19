@@ -1,4 +1,4 @@
-﻿namespace PersonalWeb.Core.Util
+﻿namespace OutcoldSolutions.Web.Blog.Core.Util
 {
 	public static class StringUtils
 	{

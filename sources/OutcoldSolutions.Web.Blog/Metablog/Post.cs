@@ -1,9 +1,9 @@
-﻿using System;
-using System.Runtime.Serialization;
-
-namespace PersonalWeb.Web.Metablog
+﻿namespace OutcoldSolutions.Web.Blog.Metablog
 {
-	[DataContract]
+    using System;
+    using System.Runtime.Serialization;
+
+    [DataContract]
 	public class Post
 	{
 		[DataMember(Name = "dateCreated")]

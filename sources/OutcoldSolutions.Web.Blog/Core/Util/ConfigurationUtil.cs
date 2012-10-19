@@ -2,13 +2,11 @@
 // Outcold Solutions (http://outcoldman.ru)
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace PersonalWeb.Core.Util
+namespace OutcoldSolutions.Web.Blog.Core.Util
 {
     using System;
     using System.Configuration;
     using System.Diagnostics;
-    using System.Reflection;
-
 
     public static class ConfigurationUtil
     {

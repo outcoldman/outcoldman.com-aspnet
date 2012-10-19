@@ -1,12 +1,12 @@
-﻿using System;
-using System.IO;
-using System.Net;
-using System.Reflection;
-using System.Web;
-
-namespace PersonalWeb.Core.Akismet
+﻿namespace OutcoldSolutions.Web.Blog.Core.Akismet
 {
-	/// <summary>
+    using System;
+    using System.IO;
+    using System.Net;
+    using System.Reflection;
+    using System.Web;
+
+    /// <summary>
 	/// 	Manager to check items for spam and submit unrecognized ones
 	/// </summary>
 	public class AkismetManager
@@ -20,20 +20,20 @@ namespace PersonalWeb.Core.Akismet
 		{
 			get
 			{
-				if (_AppVersion == null)
+				if (this._AppVersion == null)
 				{
 					try
 					{
-						_AppVersion = Assembly.GetExecutingAssembly().GetName().Version.Major + "." +
+						this._AppVersion = Assembly.GetExecutingAssembly().GetName().Version.Major + "." +
 						              Assembly.GetExecutingAssembly().GetName().Version.Minor;
 					}
 					catch
 					{
-						_AppVersion = "0.0";
+						this._AppVersion = "0.0";
 					}
 				}
 
-				return _AppVersion;
+				return this._AppVersion;
 			}
 		}
 
@@ -46,19 +46,19 @@ namespace PersonalWeb.Core.Akismet
 		{
 			get
 			{
-				if (_AppName == null)
+				if (this._AppName == null)
 				{
 					try
 					{
-						_AppName = Assembly.GetExecutingAssembly().GetName().Name;
+						this._AppName = Assembly.GetExecutingAssembly().GetName().Name;
 					}
 					catch
 					{
-						_AppName = "Unknown-C#-User";
+						this._AppName = "Unknown-C#-User";
 					}
 				}
 
-				return _AppName;
+				return this._AppName;
 			}
 		}
 
@@ -71,12 +71,12 @@ namespace PersonalWeb.Core.Akismet
 		/// <exception cref = "ArgumentOutOfRangeException">ApiKey may not be empty</exception>
 		public string ApiKey
 		{
-			get { return _ApiKey; }
+			get { return this._ApiKey; }
 			set
 			{
 				if (value == null) throw new ArgumentNullException("ApiKey");
 				if (value.Length <= 0) throw new ArgumentOutOfRangeException("ApiKey", value, "ApiKey may not be empty");
-				_ApiKey = value;
+				this._ApiKey = value;
 			}
 		}
 
@@ -89,12 +89,12 @@ namespace PersonalWeb.Core.Akismet
 		/// <exception cref = "ArgumentOutOfRangeException">Url may not be empty</exception>
 		public string Url
 		{
-			get { return _Url; }
+			get { return this._Url; }
 			set
 			{
 				if (value == null) throw new ArgumentNullException("Url");
 				if (value.Length <= 0) throw new ArgumentOutOfRangeException("Url", value, "Url may not be empty");
-				_Url = value;
+				this._Url = value;
 			}
 		}
 
@@ -106,11 +106,11 @@ namespace PersonalWeb.Core.Akismet
 		/// <exception cref = "ArgumentOutOfRangeException">TimeOut must be greater than zero</exception>
 		public int TimeOut
 		{
-			get { return _TimeOut; }
+			get { return this._TimeOut; }
 			set
 			{
 				if (value <= 0) throw new ArgumentOutOfRangeException("TimeOut", value, "TimeOut must be greater than zero");
-				_TimeOut = value;
+				this._TimeOut = value;
 			}
 		}
 
@@ -122,7 +122,7 @@ namespace PersonalWeb.Core.Akismet
 		/// <returns>The response content</returns>
 		private string ExecuteRequest(string url, string content)
 		{
-			HttpWebRequest request = PrepareRequest(url);
+			HttpWebRequest request = this.PrepareRequest(url);
 			request.ContentLength = content.Length;
 
 			if (content != null && content.Length > 0)
@@ -157,10 +157,10 @@ namespace PersonalWeb.Core.Akismet
 		private HttpWebRequest PrepareRequest(string url)
 		{
 			HttpWebRequest request = (HttpWebRequest) WebRequest.Create(url);
-			request.UserAgent = AppName + "/" + AppVersion;
+			request.UserAgent = this.AppName + "/" + this.AppVersion;
 			request.Method = "POST";
 			request.ContentType = "application/x-www-form-urlencoded; charset=UTF-8";
-			request.Timeout = _TimeOut;
+			request.Timeout = this._TimeOut;
 			return request;
 		}
 
@@ -170,9 +170,9 @@ namespace PersonalWeb.Core.Akismet
 		/// <returns>True on success</returns>
 		public bool IsValidKey()
 		{
-			string content = "key=" + HttpUtility.UrlEncode(_ApiKey) + "&blog=" + HttpUtility.UrlEncode(_Url);
+			string content = "key=" + HttpUtility.UrlEncode(this._ApiKey) + "&blog=" + HttpUtility.UrlEncode(this._Url);
 
-			string response = ExecuteRequest("http://rest.akismet.com/1.1/verify-key", content);
+			string response = this.ExecuteRequest("http://rest.akismet.com/1.1/verify-key", content);
 
 			if (response != null && response.ToLower() == "valid")
 			{
@@ -194,8 +194,8 @@ namespace PersonalWeb.Core.Akismet
 		{
 			if (item == null) throw new ArgumentNullException("item");
 
-			string content = AddDefaultFields(item.ToString());
-			string response = ExecuteRequest("http://" + _ApiKey + ".rest.akismet.com/1.1/comment-check", content);
+			string content = this.AddDefaultFields(item.ToString());
+			string response = this.ExecuteRequest("http://" + this._ApiKey + ".rest.akismet.com/1.1/comment-check", content);
 
 			if (response != null)
 			{
@@ -218,8 +218,8 @@ namespace PersonalWeb.Core.Akismet
 		{
 			if (item == null) throw new ArgumentNullException("item");
 
-			string content = AddDefaultFields(item.ToString());
-			string response = ExecuteRequest("http://" + _ApiKey + ".rest.akismet.com/1.1/submit-spam", content);
+			string content = this.AddDefaultFields(item.ToString());
+			string response = this.ExecuteRequest("http://" + this._ApiKey + ".rest.akismet.com/1.1/submit-spam", content);
 
 			if (response.ToLower() == "invalid") throw new InvalidKeyException();
 		}
@@ -233,15 +233,15 @@ namespace PersonalWeb.Core.Akismet
 		{
 			if (item == null) throw new ArgumentNullException("item");
 
-			string content = "key=" + HttpUtility.UrlEncode(_ApiKey) + "&blog=" + HttpUtility.UrlEncode(_Url) + item;
-			string response = ExecuteRequest("http://" + _ApiKey + ".rest.akismet.com/1.1/submit-ham", content);
+			string content = "key=" + HttpUtility.UrlEncode(this._ApiKey) + "&blog=" + HttpUtility.UrlEncode(this._Url) + item;
+			string response = this.ExecuteRequest("http://" + this._ApiKey + ".rest.akismet.com/1.1/submit-ham", content);
 
 			if (response.ToLower() == "invalid") throw new InvalidKeyException();
 		}
 
 		private string AddDefaultFields(string content)
 		{
-			return "key=" + HttpUtility.UrlEncode(_ApiKey) + "&blog=" + HttpUtility.UrlEncode(_Url) + content;
+			return "key=" + HttpUtility.UrlEncode(this._ApiKey) + "&blog=" + HttpUtility.UrlEncode(this._Url) + content;
 		}
 
 		/// <summary>
@@ -261,8 +261,8 @@ namespace PersonalWeb.Core.Akismet
 			if (url == null) throw new ArgumentNullException("url");
 			if (url.Length <= 0) throw new ArgumentOutOfRangeException("url", url, "url may not be empty");
 
-			_ApiKey = apiKey;
-			_Url = url;
+			this._ApiKey = apiKey;
+			this._Url = url;
 		}
 	}
 }

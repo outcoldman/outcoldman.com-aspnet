@@ -1,8 +1,7 @@
-﻿@model System.Collections.Generic.IEnumerable<PersonalWeb.Model.Repositories.BlogPostModel>
+﻿@model IEnumerable<OutcoldSolutions.Web.Blog.Models.Repositories.BlogPostModel>
+@using OutcoldSolutions.Web.Blog.Helpers
 @using OutcoldSolutions.Web.Blog.Models
-@using PersonalWeb.Model
-@using PersonalWeb.Web.Controls
-@using PersonalWeb.Web.Resources
+@using OutcoldSolutions.Web.Blog.Resources
 @{
 	Layout = "~/Views/Shared/_Site.cshtml";
 	ViewBag.Title = "outcoldman: " + Html.GetResource("Blog") + (ViewData["tag"] == null ? string.Empty : string.Format(" - {0}", ((Tag)ViewData["tag"]).Name));

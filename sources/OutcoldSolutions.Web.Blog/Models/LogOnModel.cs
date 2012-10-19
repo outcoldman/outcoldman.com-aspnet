@@ -1,9 +1,9 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-
-namespace PersonalWeb.Model
+﻿namespace OutcoldSolutions.Web.Blog.Models
 {
-	public class LogOnModel
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
+    public class LogOnModel
 	{
 		[Required]
 		[DisplayName("User name")]

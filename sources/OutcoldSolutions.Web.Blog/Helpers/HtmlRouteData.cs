@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Routing;
-using PersonalWeb.Core.Util;
-
-namespace PersonalWeb.Web.Controls
+﻿namespace OutcoldSolutions.Web.Blog.Helpers
 {
-	public static class HtmlRouteData
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Web.Mvc;
+    using System.Web.Routing;
+
+    using OutcoldSolutions.Web.Blog.Core.Util;
+
+    public static class HtmlRouteData
 	{
 		private static readonly List<string> RusLangs;
 

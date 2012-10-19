@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace PersonalWeb.Core.Akismet
+﻿namespace OutcoldSolutions.Web.Blog.Core.Akismet
 {
-  /// <summary>
+    /// <summary>
   /// Type of the item you want to check
   /// </summary>
   public enum AkismetType

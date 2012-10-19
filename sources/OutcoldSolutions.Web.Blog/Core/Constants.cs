@@ -1,4 +1,4 @@
-﻿namespace PersonalWeb.Core
+﻿namespace OutcoldSolutions.Web.Blog.Core
 {
     public static class Constants
     {

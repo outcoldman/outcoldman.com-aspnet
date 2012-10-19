@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Web.Mvc;
-using CodeSnippet.Config;
-using CodeSnippet.Formats;
-using CodeSnippet.Formats.Base;
-using PersonalWeb.Core.Util;
-using PersonalWeb.Web;
-using PersonalWeb.Web.Resources;
-
-namespace PersonalWeb.Controllers
+﻿namespace OutcoldSolutions.Web.Blog.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Text.RegularExpressions;
+    using System.Web.Mvc;
     using System.Diagnostics;
+
+    using OutcoldSolutions.Web.Blog.Core;
+    using OutcoldSolutions.Web.Blog.Resources;
 
     public class ToolsController : Controller
 	{
@@ -23,7 +19,7 @@ namespace PersonalWeb.Controllers
 		[ValidateLang]
 		public ActionResult RegEx(string lang)
 		{
-			return View();
+			return this.View();
 		}
 
 		[ValidateInput(false)]
@@ -40,7 +36,7 @@ namespace PersonalWeb.Controllers
 				for (int i = 0; i < matchCollection.Count; i++)
 				{
 					Match match = matchCollection[i];
-					matches.AppendFormat(ResourceLoader.GetResource(lang, "MatchResult"), (i + 1), match.Index, Server.HtmlEncode(matchCollection[i].Value));
+					matches.AppendFormat(ResourceLoader.GetResource(lang, "MatchResult"), (i + 1), match.Index, this.Server.HtmlEncode(matchCollection[i].Value));
 				}
 				res = true;
 			}
@@ -50,7 +46,7 @@ namespace PersonalWeb.Controllers
 				res = false;
 			}
 
-			return Json(new { res, matches = matches.ToString(), errorinfo });
+			return this.Json(new { res, matches = matches.ToString(), errorinfo });
 		}
 
 		#endregion
@@ -63,8 +59,8 @@ namespace PersonalWeb.Controllers
 		{
 			var service = new SourceCodeHighlighterService();
 			List<string> supportedFormats = service.GetSupportedFormats();
-			ViewBag.SupportedFormats = supportedFormats.Select(x => new SelectListItem() { Text = x, Value = x, Selected = x == "cs" }).ToList();
-			return View();
+			this.ViewBag.SupportedFormats = supportedFormats.Select(x => new SelectListItem() { Text = x, Value = x, Selected = x == "cs" }).ToList();
+			return this.View();
 		}
 
 		[ValidateInput(false)]
@@ -86,7 +82,7 @@ namespace PersonalWeb.Controllers
 				res = false;
 			}
 
-			return Json(new { res, formattedCode = highlightedCode, formattedCodeEscaped = Server.HtmlEncode(highlightedCode) });
+			return this.Json(new { res, formattedCode = highlightedCode, formattedCodeEscaped = this.Server.HtmlEncode(highlightedCode) });
 		}
 
 		#endregion
@@ -96,21 +92,21 @@ namespace PersonalWeb.Controllers
 		[ValidateLang]
 		public ActionResult Index(string lang)
 		{
-			return View();
+			return this.View();
 		}
 
 		[HttpGet]
 		[ValidateLang]
 		public ActionResult TwitterStatistic(string lang)
 		{
-			return View();
+			return this.View();
 		}
 
 		[HttpGet]
 		[ValidateLang]
 		public ActionResult Keys(string lang)
 		{
-			return View("KeysExtender");
+			return this.View("KeysExtender");
 		}
 	}
 }

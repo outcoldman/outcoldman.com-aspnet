@@ -1,9 +1,9 @@
-﻿using System.Net;
-using System.Net.Mail;
-
-namespace PersonalWeb.Web
+﻿namespace OutcoldSolutions.Web.Blog.Core
 {
-	public static class SmtpConfig
+    using System.Net;
+    using System.Net.Mail;
+
+    public static class SmtpConfig
 	{
 		public static SmtpClient GetClient()
 		{

@@ -1,12 +1,12 @@
-﻿using System.Web.Mvc;
-
-namespace PersonalWeb.Controllers
+﻿namespace OutcoldSolutions.Web.Blog.Controllers
 {
+    using System.Web.Mvc;
+
     public class ShowIPController : Controller
     {
         public ActionResult UserIP()
         {
-            return View();
+            return this.View();
         }
     }
 }

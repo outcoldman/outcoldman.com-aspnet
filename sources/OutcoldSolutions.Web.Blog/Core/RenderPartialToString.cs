@@ -1,13 +1,13 @@
-﻿using System;
-using System.IO;
-using System.Text;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Mvc.Html;
-
-namespace PersonalWeb.Web
+﻿namespace OutcoldSolutions.Web.Blog.Core
 {
-	public static class RenderPartialToString
+    using System;
+    using System.IO;
+    using System.Text;
+    using System.Web;
+    using System.Web.Mvc;
+    using System.Web.Mvc.Html;
+
+    public static class RenderPartialToString
 	{
 		/// <summary>Renders a view to string.</summary> 
 		public static string RenderViewToString(this Controller controller, string viewName, object viewData)

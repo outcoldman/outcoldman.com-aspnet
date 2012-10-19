@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
-using PersonalWeb.Model;
-using PersonalWeb.Model.Repositories;
-using PersonalWeb.Web;
-
-namespace PersonalWeb.Controllers
+﻿namespace OutcoldSolutions.Web.Blog.Controllers
 {
+    using System.Collections.Generic;
+    using System.Web.Mvc;
+
+    using OutcoldSolutions.Web.Blog.Core;
     using OutcoldSolutions.Web.Blog.Models;
+    using OutcoldSolutions.Web.Blog.Models.Repositories;
 
     public class FeedModel
 	{
@@ -34,7 +33,7 @@ namespace PersonalWeb.Controllers
 				feed.Items = blogRepository.GetRss(lang, feed.IsExternal);
         	}
 
-			return View("rss", feed);
+			return this.View("rss", feed);
         }
 
     }

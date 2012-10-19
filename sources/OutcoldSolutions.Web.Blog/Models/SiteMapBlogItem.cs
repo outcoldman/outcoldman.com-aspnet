@@ -1,4 +1,4 @@
-﻿namespace PersonalWeb.Model
+﻿namespace OutcoldSolutions.Web.Blog.Models
 {
 	public class SiteMapBlogItem
 	{

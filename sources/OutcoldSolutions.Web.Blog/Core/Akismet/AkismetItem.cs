@@ -1,10 +1,10 @@
-﻿using System;
-using System.Net;
-using System.Web;
-
-namespace PersonalWeb.Core.Akismet
+﻿namespace OutcoldSolutions.Web.Blog.Core.Akismet
 {
-  /// <summary>
+    using System;
+    using System.Net;
+    using System.Web;
+
+    /// <summary>
   ///   Represents an Akismet item like a comment or registration data
   /// </summary>
   public class AkismetItem
@@ -18,13 +18,13 @@ namespace PersonalWeb.Core.Akismet
     /// <exception cref = "ArgumentOutOfRangeException">IpAddress may not be empty</exception>
     public string IpAddress
     {
-      get { return _IpAddress; }
+      get { return this._IpAddress; }
       set
       {
         if (value == null) throw new ArgumentNullException("IpAddress");
         if (value.Length <= 0) throw new ArgumentOutOfRangeException("IpAddress", value, "IpAddress may not be empty");
 
-        _IpAddress = value;
+        this._IpAddress = value;
       }
     }
 
@@ -37,12 +37,12 @@ namespace PersonalWeb.Core.Akismet
     /// <exception cref = "ArgumentOutOfRangeException">UserAgent may not be empty</exception>
     public string UserAgent
     {
-      get { return _UserAgent; }
+      get { return this._UserAgent; }
       set
       {
         if (value == null) throw new ArgumentNullException("UserAgent");
         if (value.Length <= 0) throw new ArgumentOutOfRangeException("UserAgent", value, "UserAgent may not be empty");
-        _UserAgent = value;
+        this._UserAgent = value;
       }
     }
 
@@ -53,8 +53,8 @@ namespace PersonalWeb.Core.Akismet
     /// </summary>
     public string Referer
     {
-      get { return _Referer; }
-      set { _Referer = value; }
+      get { return this._Referer; }
+      set { this._Referer = value; }
     }
 
     private string _PermaLink;
@@ -64,8 +64,8 @@ namespace PersonalWeb.Core.Akismet
     /// </summary>
     public string PermaLink
     {
-      get { return _PermaLink; }
-      set { _PermaLink = value; }
+      get { return this._PermaLink; }
+      set { this._PermaLink = value; }
     }
 
     private AkismetType _Type = AkismetType.General;
@@ -75,8 +75,8 @@ namespace PersonalWeb.Core.Akismet
     /// </summary>
     public AkismetType Type
     {
-      get { return _Type; }
-      set { _Type = value; }
+      get { return this._Type; }
+      set { this._Type = value; }
     }
 
     private string _AuthorName;
@@ -86,8 +86,8 @@ namespace PersonalWeb.Core.Akismet
     /// </summary>
     public string AuthorName
     {
-      get { return _AuthorName; }
-      set { _AuthorName = value; }
+      get { return this._AuthorName; }
+      set { this._AuthorName = value; }
     }
 
     private string _AuthorEmail;
@@ -97,8 +97,8 @@ namespace PersonalWeb.Core.Akismet
     /// </summary>
     public string AuthorEmail
     {
-      get { return _AuthorEmail; }
-      set { _AuthorEmail = value; }
+      get { return this._AuthorEmail; }
+      set { this._AuthorEmail = value; }
     }
 
     private string _AuthorUrl;
@@ -108,8 +108,8 @@ namespace PersonalWeb.Core.Akismet
     /// </summary>
     public string AuthorUrl
     {
-      get { return _AuthorUrl; }
-      set { _AuthorUrl = value; }
+      get { return this._AuthorUrl; }
+      set { this._AuthorUrl = value; }
     }
 
     private string _Content;
@@ -119,8 +119,8 @@ namespace PersonalWeb.Core.Akismet
     /// </summary>
     public string Content
     {
-      get { return _Content; }
-      set { _Content = value; }
+      get { return this._Content; }
+      set { this._Content = value; }
     }
 
     /// <summary>
@@ -142,8 +142,8 @@ namespace PersonalWeb.Core.Akismet
       if (userAgent.Length <= 0)
         throw new ArgumentOutOfRangeException("userAgent", userAgent, "userAgent may not be empty");
 
-      _IpAddress = ipAddress;
-      _UserAgent = userAgent;
+      this._IpAddress = ipAddress;
+      this._UserAgent = userAgent;
     }
 
     /// <summary>
@@ -162,8 +162,8 @@ namespace PersonalWeb.Core.Akismet
       if (userAgent.Length <= 0)
         throw new ArgumentOutOfRangeException("userAgent", userAgent, "userAgent may not be empty");
 
-      _IpAddress = ipAddress.ToString();
-      _UserAgent = userAgent;
+      this._IpAddress = ipAddress.ToString();
+      this._UserAgent = userAgent;
     }
 
     /// <summary>
@@ -172,30 +172,30 @@ namespace PersonalWeb.Core.Akismet
     /// <returns></returns>
     public override string ToString()
     {
-      string encoded = "&user_agent=" + HttpUtility.UrlEncode(_UserAgent)
-                       + "&user_ip=" + HttpUtility.UrlEncode(_IpAddress)
-                       + (_Referer != null && _Referer.Length > 0 ? "&referrer=" + HttpUtility.UrlEncode(_Referer) : "")
+      string encoded = "&user_agent=" + HttpUtility.UrlEncode(this._UserAgent)
+                       + "&user_ip=" + HttpUtility.UrlEncode(this._IpAddress)
+                       + (this._Referer != null && this._Referer.Length > 0 ? "&referrer=" + HttpUtility.UrlEncode(this._Referer) : "")
                        +
-                       (_PermaLink != null && _PermaLink.Length > 0
-                          ? "&permalink=" + HttpUtility.UrlEncode(_PermaLink)
+                       (this._PermaLink != null && this._PermaLink.Length > 0
+                          ? "&permalink=" + HttpUtility.UrlEncode(this._PermaLink)
                           : "")
                        +
-                       (_Type != AkismetType.General ? "&comment_type=" + HttpUtility.UrlEncode(_Type.ToString()) : "")
+                       (this._Type != AkismetType.General ? "&comment_type=" + HttpUtility.UrlEncode(this._Type.ToString()) : "")
                        +
-                       (_AuthorName != null && _AuthorName.Length > 0
-                          ? "&comment_author=" + HttpUtility.UrlEncode(_AuthorName)
+                       (this._AuthorName != null && this._AuthorName.Length > 0
+                          ? "&comment_author=" + HttpUtility.UrlEncode(this._AuthorName)
                           : "")
                        +
-                       (_AuthorEmail != null && _AuthorEmail.Length > 0
-                          ? "&comment_author_email=" + HttpUtility.UrlEncode(_AuthorEmail)
+                       (this._AuthorEmail != null && this._AuthorEmail.Length > 0
+                          ? "&comment_author_email=" + HttpUtility.UrlEncode(this._AuthorEmail)
                           : "")
                        +
-                       (_AuthorUrl != null && _AuthorUrl.Length > 0
-                          ? "&comment_author_url=" + HttpUtility.UrlEncode(_AuthorUrl)
+                       (this._AuthorUrl != null && this._AuthorUrl.Length > 0
+                          ? "&comment_author_url=" + HttpUtility.UrlEncode(this._AuthorUrl)
                           : "")
                        +
-                       (_Content != null && _Content.Length > 0
-                          ? "&comment_content=" + HttpUtility.UrlEncode(_Content)
+                       (this._Content != null && this._Content.Length > 0
+                          ? "&comment_content=" + HttpUtility.UrlEncode(this._Content)
                           : "");
 
 

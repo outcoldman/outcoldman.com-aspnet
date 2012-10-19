@@ -1,8 +1,8 @@
-﻿using System.Runtime.Serialization;
-
-namespace PersonalWeb.Web.Metablog
+﻿namespace OutcoldSolutions.Web.Blog.Metablog
 {
-	[DataContract]
+    using System.Runtime.Serialization;
+
+    [DataContract]
 	public class Category
 	{
 		[DataMember(Name = "categoryId")]

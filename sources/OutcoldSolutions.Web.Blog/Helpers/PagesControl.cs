@@ -1,12 +1,13 @@
-﻿using System;
-using System.Text;
-using System.Web.Mvc;
-using System.Web.Mvc.Html;
-using PersonalWeb.Web.Resources;
-
-namespace PersonalWeb.Web.Controls
+﻿namespace OutcoldSolutions.Web.Blog.Helpers
 {
-	public static class PagesControl
+    using System;
+    using System.Text;
+    using System.Web.Mvc;
+    using System.Web.Mvc.Html;
+
+    using OutcoldSolutions.Web.Blog.Resources;
+
+    public static class PagesControl
 	{
 		public const int ItemsPerPage = 10;
 		public const int PageCenter = 5;

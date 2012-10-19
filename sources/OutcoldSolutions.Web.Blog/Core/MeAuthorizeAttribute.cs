@@ -1,13 +1,14 @@
-﻿using System.Web.Mvc;
-using PersonalWeb.Core.Util;
-
-namespace PersonalWeb.Web
+﻿namespace OutcoldSolutions.Web.Blog.Core
 {
-	public class MeAuthorizeAttribute : AuthorizeAttribute
+    using System.Web.Mvc;
+
+    using OutcoldSolutions.Web.Blog.Core.Util;
+
+    public class MeAuthorizeAttribute : AuthorizeAttribute
 	{
 		public MeAuthorizeAttribute()
 		{
-			Users = ConfigurationUtil.Me;
+			this.Users = ConfigurationUtil.Me;
 		}
 	}
 }

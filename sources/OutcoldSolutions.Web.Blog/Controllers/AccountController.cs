@@ -1,35 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Transactions;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Security;
-using WebMatrix.WebData;
-using OutcoldSolutions.Web.Blog.Filters;
-using OutcoldSolutions.Web.Blog.Models;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// Outcold Solutions (http://outcoldman.ru)
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace OutcoldSolutions.Web.Blog.Controllers
 {
-    using PersonalWeb.Model;
+    using System.Web.Mvc;
+
+    using OutcoldSolutions.Web.Blog.Filters;
+    using OutcoldSolutions.Web.Blog.Models;
+
+    using WebMatrix.WebData;
 
     [Authorize]
     [InitializeSimpleMembership]
     public class AccountController : Controller
     {
-        //
         // GET: /Account/Login
-
         [AllowAnonymous]
         public ActionResult LogOn(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            return View("LogOn");
+            return this.View("LogOn");
         }
 
-        //
         // POST: /Account/Login
-
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -37,24 +31,23 @@ namespace OutcoldSolutions.Web.Blog.Controllers
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
-                return RedirectToLocal(returnUrl);
+                return this.RedirectToLocal(returnUrl);
             }
 
             // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "The user name or password provided is incorrect.");
-            return View("LogOn", model);
+            ModelState.AddModelError(string.Empty, "The user name or password provided is incorrect.");
+            return this.View("LogOn", model);
         }
-
 
         private ActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))
             {
-                return Redirect(returnUrl);
+                return this.Redirect(returnUrl);
             }
             else
             {
-                return RedirectToAction("Index", "Site");
+                return this.RedirectToAction("Index", "Site");
             }
         }
     }

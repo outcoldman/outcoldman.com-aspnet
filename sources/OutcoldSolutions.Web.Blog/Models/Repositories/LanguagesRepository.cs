@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
-
-namespace PersonalWeb.Model.Repositories
+﻿namespace OutcoldSolutions.Web.Blog.Models.Repositories
 {
-	public static class LanguagesRepository
+    using System.Collections.Generic;
+    using System.Web.Mvc;
+
+    public static class LanguagesRepository
 	{
 		public static IList<SelectListItem> GetLanguages()
 		{

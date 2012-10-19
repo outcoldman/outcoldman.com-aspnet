@@ -1,12 +1,8 @@
-﻿using System;
-using System.Transactions;
-using PersonalWeb.Core.Util;
-
-namespace PersonalWeb.Model.Repositories
+﻿namespace OutcoldSolutions.Web.Blog.Models.Repositories
 {
+    using System;
+    using System.Transactions;
     using System.Diagnostics;
-
-    using OutcoldSolutions.Web.Blog.Models;
 
     /// <summary>
     /// 	Default(Base) ModelDataContext Repository
@@ -22,9 +18,9 @@ namespace PersonalWeb.Model.Repositories
         {
             if (dataContext == null) throw new ArgumentNullException("dataContext");
 
-            DataContext = dataContext;
-            DataContext.ContextOptions.LazyLoadingEnabled = false;
-            DataContext.ContextOptions.ProxyCreationEnabled = false;
+            this.DataContext = dataContext;
+            this.DataContext.ContextOptions.LazyLoadingEnabled = false;
+            this.DataContext.ContextOptions.ProxyCreationEnabled = false;
         }
 
         #region Model Data Context
@@ -36,8 +32,8 @@ namespace PersonalWeb.Model.Repositories
 
         public void Dispose()
         {
-            if (DataContext != null)
-                DataContext.Dispose();
+            if (this.DataContext != null)
+                this.DataContext.Dispose();
         }
 
         #endregion
@@ -50,7 +46,7 @@ namespace PersonalWeb.Model.Repositories
             {
                 using (TransactionScope scope = new TransactionScope())
                 {
-                    DataContext.SaveChanges();
+                    this.DataContext.SaveChanges();
                     scope.Complete();
                 }
             }

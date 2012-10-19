@@ -1,13 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Text;
-using System.Web.Mvc;
-using PersonalWeb.Core.Util;
-using PersonalWeb.Model;
-using Tag = OutcoldSolutions.Web.Blog.Models.Tag;
-
-namespace PersonalWeb.Web.Controls
+﻿namespace OutcoldSolutions.Web.Blog.Helpers
 {
-	public static class BlogTagsHelper
+    using System.Collections.Generic;
+    using System.Text;
+    using System.Web.Mvc;
+
+    using OutcoldSolutions.Web.Blog.Core.Util;
+    using OutcoldSolutions.Web.Blog.Models;
+
+    public static class BlogTagsHelper
 	{
 		public static MvcHtmlString RenderTags(this HtmlHelper helper, IList<Tag> tags)
 		{

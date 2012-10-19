@@ -1,11 +1,10 @@
-﻿using System;
-using System.Text;
-using System.Text.RegularExpressions;
-using PersonalWeb.Web;
-
-namespace PersonalWeb.Core
+﻿namespace OutcoldSolutions.Web.Blog.Core
 {
-	public static class HtmlParser
+    using System;
+    using System.Text;
+    using System.Text.RegularExpressions;
+
+    public static class HtmlParser
 	{
 		public static string DoBr(string text)
 		{

@@ -1,14 +1,15 @@
-﻿using System.Web.Mvc;
-using PersonalWeb.Core.Util;
-
-namespace PersonalWeb.Web
+﻿namespace OutcoldSolutions.Web.Blog.Core
 {
-	public class CustomOutputCacheAttribute : OutputCacheAttribute
+    using System.Web.Mvc;
+
+    using OutcoldSolutions.Web.Blog.Core.Util;
+
+    public class CustomOutputCacheAttribute : OutputCacheAttribute
 	{
 		public CustomOutputCacheAttribute()
 		{
-			Duration = ConfigurationUtil.DefaultCacheValue;
-			VaryByParam = "none";
+			this.Duration = ConfigurationUtil.DefaultCacheValue;
+			this.VaryByParam = "none";
 		}
 	}
 }

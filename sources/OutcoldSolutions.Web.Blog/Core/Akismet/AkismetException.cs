@@ -1,8 +1,8 @@
-﻿using System;
-
-namespace PersonalWeb.Core.Akismet
+﻿namespace OutcoldSolutions.Web.Blog.Core.Akismet
 {
-  /// <summary>
+    using System;
+
+    /// <summary>
   /// General exception which occured in Akismet
   /// </summary>
   public class AkismetException : ApplicationException

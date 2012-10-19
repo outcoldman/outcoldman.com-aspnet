@@ -1,26 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Web;
-using System.Web.Mvc;
-using PersonalWeb.Model.Repositories;
-using PersonalWeb.Web;
-
-namespace PersonalWeb.Controllers
+﻿namespace OutcoldSolutions.Web.Blog.Controllers
 {
-	[HandleError]
+    using System;
+    using System.Collections.Generic;
+    using System.Web;
+    using System.Web.Mvc;
+
+    using OutcoldSolutions.Web.Blog.Core;
+    using OutcoldSolutions.Web.Blog.Models.Repositories;
+
+    [HandleError]
 	public class SiteController : Controller
 	{
 		[CustomOutputCache]
 		[ValidateLang]
 		public ActionResult Index(string lang)
 		{
-			Response.Cookies.Add(new HttpCookie("lang", lang) { Expires = DateTime.Now.AddYears(5) });
+			this.Response.Cookies.Add(new HttpCookie("lang", lang) { Expires = DateTime.Now.AddYears(5) });
 
 			using (BlogRepository repository = new BlogRepository(BlogPostLoadFlag.LoadTags | BlogPostLoadFlag.LoadAbstraction))
 			{
 				List<BlogPostModel> lastBlogPosts = repository.GetLast(lang, 3);
-				ViewData["toptags"] = repository.GetTopTags(lang);
-				return View(lastBlogPosts);
+				this.ViewData["toptags"] = repository.GetTopTags(lang);
+				return this.View(lastBlogPosts);
 			}
 		}
 
@@ -28,27 +29,27 @@ namespace PersonalWeb.Controllers
 		[ValidateLang]
 		public ActionResult Links()
 		{
-			return View();
+			return this.View();
 		}
 
 		[CustomOutputCache]
 		[ValidateLang]
 		public ActionResult AboutMe()
 		{
-			return View();
+			return this.View();
 		}
 
 		[CustomOutputCache]
 		[ValidateLang]
 		public ActionResult Search()
 		{
-			return View();
+			return this.View();
 		}
 
 		[CustomOutputCache]
 		public ActionResult OpenId()
 		{
-			return View();
+			return this.View();
 		}
 
 		[OutputCache(VaryByParam = "none", Duration=0)]
@@ -56,7 +57,7 @@ namespace PersonalWeb.Controllers
 		{
 			using (BlogRepository blogController = new BlogRepository())
 			{
-				return View(blogController.GetModelForSiteMap());	
+				return this.View(blogController.GetModelForSiteMap());	
 			}
 		}
 	}

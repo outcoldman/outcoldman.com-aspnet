@@ -1,19 +1,20 @@
-﻿using System.Collections.Generic;
-using System.Text;
-using System.Web.Mvc;
-using System.Web.Mvc.Html;
-using System.Web.Routing;
-using PersonalWeb.Web.Resources;
-
-namespace PersonalWeb.Web.Controls
+﻿namespace OutcoldSolutions.Web.Blog.Helpers
 {
-	public class MainMenu
+    using System.Collections.Generic;
+    using System.Text;
+    using System.Web.Mvc;
+    using System.Web.Mvc.Html;
+    using System.Web.Routing;
+
+    using OutcoldSolutions.Web.Blog.Resources;
+
+    public class MainMenu
 	{
 		public MainMenu(string title, string action, string controller)
 		{
-			Action = action;
-			Controller = controller;
-			Title = title;
+			this.Action = action;
+			this.Controller = controller;
+			this.Title = title;
 		}
 
 		public string Action { get; set; }

@@ -1,8 +1,7 @@
-﻿using System;
-using System.Globalization;
-
-namespace PersonalWeb.Core.Util
+﻿namespace OutcoldSolutions.Web.Blog.Core.Util
 {
+    using System;
+    using System.Globalization;
     using System.Diagnostics;
 
     public static class Parser

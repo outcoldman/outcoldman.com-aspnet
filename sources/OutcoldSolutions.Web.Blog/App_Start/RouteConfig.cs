@@ -7,7 +7,7 @@ namespace OutcoldSolutions.Web.Blog
     using System.Web.Mvc;
     using System.Web.Routing;
 
-    using PersonalWeb.Web;
+    using OutcoldSolutions.Web.Blog.Core;
 
     public class RouteConfig
     {

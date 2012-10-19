@@ -1,10 +1,11 @@
-﻿using System.Web;
-using System.Web.Routing;
-using PersonalWeb.Core.Util;
-
-namespace PersonalWeb.Web
+﻿namespace OutcoldSolutions.Web.Blog.Core
 {
-	public class ExtRouteConstraint : IRouteConstraint
+    using System.Web;
+    using System.Web.Routing;
+
+    using OutcoldSolutions.Web.Blog.Core.Util;
+
+    public class ExtRouteConstraint : IRouteConstraint
 	{
 		public bool Match(HttpContextBase httpContext, Route route, string parameterName, RouteValueDictionary values,
 		                  RouteDirection routeDirection)

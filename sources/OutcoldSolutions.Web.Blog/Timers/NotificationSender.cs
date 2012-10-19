@@ -1,13 +1,14 @@
-﻿using System;
-using System.Net.Mail;
-using System.Timers;
-using PersonalWeb.Core.Util;
-using PersonalWeb.Model.Repositories;
-using PersonalWeb.Web.Resources;
-
-namespace PersonalWeb.Web.Timers
+﻿namespace OutcoldSolutions.Web.Blog.Timers
 {
+    using System;
+    using System.Net.Mail;
+    using System.Timers;
     using System.Diagnostics;
+
+    using OutcoldSolutions.Web.Blog.Core;
+    using OutcoldSolutions.Web.Blog.Core.Util;
+    using OutcoldSolutions.Web.Blog.Models.Repositories;
+    using OutcoldSolutions.Web.Blog.Resources;
 
     public class NotificationSender
 	{
@@ -15,11 +16,11 @@ namespace PersonalWeb.Web.Timers
 
 		public NotificationSender()
 		{
-			_timer = new Timer();
-			_timer.Elapsed += OnTimed;
-			_timer.AutoReset = false;
-			_timer.Interval = 10000;
-			_timer.Enabled = true;
+			this._timer = new Timer();
+			this._timer.Elapsed += this.OnTimed;
+			this._timer.AutoReset = false;
+			this._timer.Interval = 10000;
+			this._timer.Enabled = true;
 		}
 
 		private void OnTimed(object state, ElapsedEventArgs elapsedEventArgs)
@@ -85,8 +86,8 @@ namespace PersonalWeb.Web.Timers
 			}
 			finally
 			{
-				_timer.Interval = ConfigurationUtil.GetSettings("NoificationSenderInterval", 120000);
-				_timer.Enabled = true;
+				this._timer.Interval = ConfigurationUtil.GetSettings("NoificationSenderInterval", 120000);
+				this._timer.Enabled = true;
 			}
 		}
 	}

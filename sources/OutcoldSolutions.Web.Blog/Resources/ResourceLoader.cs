@@ -1,9 +1,8 @@
-﻿using System.Web.Mvc;
-using PersonalWeb.Web.Controls;
-
-namespace PersonalWeb.Web.Resources
+﻿namespace OutcoldSolutions.Web.Blog.Resources
 {
-    using OutcoldSolutions.Web.Blog.Resources;
+    using System.Web.Mvc;
+
+    using OutcoldSolutions.Web.Blog.Helpers;
 
     public static class ResourceLoader
 	{

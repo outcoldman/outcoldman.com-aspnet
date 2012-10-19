@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using HtmlAgilityPack;
-using PersonalWeb.Core.Util;
-
-namespace PersonalWeb.Model.Repositories
+﻿namespace OutcoldSolutions.Web.Blog.Models.Repositories
 {
-    using OutcoldSolutions.Web.Blog.Models;
+    using System.Collections.Generic;
+
+    using HtmlAgilityPack;
+
+    using OutcoldSolutions.Web.Blog.Core.Util;
 
     public class LivejournalRepository : BaseRepository
 	{

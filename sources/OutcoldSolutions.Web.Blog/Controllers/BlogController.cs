@@ -1,270 +1,290 @@
-﻿using System;
-using System.Net;
-using System.Net.Mail;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Routing;
-using PersonalWeb.Core.Util;
-using PersonalWeb.Model.Repositories;
-using PersonalWeb.Web;
-using PersonalWeb.Web.Controls;
-using PersonalWeb.Web.Resources;
-
-namespace PersonalWeb.Controllers
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // Outcold Solutions (http://outcoldman.ru)
+// // --------------------------------------------------------------------------------------------------------------------
+namespace OutcoldSolutions.Web.Blog.Controllers
 {
+    using System;
     using System.Diagnostics;
+    using System.Net;
+    using System.Net.Mail;
+    using System.Web;
+    using System.Web.Mvc;
+    using System.Web.Routing;
 
+    using OutcoldSolutions.Web.Blog.Core;
+    using OutcoldSolutions.Web.Blog.Core.Util;
+    using OutcoldSolutions.Web.Blog.Helpers;
     using OutcoldSolutions.Web.Blog.Models;
+    using OutcoldSolutions.Web.Blog.Models.Repositories;
+    using OutcoldSolutions.Web.Blog.Resources;
 
     public class BlogController : Controller
-	{
-		[HttpGet]
-		[CustomOutputCache]
-		[ValidateLang]
-		public ActionResult Index(string lang, int? id)
-		{
-			using (
-				BlogRepository repository = new BlogRepository(BlogPostLoadFlag.LoadAbstraction | BlogPostLoadFlag.LoadTags))
-			{
-				int pageIndex = id ?? 1;
-				ViewData["selectedPage"] = pageIndex;
+    {
+        [HttpGet]
+        [CustomOutputCache]
+        [ValidateLang]
+        public ActionResult Index(string lang, int? id)
+        {
+            using (var repository = new BlogRepository(BlogPostLoadFlag.LoadAbstraction | BlogPostLoadFlag.LoadTags))
+            {
+                int pageIndex = id ?? 1;
+                this.ViewData["selectedPage"] = pageIndex;
 
-				int postsCount = repository.GetPostsCount(lang);
-				ViewData["pagesCount"] = postsCount/PagesControl.ItemsPerPage +
-				                         (postsCount%PagesControl.ItemsPerPage == 0 ? 0 : 1);
-				return View("Index", repository.GetPosts(pageIndex, PagesControl.ItemsPerPage, lang));
-			}
-		}
+                int postsCount = repository.GetPostsCount(lang);
+                this.ViewData["pagesCount"] = (postsCount / PagesControl.ItemsPerPage)
+                                              + (postsCount % PagesControl.ItemsPerPage == 0 ? 0 : 1);
+                return this.View("Index", repository.GetPosts(pageIndex, PagesControl.ItemsPerPage, lang));
+            }
+        }
 
-		[HttpGet]
-		[CustomOutputCache]
-		[ValidateLang]
-		public ActionResult Tag(string lang, int tagid, int? id)
-		{
-			using (
-				BlogRepository repository = new BlogRepository(BlogPostLoadFlag.LoadAbstraction | BlogPostLoadFlag.LoadTags))
-			{
-				int pageIndex = id ?? 1;
-				ViewData["selectedPage"] = pageIndex;
-				Tag tag = repository.GetTag(tagid);
+        [HttpGet]
+        [CustomOutputCache]
+        [ValidateLang]
+        public ActionResult Tag(string lang, int tagid, int? id)
+        {
+            using (var repository = new BlogRepository(BlogPostLoadFlag.LoadAbstraction | BlogPostLoadFlag.LoadTags))
+            {
+                int pageIndex = id ?? 1;
+                this.ViewData["selectedPage"] = pageIndex;
+                Tag tag = repository.GetTag(tagid);
 
-				if (tag == null)
-				{
-					throw new HttpException((int) HttpStatusCode.NotFound,
-					                        string.Format("Couldn't find tag with ID {0}", id));
-				}
+                if (tag == null)
+                {
+                    throw new HttpException(
+                        (int)HttpStatusCode.NotFound, string.Format("Couldn't find tag with ID {0}", id));
+                }
 
-				ViewData["tag"] = tag;
-				int postsCount = repository.GetPostsByTagCount(lang, tagid);
-				ViewData["pagesCount"] = postsCount/PagesControl.ItemsPerPage +
-				                         (postsCount%PagesControl.ItemsPerPage == 0 ? 0 : 1);
-				
-				return View("Index", repository.GetPostsByTag(pageIndex, PagesControl.ItemsPerPage, lang, tagid));
-			}
-		}
+                this.ViewData["tag"] = tag;
+                int postsCount = repository.GetPostsByTagCount(lang, tagid);
+                this.ViewData["pagesCount"] = (postsCount / PagesControl.ItemsPerPage)
+                                              + (postsCount % PagesControl.ItemsPerPage == 0 ? 0 : 1);
 
-		[HttpGet]
-		[CustomOutputCache]
-		[ValidateLang]
-		public ActionResult Show(string lang, int id)
-		{
-			using (BlogRepository blogRepository = new BlogRepository(BlogPostLoadFlag.LoadBody | BlogPostLoadFlag.LoadTags))
-			{
-				BlogPost blogPost = blogRepository.LoadPost(id);
-				CheckBlogPostExist(id, lang, blogPost);
-				ViewData["comments"] = blogRepository.GetComments(id);
-				// For master page
-				ViewData["keywords"] = blogPost.TagsLine;
-				ViewData["description"] = Server.HtmlEncode(blogPost.Title);
-				// ------
-				ViewData["simpleposts"] = blogRepository.GetLikePosts(id);
-				return View("ItemView", blogPost);
-			}
-		}
+                return this.View("Index", repository.GetPostsByTag(pageIndex, PagesControl.ItemsPerPage, lang, tagid));
+            }
+        }
 
-		[HttpGet]
-		[MeAuthorizeAttribute]
-		public ActionResult ItemEdit(string lang, int id)
-		{
-			using (BlogRepository blogRepository = new BlogRepository(BlogPostLoadFlag.FullLoad))
-			{
-				BlogPost blogPost = blogRepository.LoadPost(id);
-				CheckBlogPostExist(id, lang, blogPost);
-				return View("ItemEdit", blogPost);
-			}
-		}
+        [HttpGet]
+        [CustomOutputCache]
+        [ValidateLang]
+        public ActionResult Show(string lang, int id)
+        {
+            using (var blogRepository = new BlogRepository(BlogPostLoadFlag.LoadBody | BlogPostLoadFlag.LoadTags))
+            {
+                BlogPost blogPost = blogRepository.LoadPost(id);
+                this.CheckBlogPostExist(id, lang, blogPost);
+                this.ViewData["comments"] = blogRepository.GetComments(id);
 
-		[HttpPost]
-		[ValidateInput(false)]
-		[MeAuthorizeAttribute]
-		public ActionResult ItemEdit(string lang, int id, FormCollection formValues)
-		{
-			using (BlogRepository blogRepository = new BlogRepository(BlogPostLoadFlag.FullLoad))
-			{
-				BlogPost blogPost = blogRepository.LoadPost(id);
-				CheckBlogPostExist(id, lang, blogPost);
+                // For master page
+                this.ViewData["keywords"] = blogPost.TagsLine;
+                this.ViewData["description"] = this.Server.HtmlEncode(blogPost.Title);
 
-				ValidateBlogPost(blogPost, formValues);
+                // ------
+                this.ViewData["simpleposts"] = blogRepository.GetLikePosts(id);
+                return this.View("ItemView", blogPost);
+            }
+        }
 
-				if (ModelState.IsValid)
-				{
-					UpdateModel(blogPost);
-					blogRepository.Save(blogPost, formValues["TagsLine"]);
-					return RedirectToAction("show", "blog", new {id, lang = blogPost.Language});
-				}
+        [HttpGet]
+        [MeAuthorize]
+        public ActionResult ItemEdit(string lang, int id)
+        {
+            using (var blogRepository = new BlogRepository(BlogPostLoadFlag.FullLoad))
+            {
+                BlogPost blogPost = blogRepository.LoadPost(id);
+                this.CheckBlogPostExist(id, lang, blogPost);
+                return this.View("ItemEdit", blogPost);
+            }
+        }
 
-				return View(blogPost);
-			}
-		}
+        [HttpPost]
+        [ValidateInput(false)]
+        [MeAuthorize]
+        public ActionResult ItemEdit(string lang, int id, FormCollection formValues)
+        {
+            using (var blogRepository = new BlogRepository(BlogPostLoadFlag.FullLoad))
+            {
+                BlogPost blogPost = blogRepository.LoadPost(id);
+                this.CheckBlogPostExist(id, lang, blogPost);
 
-		[HttpGet]
-		[MeAuthorizeAttribute]
-		public ActionResult Create(string lang)
-		{
-			BlogPost blogPost = new BlogPost {Date = DateTime.Now.ToUniversalTime()};
-			return View("ItemEdit", blogPost);
-		}
+                this.ValidateBlogPost(blogPost, formValues);
 
-		[HttpPost]
-		[ValidateInput(false)]
-		[MeAuthorizeAttribute]
-		public ActionResult Create(string lang, FormCollection formValues)
-		{
-			using (BlogRepository blogRepository = new BlogRepository())
-			{
-				BlogPost blogPost = new BlogPost();
+                if (this.ModelState.IsValid)
+                {
+                    this.UpdateModel(blogPost);
+                    blogRepository.Save(blogPost, formValues["TagsLine"]);
+                    return this.RedirectToAction("show", "blog", new { id, lang = blogPost.Language });
+                }
 
-				ValidateBlogPost(blogPost, formValues);
+                return this.View(blogPost);
+            }
+        }
 
-				if (ModelState.IsValid)
-				{
-					UpdateModel(blogPost);
-					blogRepository.Save(blogPost, formValues["TagsLine"]);
-					return RedirectToAction("show", "blog", new {id = blogPost.PostID, lang = blogPost.Language});
-				}
+        [HttpGet]
+        [MeAuthorize]
+        public ActionResult Create(string lang)
+        {
+            var blogPost = new BlogPost { Date = DateTime.Now.ToUniversalTime() };
+            return this.View("ItemEdit", blogPost);
+        }
 
-				return View("ItemEdit", blogPost);
-			}
-		}
+        [HttpPost]
+        [ValidateInput(false)]
+        [MeAuthorize]
+        public ActionResult Create(string lang, FormCollection formValues)
+        {
+            using (var blogRepository = new BlogRepository())
+            {
+                var blogPost = new BlogPost();
 
-		[HttpGet]
-		[MeAuthorizeAttribute]
-		public ActionResult List(string lang, string action, string controller, int? id)
-		{
-			using (BlogRepository repository = new BlogRepository())
-			{
-				int pageIndex = id ?? 1;
-				ViewData["selectedPage"] = pageIndex;
-				int postsCount = repository.GetPostsCount();
-				ViewData["pagesCount"] = postsCount/PagesControl.ItemsPerPage +
-				                         (postsCount%PagesControl.ItemsPerPage == 0 ? 0 : 1);
-				return View("List", repository.GetPosts(pageIndex, PagesControl.ItemsPerPage));
-			}
-		}
+                this.ValidateBlogPost(blogPost, formValues);
 
-		#region Delete post
+                if (this.ModelState.IsValid)
+                {
+                    this.UpdateModel(blogPost);
+                    blogRepository.Save(blogPost, formValues["TagsLine"]);
+                    return this.RedirectToAction("show", "blog", new { id = blogPost.PostID, lang = blogPost.Language });
+                }
 
-		[HttpGet]
-		[MeAuthorizeAttribute]
-		public ActionResult Delete(string lang, int id)
-		{
-			using (BlogRepository repository = new BlogRepository())
-			{
-				BlogPost blogPost = repository.LoadPost(id);
-				CheckBlogPostExist(id, lang, blogPost);
-				return View("Delete", blogPost);
-			}
-		}
+                return this.View("ItemEdit", blogPost);
+            }
+        }
 
-		[HttpPost]
-		[MeAuthorizeAttribute]
-		public ActionResult Delete(string lang, int id, string confirmButton)
-		{
-			using (BlogRepository repository = new BlogRepository())
-			{
-				BlogPost blogPost = repository.LoadPost(id);
-				CheckBlogPostExist(id, lang, blogPost);
-				repository.DataContext.BlogPosts.DeleteObject(blogPost);
-				repository.DataContext.SaveChanges();
-				return RedirectToAction("index");
-			}
-		}
+        [HttpGet]
+        [MeAuthorize]
+        public ActionResult List(string lang, string action, string controller, int? id)
+        {
+            using (var repository = new BlogRepository())
+            {
+                int pageIndex = id ?? 1;
+                this.ViewData["selectedPage"] = pageIndex;
+                int postsCount = repository.GetPostsCount();
+                this.ViewData["pagesCount"] = (postsCount / PagesControl.ItemsPerPage)
+                                              + (postsCount % PagesControl.ItemsPerPage == 0 ? 0 : 1);
+                return this.View("List", repository.GetPosts(pageIndex, PagesControl.ItemsPerPage));
+            }
+        }
 
-		#endregion
+        [HttpGet]
+        [MeAuthorize]
+        public ActionResult Delete(string lang, int id)
+        {
+            using (BlogRepository repository = new BlogRepository())
+            {
+                BlogPost blogPost = repository.LoadPost(id);
+                this.CheckBlogPostExist(id, lang, blogPost);
+                return this.View("Delete", blogPost);
+            }
+        }
 
-		[HttpGet]
-		[MeAuthorizeAttribute]
-		public ActionResult Publicate(string lang, int id)
-		{
-			try
-			{
-				using (BlogRepository repository = new BlogRepository())
-				{
-					BlogPost blogPost = repository.LoadPost(id);
-					using (SmtpClient smtpClient = SmtpConfig.GetClient())
-					{
-						MailMessage message = new MailMessage(SmtpConfig.GetFrom(), ConfigurationUtil.LivejournalEmail)
-						                      	{
-						                      		Subject = blogPost.Title,
-						                      		Body =
-						                      			string.Format("lj-tags: {0} {1} <lj-raw>{2} {3}</lj-raw>", blogPost.TagsLine,
-						                      			              Environment.NewLine,
-						                      			              blogPost.HtmlAbstraction,
-						                      			              string.Format("<p><a href=\"{0}\">{1}</a></p>",
-						                      			                            NavigationHelper.GetUrlWithHost(
-						                      			                            	Url.Action("show", "blog",
-						                      			                            	           new RouteValueDictionary
-						                      			                            	           	{
-						                      			                            	           		{"lang", blogPost.Language},
-						                      			                            	           		{"id", blogPost.PostID}
-						                      			                            	           	})),
-						                      			                            ResourceLoader.GetResource(lang,
-						                      			                                                       "ReadMoreRss")))
-						                      	};
-						smtpClient.Send(message);
-					}
-				}
-			}
-			catch (Exception e)
-			{
+        [HttpPost]
+        [MeAuthorize]
+        public ActionResult Delete(string lang, int id, string confirmButton)
+        {
+            using (BlogRepository repository = new BlogRepository())
+            {
+                BlogPost blogPost = repository.LoadPost(id);
+                this.CheckBlogPostExist(id, lang, blogPost);
+                repository.DataContext.BlogPosts.DeleteObject(blogPost);
+                repository.DataContext.SaveChanges();
+                return this.RedirectToAction("index");
+            }
+        }
+
+        [HttpGet]
+        [MeAuthorize]
+        public ActionResult Publicate(string lang, int id)
+        {
+            try
+            {
+                using (var repository = new BlogRepository())
+                {
+                    BlogPost blogPost = repository.LoadPost(id);
+                    using (SmtpClient smtpClient = SmtpConfig.GetClient())
+                    {
+                        var message = new MailMessage(SmtpConfig.GetFrom(), ConfigurationUtil.LivejournalEmail)
+                            {
+                                Subject = blogPost.Title, 
+                                Body = string.Format(
+                                    "lj-tags: {0} {1} <lj-raw>{2} {3}</lj-raw>", 
+                                    blogPost.TagsLine, 
+                                    Environment.NewLine, 
+                                    blogPost.HtmlAbstraction, 
+                                    string.Format(
+                                    "<p><a href=\"{0}\">{1}</a></p>", 
+                                    NavigationHelper.GetUrlWithHost(
+                                        this.Url.Action(
+                                        "show", 
+                                        "blog", 
+                                        new RouteValueDictionary
+                                            {
+                                                {
+                                                    "lang", 
+                                                    blogPost.Language
+                                                }, 
+                                                {
+                                                    "id", 
+                                                    blogPost.PostID
+                                                }
+                                            })), 
+                                        ResourceLoader.GetResource(lang, "ReadMoreRss")))
+                            };
+                        smtpClient.Send(message);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
                 Trace.TraceError(e.ToString());
-			}
-			return RedirectToAction("show", new {id, lang});
-		}
+            }
 
-		private void ValidateBlogPost(BlogPost blogPost, FormCollection formValues)
-		{
-			blogPost.Title = formValues["Title"];
-			if (string.IsNullOrEmpty(blogPost.Title))
-				AddCannotEmptyError("Title", "Title");
+            return this.RedirectToAction("show", new { id, lang });
+        }
 
-			string strDate = formValues["Date"];
-			DateTime date;
-			if (DateTime.TryParse(strDate, out date))
-				blogPost.Date = date;
-			else
-				ModelState.AddModelError("Date", @"Check that date in correct format.");
+        private void ValidateBlogPost(BlogPost blogPost, FormCollection formValues)
+        {
+            blogPost.Title = formValues["Title"];
+            if (string.IsNullOrEmpty(blogPost.Title))
+            {
+                this.AddCannotEmptyError("Title", "Title");
+            }
 
-			blogPost.HtmlAbstraction = formValues["HtmlAbstraction"];
-			if (string.IsNullOrEmpty(blogPost.HtmlAbstraction))
-				AddCannotEmptyError("HtmlAbstraction", "Abstraction");
+            string strDate = formValues["Date"];
+            DateTime date;
+            if (DateTime.TryParse(strDate, out date))
+            {
+                blogPost.Date = date;
+            }
+            else
+            {
+                this.ModelState.AddModelError("Date", @"Check that date in correct format.");
+            }
 
-			blogPost.HtmlText = formValues["HtmlText"];
-			if (string.IsNullOrEmpty(blogPost.HtmlText))
-				AddCannotEmptyError("HtmlText", "Body cannot be empty");
-		}
+            blogPost.HtmlAbstraction = formValues["HtmlAbstraction"];
+            if (string.IsNullOrEmpty(blogPost.HtmlAbstraction))
+            {
+                this.AddCannotEmptyError("HtmlAbstraction", "Abstraction");
+            }
 
-		private void AddCannotEmptyError(string field, string name)
-		{
-			ModelState.AddModelError(field, string.Format("{0} cannot be empty", name));
-		}
+            blogPost.HtmlText = formValues["HtmlText"];
+            if (string.IsNullOrEmpty(blogPost.HtmlText))
+            {
+                this.AddCannotEmptyError("HtmlText", "Body cannot be empty");
+            }
+        }
 
-		private void CheckBlogPostExist(int id, string lang, BlogPost blogPost)
-		{
-			if (blogPost == null || blogPost.PostID != id || string.Compare(blogPost.Language, lang, true) != 0
-				|| ((!blogPost.IsPublic || blogPost.Date > DateTime.UtcNow) && !HttpContext.IsMe()))
-				throw new HttpException((int) HttpStatusCode.NotFound,
-				                        string.Format("Couldn't find blog post with ID {0}", id));
-		}
-	}
+        private void AddCannotEmptyError(string field, string name)
+        {
+            this.ModelState.AddModelError(field, string.Format("{0} cannot be empty", name));
+        }
+
+        private void CheckBlogPostExist(int id, string lang, BlogPost blogPost)
+        {
+            if (blogPost == null || blogPost.PostID != id || string.Compare(blogPost.Language, lang, true) != 0
+                || ((!blogPost.IsPublic || blogPost.Date > DateTime.UtcNow) && !this.HttpContext.IsMe()))
+            {
+                throw new HttpException(
+                    (int)HttpStatusCode.NotFound, string.Format("Couldn't find blog post with ID {0}", id));
+            }
+        }
+    }
 }

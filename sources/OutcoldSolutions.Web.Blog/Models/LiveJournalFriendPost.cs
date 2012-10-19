@@ -1,14 +1,14 @@
-﻿using System;
-
-namespace PersonalWeb.Model
+﻿namespace OutcoldSolutions.Web.Blog.Models
 {
-	public class LiveJournalFriendPost
+    using System;
+
+    public class LiveJournalFriendPost
 	{
 		public LiveJournalFriendPost()
 		{
-			Title = string.Empty;
-			Body = string.Empty;
-			Link = string.Empty;
+			this.Title = string.Empty;
+			this.Body = string.Empty;
+			this.Link = string.Empty;
 		}
 
 		public DateTime Date { get; set; }

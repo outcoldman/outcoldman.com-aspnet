@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using CodeSnippet.Config;
-using CodeSnippet.Formats;
-using CodeSnippet.Formats.Base;
-using PersonalWeb.Core.Util;
-
-namespace PersonalWeb.Web
+﻿namespace OutcoldSolutions.Web.Blog.Core
 {
-	public class SourceCodeHighlighterService
+    using System.Collections.Generic;
+    using System.Linq;
+
+    using CodeSnippet.Config;
+    using CodeSnippet.Formats;
+    using CodeSnippet.Formats.Base;
+
+    public class SourceCodeHighlighterService
 	{
 		private readonly StyleConfig _config = new StyleConfig()
 		                                       	{
@@ -48,22 +47,22 @@ namespace PersonalWeb.Web
 
 		public List<string> GetSupportedFormats()
 		{
-			return _supportedFormats.Keys.ToList();
+			return this._supportedFormats.Keys.ToList();
 		}
 
 		public string HighlightCode(string inputCode, string type)
 		{
 			SupportedFormatType ftype = SupportedFormatType.AutoIt;
 
-			if (_supportedFormats.ContainsKey(type))
-				ftype = _supportedFormats[type];
+			if (this._supportedFormats.ContainsKey(type))
+				ftype = this._supportedFormats[type];
 
 			SupportedFormat supportedFormat = SupportedFormat.GetItem(ftype);
 			SourceFormat format = supportedFormat.NewFormatInstance();
 			format.Editor.TabSpaces = 4;
 			format.Editor.TrimIndentOnPaste = true;
 			format.Editor.WordWrap = false;
-			format.Style = _config;
+			format.Style = this._config;
 			return format.FormatCode(inputCode);
 		}
 	}

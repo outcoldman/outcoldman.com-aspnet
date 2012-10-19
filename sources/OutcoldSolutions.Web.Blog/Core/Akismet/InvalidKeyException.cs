@@ -1,8 +1,8 @@
-﻿using System;
-
-namespace PersonalWeb.Core.Akismet
+﻿namespace OutcoldSolutions.Web.Blog.Core.Akismet
 {
-  /// <summary>
+    using System;
+
+    /// <summary>
   /// Akismet didn't accept your API key
   /// </summary>
   public class InvalidKeyException : AkismetException

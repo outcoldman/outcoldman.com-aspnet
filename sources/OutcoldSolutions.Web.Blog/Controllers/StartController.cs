@@ -1,14 +1,15 @@
-﻿using System.Web.Mvc;
-using PersonalWeb.Web.Controls;
-
-namespace PersonalWeb.Controllers
+﻿namespace OutcoldSolutions.Web.Blog.Controllers
 {
-	public class StartController : Controller
+    using System.Web.Mvc;
+
+    using OutcoldSolutions.Web.Blog.Helpers;
+
+    public class StartController : Controller
 	{
 		public ActionResult Start()
 		{
-			string lang = HtmlRouteData.GetLanguage(RouteData, Request);
-			return RedirectToAction("index", "site", new {lang});
+			string lang = HtmlRouteData.GetLanguage(this.RouteData, this.Request);
+			return this.RedirectToAction("index", "site", new {lang});
 		}
 	}
 }

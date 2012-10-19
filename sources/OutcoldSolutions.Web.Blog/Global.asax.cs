@@ -9,8 +9,7 @@ namespace OutcoldSolutions.Web.Blog
     using System.Web.Optimization;
     using System.Web.Routing;
 
-    using PersonalWeb.Core.Util;
-    using PersonalWeb.Web.Timers;
+    using OutcoldSolutions.Web.Blog.Core.Util;
 
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
     // visit http://go.microsoft.com/?LinkId=9394801

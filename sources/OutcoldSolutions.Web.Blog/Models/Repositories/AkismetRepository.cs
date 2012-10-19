@@ -1,12 +1,10 @@
-﻿using System;
-using PersonalWeb.Core.Akismet;
-using PersonalWeb.Core.Util;
-
-namespace PersonalWeb.Model.Repositories
+﻿namespace OutcoldSolutions.Web.Blog.Models.Repositories
 {
+    using System;
     using System.Diagnostics;
 
-    using OutcoldSolutions.Web.Blog.Models;
+    using OutcoldSolutions.Web.Blog.Core.Akismet;
+    using OutcoldSolutions.Web.Blog.Core.Util;
 
     public class AkismetRepository
 	{
@@ -14,8 +12,8 @@ namespace PersonalWeb.Model.Repositories
 		{
 			try
 			{
-				AkismetItem commentSpam = GetItem(comment);
-				return GetManager().IsSpam(commentSpam);
+				AkismetItem commentSpam = this.GetItem(comment);
+				return this.GetManager().IsSpam(commentSpam);
 			}
 			catch (Exception e)
 			{
@@ -28,8 +26,8 @@ namespace PersonalWeb.Model.Repositories
 		{
 			try
 			{
-				AkismetItem commentSpam = GetItem(comment);
-				GetManager().SubmitSpam(commentSpam);
+				AkismetItem commentSpam = this.GetItem(comment);
+				this.GetManager().SubmitSpam(commentSpam);
 			}
 			catch (Exception e)
 			{
@@ -41,8 +39,8 @@ namespace PersonalWeb.Model.Repositories
 		{
 			try
 			{
-				AkismetItem commentSpam = GetItem(comment);
-				GetManager().SubmitHam(commentSpam);
+				AkismetItem commentSpam = this.GetItem(comment);
+				this.GetManager().SubmitHam(commentSpam);
 			}
 			catch (Exception e)
 			{

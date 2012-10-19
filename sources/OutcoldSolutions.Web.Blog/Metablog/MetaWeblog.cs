@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Security.Authentication;
-using System.Web.Security;
-using PersonalWeb.Core.Util;
-using PersonalWeb.Model;
-using PersonalWeb.Model.Repositories;
-
-namespace PersonalWeb.Web.Metablog
+﻿namespace OutcoldSolutions.Web.Blog.Metablog
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Security.Authentication;
+    using System.Web.Security;
     using System.Diagnostics;
 
+    using OutcoldSolutions.Web.Blog.Core.Util;
     using OutcoldSolutions.Web.Blog.Models;
+    using OutcoldSolutions.Web.Blog.Models.Repositories;
 
     public class MetaWeblog : IMetaWeblog
 	{

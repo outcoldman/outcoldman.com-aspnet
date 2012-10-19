@@ -1,10 +1,11 @@
-﻿using System.Web;
-using System.Web.Mvc;
-using PersonalWeb.Core.Util;
-
-namespace PersonalWeb.Web
+﻿namespace OutcoldSolutions.Web.Blog.Core
 {
-	public class ValidateLangAttribute : ActionFilterAttribute
+    using System.Web;
+    using System.Web.Mvc;
+
+    using OutcoldSolutions.Web.Blog.Core.Util;
+
+    public class ValidateLangAttribute : ActionFilterAttribute
 	{
 		public override void OnActionExecuting(ActionExecutingContext context)
 		{

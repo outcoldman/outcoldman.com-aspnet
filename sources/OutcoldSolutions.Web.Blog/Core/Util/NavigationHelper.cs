@@ -1,7 +1,6 @@
-﻿using System.Web;
-
-namespace PersonalWeb.Core.Util
+﻿namespace OutcoldSolutions.Web.Blog.Core.Util
 {
+    using System.Web;
     using System;
 
     public class NavigationHelper
