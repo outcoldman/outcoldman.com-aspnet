@@ -159,7 +159,6 @@
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
-    <Compile Include="Controllers\LiveJournalController.cs" />
     <Compile Include="Controllers\RssController.cs" />
     <Compile Include="Controllers\SiteController.cs" />
     <Compile Include="Controllers\StartController.cs" />
@@ -171,13 +170,11 @@
     <Compile Include="Core\Constants.cs" />
     <Compile Include="Core\CustomOutputCacheAttribute.cs" />
     <Compile Include="Core\HtmlParser.cs" />
-    <Compile Include="Core\LangRouteConstraint.cs" />
     <Compile Include="Core\MeAuthorizeAttribute.cs" />
     <Compile Include="Core\RenderPartialToString.cs" />
     <Compile Include="Core\SmtpConfig.cs" />
     <Compile Include="Core\SourceCodeHighlighterService.cs" />
     <Compile Include="Core\Util\ConfigurationUtil.cs" />
-    <Compile Include="Core\Util\NavigationHelper.cs" />
     <Compile Include="Core\Util\Parser.cs" />
     <Compile Include="Core\Util\StringUtils.cs" />
     <Compile Include="Core\ValidateLangAttribute.cs" />

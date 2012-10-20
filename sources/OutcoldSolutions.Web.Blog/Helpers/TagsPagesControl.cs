@@ -24,6 +24,8 @@ namespace OutcoldSolutions.Web.Blog.Helpers
                 return MvcHtmlString.Create(string.Empty);
             }
 
+            var urlHelper = new UrlHelper(helper.ViewContext.RequestContext);
+
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append("<table><tr>");
             stringBuilder.AppendFormat("<td>{0}&nbsp;&nbsp;</td>", helper.GetResource("Page"));
@@ -41,7 +43,7 @@ namespace OutcoldSolutions.Web.Blog.Helpers
                 }
                 else
                 {
-                    stringBuilder.AppendFormat("<td style='border:none;'>{0}&nbsp;&nbsp;</td>", CreateLink(helper, i));
+                    stringBuilder.AppendFormat("<td style='border:none;'>{0}&nbsp;&nbsp;</td>", CreateLink(helper, urlHelper, i));
                 }
             }
 
@@ -54,16 +56,11 @@ namespace OutcoldSolutions.Web.Blog.Helpers
             return MvcHtmlString.Create(stringBuilder.ToString());
         }
 
-        private static string CreateLink(HtmlHelper helper, int page)
+        private static string CreateLink(HtmlHelper helper, UrlHelper urlHelper, int page)
         {
             return string.Format(
-                "<a href='{0}'>{1}</a>", 
-                NavigationHelper.GetSiteUrl(
-                    string.Format(
-                        "/{0}/blog/tag/{1}/{2}", 
-                        helper.GetLanguage(), 
-                        helper.ViewContext.RequestContext.RouteData.Values["tagid"].To(string.Empty), 
-                        page)), 
+                "<a href='{0}'>{1}</a>",
+                urlHelper.Action("tag", "blog", new { lang = helper.GetLanguage(), tagId = helper.ViewContext.RequestContext.RouteData.Values["tagid"], id = page }), 
                 page);
         }
 

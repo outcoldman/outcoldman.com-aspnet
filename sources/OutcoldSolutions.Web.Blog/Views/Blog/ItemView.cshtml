@@ -1,4 +1,4 @@
-﻿@model OutcoldSolutions.Web.Blog.Models.BlogPost
+﻿@model BlogPost
 @using Microsoft.Web.Helpers
 @using OutcoldSolutions.Web.Blog.Core.Util
 @using OutcoldSolutions.Web.Blog.Helpers
@@ -22,8 +22,8 @@
 	</article>
 
 <p>
-    @Twitter.TweetButton(dataCount: "horizontal", url: NavigationHelper.GetSiteUrl(string.Format("/{0}/blog/show/{1}", Html.GetLanguage(), Model.PostID)))
-    @*@Facebook.LikeButton(href: NavigationHelper.GetSiteUrl(string.Format("/{0}/blog/show/{1}", Html.GetLanguage(), Model.PostID)), buttonLayout: "button_count")*@
+    @Twitter.TweetButton(dataCount: "horizontal", url: Url.Action("show", "blog", new { id = Model.PostID }, this.Request.Url.Scheme))
+    @*@Facebook.LikeButton(href: Url.Action("show", "blog", new { id = Model.PostID }, this.Request.Url.Scheme), buttonLayout: "button_count")*@
     @Html.Partial("FeedBurner") 
 </p>
 
@@ -86,7 +86,7 @@
 		<input  type="button" class="footerPreview" id="showPreview" value="@Html.GetResource("Preview")" />
 
 		<div class="footerBusy" id="busyIndicator" >
-			<img alt="busy"  src="@NavigationHelper.GetSiteUrl("/Content/images/busy.gif")" />&nbsp;
+			<img alt="busy"  src="~/Content/images/busy.gif" />&nbsp;
 		</div>
 	  </div>
   </fieldset>
@@ -94,12 +94,12 @@
 <script type="text/javascript">
 	var fillBodyComment = "@Html.Encode(Html.GetResource("FillBodyComment")) <br /><br />";
 	var fillEmailComment = "@Html.Encode(Html.GetResource("FillEmailComment")) <br /><br />";
-	var commentAddUrl = "@NavigationHelper.GetSiteUrl(string.Format("/{0}/comment/add/{1}", Html.GetLanguage(), Model.PostID))";
-	var commentPreviewUrl = "@NavigationHelper.GetSiteUrl(string.Format("/{0}/comment/preview/{1}", Html.GetLanguage(), Model.PostID))";
+	var commentAddUrl = "@Url.Action("add", "comment", new { id = Model.PostID })";
+    var commentPreviewUrl = "@Url.Action("preview", "comment", new { id = Model.PostID })";
 	var couldntAddComment = "@Html.Encode(Html.GetResource("CouldntAddComment"))";
 	var couldntShowPreview = "@Html.Encode(Html.GetResource("CouldntShowPreview"))";
 </script>
-<script type="text/javascript" src="@NavigationHelper.GetSiteUrl("/Scripts/ItemView.js")"></script>
+<script type="text/javascript" src="~/Scripts/ItemView.js"></script>
 
 
 

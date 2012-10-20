@@ -8,13 +8,14 @@ namespace OutcoldSolutions.Web.Blog.Helpers
     using System.Text;
     using System.Web.Mvc;
 
-    using OutcoldSolutions.Web.Blog.Core.Util;
     using OutcoldSolutions.Web.Blog.Models;
 
     public static class BlogTagsHelper
     {
         public static MvcHtmlString RenderTags(this HtmlHelper helper, IList<Tag> tags)
         {
+            var urlHelper = new UrlHelper(helper.ViewContext.RequestContext);
+
             StringBuilder stringBuilder = new StringBuilder();
 
             foreach (Tag tag in tags)
@@ -24,11 +25,9 @@ namespace OutcoldSolutions.Web.Blog.Helpers
                     stringBuilder.Append(",&nbsp;");
                 }
 
-                // stringBuilder.Append(
-                // helper.ActionLink(tag.Tag.Name, "tag", "blog", new RouteValueDictionary() {{"tagid", tag.TagID}, {"page", 1}}, null).ToString());
                 stringBuilder.AppendFormat(
-                    "<a href='{0}' rel='tag'>{1}</a>", 
-                    NavigationHelper.GetSiteUrl(string.Format("/{0}/blog/tag/{1}", helper.GetLanguage(), tag.TagID)), 
+                    "<a href='{0}' rel='tag'>{1}</a>",
+                    urlHelper.Action("tag", "blog", new {lang = helper.GetLanguage(), tagId = tag.TagID }),
                     tag.Name);
             }
 

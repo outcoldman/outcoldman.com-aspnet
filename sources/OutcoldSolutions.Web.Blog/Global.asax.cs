@@ -45,7 +45,6 @@ namespace OutcoldSolutions.Web.Blog
                 registration.Register<BlogController>();
                 registration.Register<CommentController>();
                 registration.Register<ErrorController>();
-                registration.Register<LiveJournalController>();
                 registration.Register<RssController>();
                 registration.Register<SiteController>();
                 registration.Register<StartController>();

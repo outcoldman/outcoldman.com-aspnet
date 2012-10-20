@@ -191,56 +191,6 @@ namespace OutcoldSolutions.Web.Blog.Controllers
             }
         }
 
-        [HttpGet]
-        [MeAuthorize]
-        public ActionResult Publicate(string lang, int id)
-        {
-            try
-            {
-                using (var repository = new BlogRepository())
-                {
-                    BlogPost blogPost = repository.LoadPost(id);
-                    using (SmtpClient smtpClient = SmtpConfig.GetClient())
-                    {
-                        var message = new MailMessage(SmtpConfig.GetFrom(), ConfigurationUtil.LivejournalEmail)
-                            {
-                                Subject = blogPost.Title, 
-                                Body = string.Format(
-                                    "lj-tags: {0} {1} <lj-raw>{2} {3}</lj-raw>", 
-                                    blogPost.TagsLine, 
-                                    Environment.NewLine, 
-                                    blogPost.HtmlAbstraction, 
-                                    string.Format(
-                                    "<p><a href=\"{0}\">{1}</a></p>", 
-                                    NavigationHelper.GetUrlWithHost(
-                                        this.Url.Action(
-                                        "show", 
-                                        "blog", 
-                                        new RouteValueDictionary
-                                            {
-                                                {
-                                                    "lang", 
-                                                    blogPost.Language
-                                                }, 
-                                                {
-                                                    "id", 
-                                                    blogPost.PostID
-                                                }
-                                            })), 
-                                        ResourceLoader.GetResource(lang, "ReadMoreRss")))
-                            };
-                        smtpClient.Send(message);
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Trace.TraceError(e.ToString());
-            }
-
-            return this.RedirectToAction("show", new { id, lang });
-        }
-
         private void ValidateBlogPost(BlogPost blogPost, FormCollection formValues)
         {
             blogPost.Title = formValues["Title"];

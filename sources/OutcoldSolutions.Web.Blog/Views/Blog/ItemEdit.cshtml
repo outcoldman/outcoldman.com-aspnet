@@ -1,5 +1,4 @@
 ﻿@model OutcoldSolutions.Web.Blog.Models.BlogPost
-@using OutcoldSolutions.Web.Blog.Core.Util
 @using OutcoldSolutions.Web.Blog.Helpers
 @using OutcoldSolutions.Web.Blog.Models.Repositories
 @{
@@ -8,13 +7,11 @@
 }
 
 @section Head {
-<link href="@NavigationHelper.GetSiteUrl("/Resources/css/edit.css") " rel="stylesheet" />
+<link href="~/Content/edit.css" rel="stylesheet" />
 }
 
 @if (Html.IsMe() && Model.PostID > 0) {
 	@Html.ActionLink("Show", "show", new { id = Model.PostID }) 
-	@Html.Raw("&nbsp;|&nbsp;")
-	@Html.ActionLink("Publicate", "publicate", new { id = Model.PostID })  
 	@Html.Raw("&nbsp;|&nbsp;")
 	@Html.ActionLink("Delete", "delete", new { id = Model.PostID })
 }

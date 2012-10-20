@@ -11,7 +11,7 @@
 	<meta name="google-site-verification" content="j5544u2ZNn-At1ttQbboTFxYdMtOymNVHavF8e6D-Rs" />
     <meta name='yandex-verification' content='78712c982e7b6576' />
     @Scripts.Render("~/bundles/jquery")
-	<script type="text/javascript" src="@NavigationHelper.GetSiteUrl("/Scripts/modernizr-2.5.3.js")"></script>
+    @Scripts.Render("~/bundles/modernizr")
 	<meta name="revisit-after" content="2 days" />
 	<meta name="robots" content="ALL" />
 	<meta name="author" content="Powered: outcoldman (Denis Gladkikh), Design conception: VectorArt(http://vectorart.org)" />
@@ -30,8 +30,8 @@
 			Denis Gladkikh
 		</div>
 		<div class="langbar">
-			<a class="ru" href="@NavigationHelper.GetSiteUrl("/ru")">Russian</a>&nbsp;&nbsp;
-				|&nbsp;&nbsp;<a class="en" href="@NavigationHelper.GetSiteUrl("/en")">English</a>
+			<a class="ru" href="@Url.Action("index", "site", new { lang = "ru" })">Russian</a>&nbsp;&nbsp;
+				|&nbsp;&nbsp;<a class="en" href="@Url.Action("index", "site", new { lang = "en" })">English</a>
 		</div>
 		<div class="subscription"  >
 
@@ -70,7 +70,7 @@
 @RenderSection("BottomContent", required: false)
 
 </div>
-<script type="text/javascript" src="@NavigationHelper.GetSiteUrl("/Scripts/Master.js")"></script>
+<script type="text/javascript" src="~/Scripts/Master.js"></script>
 </body>
 </html>
 
