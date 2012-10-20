@@ -153,6 +153,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Core\FeedResult.cs" />
     <Compile Include="CustomDependencyResolver.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
@@ -169,7 +170,6 @@
     <Compile Include="Core\Akismet\InvalidKeyException.cs" />
     <Compile Include="Core\Constants.cs" />
     <Compile Include="Core\CustomOutputCacheAttribute.cs" />
-    <Compile Include="Core\ExtRouteConstraint.cs" />
     <Compile Include="Core\HtmlParser.cs" />
     <Compile Include="Core\LangRouteConstraint.cs" />
     <Compile Include="Core\MeAuthorizeAttribute.cs" />
@@ -202,6 +202,7 @@
     <Compile Include="Metablog\Source.cs" />
     <Compile Include="Metablog\UserInfo.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Article.cs" />
     <Compile Include="Models\BlogPost.cs" />
     <Compile Include="Models\LiveJournalFriendPost.cs" />
     <Compile Include="Models\LogOnModel.cs" />
@@ -210,15 +211,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Repositories\AkismetRepository.cs" />
+    <Compile Include="Services\AkismetSpamFilterService.cs" />
     <Compile Include="Models\Repositories\BaseRepository.cs" />
     <Compile Include="Models\Repositories\BlogRepository.cs" />
     <Compile Include="Models\Repositories\LanguagesRepository.cs" />
-    <Compile Include="Models\Repositories\LivejournalRepository.cs" />
+    <Compile Include="Services\LiveJournalService.cs" />
     <Compile Include="Models\Repositories\NotificationRepository.cs" />
     <Compile Include="Models\SiteMapBlogItem.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\UnsubscribeModel.cs" />
+    <Compile Include="Models\UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\ResourceEn.Designer.cs">
       <DependentUpon>ResourceEn.resx</DependentUpon>
@@ -231,6 +233,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Services\ILiveJournalService.cs" />
+    <Compile Include="Services\ISpamFilterService.cs" />
     <Compile Include="Timers\NotificationSender.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -295,8 +299,6 @@
     <Content Include="Views\Comment\List.cshtml" />
     <Content Include="Views\Comment\unsubscribe.cshtml" />
     <Content Include="Views\Error\Error.cshtml" />
-    <Content Include="Views\LiveJournal\friends.cshtml" />
-    <Content Include="Views\RSS\rss.cshtml" />
     <Content Include="Views\Shared\_Site.cshtml" />
     <Content Include="Views\Shared\Advertising.cshtml" />
     <Content Include="Views\Shared\CommentViewItem.cshtml" />
@@ -322,9 +324,7 @@
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Home\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.Samples.XmlRpc\Microsoft.Samples.XmlRpc.csproj">
       <Project>{d556d0b7-a193-4610-8dd3-17b715f2c868}</Project>

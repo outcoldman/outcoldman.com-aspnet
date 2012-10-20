@@ -25,7 +25,7 @@ namespace OutcoldSolutions.Web.Blog
 
             routes.MapRoute("Error", "Error/{action}", new { controller = "Error", action = "Unknow" });
 
-            routes.MapRoute("Rss", "{lang}/rss/{id}", new { controller = "Rss", action = "Index", id = "" }, new { lang = new LangRouteConstraint(), id = new ExtRouteConstraint() });
+            routes.MapRoute("Rss", "{lang}/rss", new { controller = "Rss", action = "Index" }, new { lang = new LangRouteConstraint() });
 
             routes.MapRoute("BlogByTag", "{lang}/blog/tag/{tagid}/{id}", new { controller = "Blog", action = "Tag", id = "" }, new { lang = new LangRouteConstraint() });
 

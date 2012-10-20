@@ -17,9 +17,17 @@ namespace OutcoldSolutions.Web.Blog.Controllers
     using OutcoldSolutions.Web.Blog.Models;
     using OutcoldSolutions.Web.Blog.Models.Repositories;
     using OutcoldSolutions.Web.Blog.Resources;
+    using OutcoldSolutions.Web.Blog.Services;
 
     public class CommentController : Controller
     {
+        private readonly ISpamFilterService spamFilterService;
+
+        public CommentController(ISpamFilterService spamFilterService)
+        {
+            this.spamFilterService = spamFilterService;
+        }
+
         [ValidateInput(false)]
         [HttpPost]
         [ValidateLang]
@@ -63,8 +71,13 @@ namespace OutcoldSolutions.Web.Blog.Controllers
 
                             if (repository.CheckComment(comment))
                             {
-                                AkismetRepository akismetRepository = new AkismetRepository();
-                                comment.IsSpam = akismetRepository.IsSpam(comment);
+                                comment.IsSpam = this.spamFilterService.IsSpam(
+                                    comment.Body,
+                                    comment.UserIP,
+                                    comment.UserAgent,
+                                    comment.UserName,
+                                    comment.UserEmail,
+                                    comment.UserWeb);
 
                                 CommentSubscription subscription = null;
                                 if (fInform && email != ConfigurationUtil.MeEmail)
@@ -216,8 +229,13 @@ namespace OutcoldSolutions.Web.Blog.Controllers
                 }
 
                 comment.IsSpam = true;
-                AkismetRepository akismetRepository = new AkismetRepository();
-                akismetRepository.SubmitSpam(comment);
+                this.spamFilterService.Spam(
+                    comment.Body,
+                    comment.UserIP,
+                    comment.UserAgent,
+                    comment.UserName,
+                    comment.UserEmail,
+                    comment.UserWeb);
                 repository.DataContext.SaveChanges();
                 return this.RedirectToAction("list");
             }
@@ -236,8 +254,13 @@ namespace OutcoldSolutions.Web.Blog.Controllers
                 }
 
                 comment.IsSpam = false;
-                AkismetRepository akismetRepository = new AkismetRepository();
-                akismetRepository.SubmitUnSpam(comment);
+                this.spamFilterService.NotSpam(
+                    comment.Body,
+                    comment.UserIP,
+                    comment.UserAgent,
+                    comment.UserName,
+                    comment.UserEmail,
+                    comment.UserWeb);
                 repository.DataContext.SaveChanges();
                 repository.SetNotifications(comment);
                 return this.RedirectToAction("list");

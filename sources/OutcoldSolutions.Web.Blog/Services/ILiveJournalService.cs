@@ -2,17 +2,14 @@
 // Outcold Solutions (http://outcoldman.ru)
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace OutcoldSolutions.Web.Blog.Models
+namespace OutcoldSolutions.Web.Blog.Services
 {
-    using System.Data.Entity;
+    using System.Collections.Generic;
 
-    internal class DatabaseContext : DbContext
+    using OutcoldSolutions.Web.Blog.Models;
+
+    public interface ILiveJournalService
     {
-        public DatabaseContext()
-            : base("LocalDatabase")
-        {
-        }
-
-        public DbSet<UserProfile> UserProfiles { get; set; }
+        IEnumerable<LiveJournalFriendPost> LoadFriendsFeeds(string liveJournalUser);
     }
 }

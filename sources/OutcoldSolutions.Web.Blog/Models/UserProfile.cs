@@ -4,15 +4,16 @@
 
 namespace OutcoldSolutions.Web.Blog.Models
 {
-    using System.Data.Entity;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
-    internal class DatabaseContext : DbContext
+    [Table("UserProfile")]
+    internal class UserProfile
     {
-        public DatabaseContext()
-            : base("LocalDatabase")
-        {
-        }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int UserId { get; set; }
 
-        public DbSet<UserProfile> UserProfiles { get; set; }
+        public string UserName { get; set; }
     }
 }

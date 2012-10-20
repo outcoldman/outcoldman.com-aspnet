@@ -9,6 +9,7 @@ namespace OutcoldSolutions.Web.Blog
     using System.Web.Routing;
 
     using OutcoldSolutions.Web.Blog.Controllers;
+    using OutcoldSolutions.Web.Blog.Services;
 
     using WebMatrix.WebData;
 
@@ -28,8 +29,18 @@ namespace OutcoldSolutions.Web.Blog
             IDependencyResolverContainer container = new DependencyResolverContainer();
             using (var registration = container.Registration())
             {
+
                 registration.Register<IDependencyResolver>()
                     .AsSingleton<CustomDependencyResolver>();
+
+                registration.Register<ISpamFilterService>()
+                    .As<AkismetSpamFilterService>();
+
+                registration.Register<ILiveJournalService>()
+                    .As<LiveJournalService>();
+
+
+                // Controllers
                 registration.Register<AccountController>();
                 registration.Register<BlogController>();
                 registration.Register<CommentController>();

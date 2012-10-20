@@ -2,22 +2,26 @@
 // Outcold Solutions (http://outcoldman.ru)
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace OutcoldSolutions.Web.Blog.Models.Repositories
+namespace OutcoldSolutions.Web.Blog.Services
 {
     using System.Collections.Generic;
+    using System.Globalization;
+    using System.Web;
 
     using HtmlAgilityPack;
 
     using OutcoldSolutions.Web.Blog.Core.Util;
+    using OutcoldSolutions.Web.Blog.Models;
 
-    public class LivejournalRepository : BaseRepository
+    public class LiveJournalService : ILiveJournalService
     {
-        public List<LiveJournalFriendPost> LoadFeeds()
+        public IEnumerable<LiveJournalFriendPost> LoadFriendsFeeds(string liveJournalUser)
         {
-            List<LiveJournalFriendPost> list = new List<LiveJournalFriendPost>();
-
             HtmlWeb hw = new HtmlWeb();
-            HtmlDocument doc = hw.Load("http://outcoldman.livejournal.com/friends");
+            HtmlDocument doc = hw.Load(string.Format(
+                CultureInfo.InvariantCulture, 
+                "http://{0}.livejournal.com/friends", 
+                HttpUtility.UrlEncode(liveJournalUser)));
 
             HtmlNodeCollection entries = doc.DocumentNode.SelectNodes("//div[@class='subcontent']");
 
@@ -25,8 +29,8 @@ namespace OutcoldSolutions.Web.Blog.Models.Repositories
             {
                 LiveJournalFriendPost item = new LiveJournalFriendPost();
 
-                HtmlNode href = entry.SelectSingleNode("//a[@href and @class='subj-link']");
-                HtmlNode friend = entry.SelectSingleNode("//font[@color='#000000']");
+                HtmlNode href = entry.SelectSingleNode(".//a[@href and @class='subj-link']");
+                HtmlNode friend = entry.SelectSingleNode(".//font[@color='#000000']");
 
                 // get what's interesting for RSS 
                 if (href != null)
@@ -34,13 +38,13 @@ namespace OutcoldSolutions.Web.Blog.Models.Repositories
                     item.Link = href.Attributes["href"].Value;
                     if (friend != null)
                     {
-                        item.Title = string.Format("{0}: ", friend.InnerText);
+                        item.Title = string.Format(CultureInfo.InvariantCulture, "{0}: ", friend.InnerText);
                     }
 
                     item.Title += href.InnerText;
                 }
 
-                HtmlNode date = entry.SelectSingleNode("//div[@class='date']");
+                HtmlNode date = entry.SelectSingleNode(".//div[@class='date']");
 
                 if (date != null)
                 {
@@ -48,16 +52,14 @@ namespace OutcoldSolutions.Web.Blog.Models.Repositories
                     item.Date = Parser.ToDateTime(s, "dd MMMM yyyy @ hh:mm tt");
                 }
 
-                HtmlNode descNode = entry.SelectSingleNode("//div[@class='entry_text']");
+                HtmlNode descNode = entry.SelectSingleNode(".//div[@class='entry_text']");
                 if (descNode != null)
                 {
                     item.Body = descNode.InnerHtml;
                 }
 
-                list.Add(item);
+                yield return item;
             }
-
-            return list;
         }
     }
 }
