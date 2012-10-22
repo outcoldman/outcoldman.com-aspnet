@@ -1,5 +1,4 @@
 ﻿@model OutcoldSolutions.Web.Blog.Models.BlogPost
-@using OutcoldSolutions.Web.Blog.Helpers
 @using OutcoldSolutions.Web.Blog.Models.Repositories
 @{
 	Layout = "~/Views/Shared/_Site.cshtml";
@@ -10,7 +9,7 @@
 <link href="~/Content/edit.css" rel="stylesheet" />
 }
 
-@if (Html.IsMe() && Model.PostID > 0) {
+@if (Model.PostID > 0) {
 	@Html.ActionLink("Show", "show", new { id = Model.PostID }) 
 	@Html.Raw("&nbsp;|&nbsp;")
 	@Html.ActionLink("Delete", "delete", new { id = Model.PostID })

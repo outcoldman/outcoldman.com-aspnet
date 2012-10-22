@@ -37,9 +37,9 @@
     </div>
 
     <div class="float-right">
-       <p>
-         @Html.RenderTags(Model.BlogPost.Tags.ToList())
-       </p>
+        <p>
+            @Html.Partial("TagsLine", Model.BlogPost.Tags.ToList()) 
+        </p>
     </div>
 </div>
 

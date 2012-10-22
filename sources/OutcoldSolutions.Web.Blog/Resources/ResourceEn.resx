@@ -150,9 +150,6 @@
   <data name="Comments" xml:space="preserve">
     <value>Comments</value>
   </data>
-  <data name="Contacts" xml:space="preserve">
-    <value>Contacts</value>
-  </data>
   <data name="ContentOfSite" xml:space="preserve">
     <value>The content on this site represents my own personal opinions and thoughts at the time of posting.</value>
   </data>
@@ -171,9 +168,6 @@
   <data name="Email" xml:space="preserve">
     <value>Email  (will not be published)</value>
   </data>
-  <data name="EmailAddress" xml:space="preserve">
-    <value>Email Address</value>
-  </data>
   <data name="Execute" xml:space="preserve">
     <value>Execute</value>
   </data>
@@ -182,12 +176,6 @@
   </data>
   <data name="FillEmailComment" xml:space="preserve">
     <value>Please fill email or uncheck email notification</value>
-  </data>
-  <data name="FindMore" xml:space="preserve">
-    <value>If you want to find more, go to the {0} page...</value>
-  </data>
-  <data name="HomePage" xml:space="preserve">
-    <value>Home page</value>
   </data>
   <data name="Input" xml:space="preserve">
     <value>Input</value>
@@ -206,9 +194,6 @@
   </data>
   <data name="LeaveAcomment" xml:space="preserve">
     <value>Leave a comment</value>
-  </data>
-  <data name="Location" xml:space="preserve">
-    <value>Location</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
@@ -239,12 +224,6 @@ For unsubscribe please use current link &lt;a href="{2}"&gt;{2}&lt;/a&gt;.
   </data>
   <data name="NotificationTitle" xml:space="preserve">
     <value>New comment on blogpost - </value>
-  </data>
-  <data name="OtherContacts" xml:space="preserve">
-    <value>My Other Accounts</value>
-  </data>
-  <data name="Page" xml:space="preserve">
-    <value>Page</value>
   </data>
   <data name="Preview" xml:space="preserve">
     <value>Preview</value>

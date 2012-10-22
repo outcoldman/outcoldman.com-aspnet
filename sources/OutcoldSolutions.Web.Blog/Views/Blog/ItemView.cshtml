@@ -20,14 +20,8 @@
 </article>
 
 <div class="clear-fix default-vertical-padding">
-    <div class="float-left">
-        @Twitter.TweetButton(dataCount: "horizontal", url: Url.Action("show", "blog", new { id = Model.PostID }, this.Request.Url.Scheme))
-        @*@Facebook.LikeButton(href: Url.Action("show", "blog", new { id = Model.PostID }, this.Request.Url.Scheme), buttonLayout: "button_count")*@
-        @Html.Partial("FeedBurner") 
-	</div>
-
 	<div class="float-right">
-	    @Html.RenderTags(Model.Tags.ToList()) 
+	    @Html.Partial("TagsLine", Model.Tags.ToList()) 
 	</div>
 </div>
 

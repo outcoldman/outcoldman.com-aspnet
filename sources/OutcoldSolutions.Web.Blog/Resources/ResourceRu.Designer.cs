@@ -160,15 +160,6 @@ namespace OutcoldSolutions.Web.Blog.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Контакты.
-        /// </summary>
-        internal static string Contacts {
-            get {
-                return ResourceManager.GetString("Contacts", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Размещенная на сайте информация является моим личным мнением..
         /// </summary>
         internal static string ContentOfSite {
@@ -223,15 +214,6 @@ namespace OutcoldSolutions.Web.Blog.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email Адрес.
-        /// </summary>
-        internal static string EmailAddress {
-            get {
-                return ResourceManager.GetString("EmailAddress", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Выполнить.
         /// </summary>
         internal static string Execute {
@@ -255,24 +237,6 @@ namespace OutcoldSolutions.Web.Blog.Resources {
         internal static string FillEmailComment {
             get {
                 return ResourceManager.GetString("FillEmailComment", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Для прочтения остальных записей перейдите на страницу {0}....
-        /// </summary>
-        internal static string FindMore {
-            get {
-                return ResourceManager.GetString("FindMore", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Домашняя.
-        /// </summary>
-        internal static string HomePage {
-            get {
-                return ResourceManager.GetString("HomePage", resourceCulture);
             }
         }
         
@@ -331,15 +295,6 @@ namespace OutcoldSolutions.Web.Blog.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Местоположение.
-        /// </summary>
-        internal static string Location {
-            get {
-                return ResourceManager.GetString("Location", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Имя.
         /// </summary>
         internal static string Name {
@@ -390,24 +345,6 @@ namespace OutcoldSolutions.Web.Blog.Resources {
         internal static string NotificationTitle {
             get {
                 return ResourceManager.GetString("NotificationTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Другие контакты.
-        /// </summary>
-        internal static string OtherContacts {
-            get {
-                return ResourceManager.GetString("OtherContacts", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Страница.
-        /// </summary>
-        internal static string Page {
-            get {
-                return ResourceManager.GetString("Page", resourceCulture);
             }
         }
         

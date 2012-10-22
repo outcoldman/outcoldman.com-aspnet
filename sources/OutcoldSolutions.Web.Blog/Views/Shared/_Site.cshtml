@@ -11,6 +11,7 @@
     <meta name='yandex-verification' content='78712c982e7b6576' />
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/modernizr")
+    <meta name="viewport" content="width=device-width" />
 	<meta name="revisit-after" content="2 days" />
 	<meta name="robots" content="ALL" />
 	<meta name="author" content="Powered: outcoldman (Denis Gladkikh), Design conception: VectorArt(http://vectorart.org)" />
@@ -59,10 +60,8 @@
                         var selectedMenuItemAttributes = new { @class = "active" };
                     }
                     <ul>
-                        <li>@this.Html.ActionLink(this.Html.GetResource("HomePage"), "index", "site", new {}, this.Html.IsAction("index", "site") ? selectedMenuItemAttributes : null)</li>
                         <li>@this.Html.ActionLink(this.Html.GetResource("Blog"), "index", "blog", new {}, this.Html.IsController("blog") ? selectedMenuItemAttributes : null)</li>
                         <li>@this.Html.ActionLink(this.Html.GetResource("AboutMe"), "aboutme", "site", new {}, this.Html.IsAction("aboutme", "site") ? selectedMenuItemAttributes : null)</li>
-                        <li>@this.Html.ActionLink(this.Html.GetResource("Contacts"), "links", "site", new {}, this.Html.IsAction("links", "site") ? selectedMenuItemAttributes : null)</li>
                     </ul>
                 </nav>
 
@@ -78,7 +77,7 @@
     </div>
 
 	<footer>
-	    <div class="content-wrapper">
+	    <div class="content-wrapper default-padding">
 	        <div class="float-left">
 	            @Html.GetResource("ContentOfSite")
 	        </div>

@@ -5,19 +5,14 @@
 namespace OutcoldSolutions.Web.Blog.Controllers
 {
     using System;
-    using System.Diagnostics;
     using System.Net;
-    using System.Net.Mail;
     using System.Web;
     using System.Web.Mvc;
-    using System.Web.Routing;
 
     using OutcoldSolutions.Web.Blog.Core;
-    using OutcoldSolutions.Web.Blog.Core.Util;
     using OutcoldSolutions.Web.Blog.Helpers;
     using OutcoldSolutions.Web.Blog.Models;
     using OutcoldSolutions.Web.Blog.Models.Repositories;
-    using OutcoldSolutions.Web.Blog.Resources;
 
     public class BlogController : Controller
     {
@@ -34,6 +29,9 @@ namespace OutcoldSolutions.Web.Blog.Controllers
                 int postsCount = repository.GetPostsCount(lang);
                 this.ViewData["pagesCount"] = (postsCount / PagesControl.ItemsPerPage)
                                               + (postsCount % PagesControl.ItemsPerPage == 0 ? 0 : 1);
+
+                this.ViewData["toptags"] = repository.GetTopTags(lang);
+
                 return this.View("Index", repository.GetPosts(pageIndex, PagesControl.ItemsPerPage, lang));
             }
         }
@@ -59,6 +57,8 @@ namespace OutcoldSolutions.Web.Blog.Controllers
                 int postsCount = repository.GetPostsByTagCount(lang, tagid);
                 this.ViewData["pagesCount"] = (postsCount / PagesControl.ItemsPerPage)
                                               + (postsCount % PagesControl.ItemsPerPage == 0 ? 0 : 1);
+
+                this.ViewData["toptags"] = repository.GetTopTags(lang);
 
                 return this.View("Index", repository.GetPostsByTag(pageIndex, PagesControl.ItemsPerPage, lang, tagid));
             }

@@ -1,12 +1,15 @@
-﻿@model IEnumerable<OutcoldSolutions.Web.Blog.Models.Repositories.BlogPostModel>
+﻿@model IEnumerable<BlogPostModel>
 @using OutcoldSolutions.Web.Blog.Helpers
 @using OutcoldSolutions.Web.Blog.Models
+@using OutcoldSolutions.Web.Blog.Models.Repositories
 @using OutcoldSolutions.Web.Blog.Resources
 @{
 	Layout = "~/Views/Shared/_Site.cshtml";
 	ViewBag.Title = "outcoldman: " + Html.GetResource("Blog") + (ViewData["tag"] == null ? string.Empty : string.Format(" - {0}", ((Tag)ViewData["tag"]).Name));
 }
 
+<section class="leftSection">
+    
 
 @if (ViewData["tag"] != null)
 {
@@ -14,17 +17,6 @@
         <h3>&rarr; @(((Tag)ViewData["tag"]).Name)</h3>
     </hgroup>
 }
-
-<div class="float-right clear-fix">
-	@if (Html.GetAction().ToLower() == "tag")
-	{
-		@Html.CreateTagsPager((int)ViewData["selectedPage"], (int)ViewData["pagesCount"])
-	}
-	else
-	{
-		@Html.CreatePager((int)ViewData["selectedPage"], (int)ViewData["pagesCount"])
-	}
-</div>
 
 <div class="clear-fix-b">
 @foreach (var item in Model)
@@ -34,20 +26,21 @@
 </div>
 
 <div class="float-right">
-@if (Html.GetAction().ToLower() == "tag")
-{
-	@Html.CreateTagsPager((int)ViewData["selectedPage"], (int)ViewData["pagesCount"])
-}
-else
-{
-	@Html.CreatePager((int)ViewData["selectedPage"], (int)ViewData["pagesCount"])
-}
-</div>
-
-<div class="float-left" >
-		@Html.Partial("FeedBurner") 
+    @Html.CreatePager((int)ViewData["selectedPage"], (int)ViewData["pagesCount"])
 </div>
 
 
+</section>
 
-
+<aside>
+    
+    <div class="clear-fix-b">
+        <ul class="tags">
+            @foreach (GetTopTagsResult tag in (List<GetTopTagsResult>)ViewData["toptags"])
+            {
+                <li>@Html.ActionLink(tag.Name, "tag", "blog", new { id = tag.TagID }, new { @class = "tag" + tag.TagType, rel = "tag" }) </li>
+            }
+        </ul>
+    </div>
+   
+</aside>

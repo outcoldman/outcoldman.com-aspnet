@@ -5,6 +5,7 @@
 
 img {
     border: none 0px;
+    max-width: 100%;
 }
 
 header, footer, hgroup,
@@ -28,11 +29,15 @@ a {
     
 body {
     margin:0px;	
-    padding:0px 0px 15px 0px;
+    padding:0em 0em 1.5em 0em;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     font-size:1em;
     color:#000000;
     background:#EBE8D9;
+}
+
+header {
+    height: auto;
 }
 
 .content-wrapper {
@@ -62,14 +67,6 @@ body {
     content: ".";
     padding-top: 2em;
     visibility: hidden;
-}
-
-.clear {
-    margin:0px;
-    padding:0px;
-    height:0px;
-    font-size:0px;	
-    clear:both;
 }
 
 .clear-fix:after, .clear-fix-b:before {
@@ -103,10 +100,6 @@ body {
 
 .subscription a  {
     text-decoration: none;
-}
-
-header {
-    height: auto;
 }
 
 header .content-wrapper {
@@ -145,7 +138,7 @@ header .content-wrapper {
 .mainMenu li {
     float: left;
     display: inline-block;
-    padding: 0px 1px;
+    padding: 0em 0.1em;
 }
 
     .mainMenu li a {
@@ -154,10 +147,10 @@ header .content-wrapper {
         font-size: 0.75em;
         color: #fff;
         text-align: center;
-        padding: 10px 12px;
+        padding: 1em 1.2em;
         display: inline-block;
         background: #313131;
-        border-top: 5px solid #EBE8D9;
+        border-top: 0.5em solid #EBE8D9;
         text-transform: uppercase;
         text-decoration: none;
     }
@@ -174,8 +167,8 @@ header .content-wrapper {
             text-decoration: none;
             position: relative;
             border-top-color: #fff;
-            padding-top: 5px;
-            padding-bottom: 15px;
+            padding-top: 0.5em;
+            padding-bottom: 1.5em;
         }
 
 /****** Footer ***********/
@@ -190,7 +183,6 @@ footer {
 #body {
     background-color: #fff;
     clear: both;
-    padding-bottom: 35px;
 }
 
 .leftSection {
@@ -204,6 +196,24 @@ aside {
 }   
 
 /***** Comment form *******/
+fieldset.comment, fieldset.comment-author, fieldset.comment-edit {
+    padding: 10px;
+}
+
+fieldset.comment-author {
+    border: solid 2px #4a4a4a;
+}
+
+fieldset.comment legend {
+    font-size:1.2em; 
+    margin-left: 10px; 
+    padding:2px;
+}
+
+fieldset.comment .comment-body {
+    padding-left:90px; 
+}
+
 fieldset.comment-edit .info {
     font-size:0.8em;
     color: #b7b7b7;
@@ -258,26 +268,6 @@ fieldset.comment-edit div.notification h4 {
     color:#EAAB15; 
     padding: 5px 0px 0px 0px; 
     line-height:100%;
-}
-
-/*** Comment View ****/
-
-fieldset.comment, fieldset.comment-author, fieldset.comment-edit {
-    padding: 10px;
-}
-
-fieldset.comment-author {
-    border: solid 2px #4a4a4a;
-}
-
-fieldset.comment legend {
-    font-size:1.2em; 
-    margin-left: 10px; 
-    padding:2px;
-}
-
-fieldset.comment .comment-body {
-    padding-left:90px; 
 }
 
 /*** Article ****/
@@ -404,4 +394,73 @@ fieldset.comment .comment-body {
 
 .tag10 {
     font-size:1.9em;
+}
+
+/* Contacts list */
+
+ul.contacts {
+    list-style-type: none;
+    padding-left: 1em;
+}
+
+ul.contacts img {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+}
+
+/********************
+*   Mobile Styles   *
+********************/
+@media only screen and (max-width: 600px) {
+
+    header .float-left {
+        float: none;
+    }
+    header .float-right {
+        float: none;
+    }
+
+    .default-padding {
+        padding-right: .3em;
+        padding-left: .3em;
+    }
+
+    .default-vertical-padding {
+        padding-top: .3em;
+        padding-bottom: .3em;
+    }
+    
+    .subscription ul {
+        padding-top: 1px;
+        text-align: right;
+    }
+
+    aside, .leftSection {
+        float: none;
+        width: 100%;
+    }
+
+    .site-title h1 {
+        font-size: 2em;
+    }
+
+    .site-title h2 {
+        margin: 0;
+        text-align: left;
+        font-size: 1em;
+    }
+
+    fieldset.comment .float-left {
+        float: none;
+    }
+
+     fieldset.comment .comment-body {
+        padding-left: 0;
+    }
+
+    fieldset.comment-edit .fields-section, fieldset.comment-edit .comment-body-section {
+        width: 100%;
+        float: none;
+    }
 }

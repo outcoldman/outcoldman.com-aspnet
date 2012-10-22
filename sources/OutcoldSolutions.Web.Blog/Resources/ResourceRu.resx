@@ -150,9 +150,6 @@
   <data name="Comments" xml:space="preserve">
     <value>Комментарии</value>
   </data>
-  <data name="Contacts" xml:space="preserve">
-    <value>Контакты</value>
-  </data>
   <data name="ContentOfSite" xml:space="preserve">
     <value>Размещенная на сайте информация является моим личным мнением.</value>
   </data>
@@ -171,9 +168,6 @@
   <data name="Email" xml:space="preserve">
     <value>Email (не будет опубликован)</value>
   </data>
-  <data name="EmailAddress" xml:space="preserve">
-    <value>Email Адрес</value>
-  </data>
   <data name="Execute" xml:space="preserve">
     <value>Выполнить</value>
   </data>
@@ -182,12 +176,6 @@
   </data>
   <data name="FillEmailComment" xml:space="preserve">
     <value>Заполните поле "Email", либо отключите подписку на новые комментарии.</value>
-  </data>
-  <data name="FindMore" xml:space="preserve">
-    <value>Для прочтения остальных записей перейдите на страницу {0}...</value>
-  </data>
-  <data name="HomePage" xml:space="preserve">
-    <value>Домашняя</value>
   </data>
   <data name="Input" xml:space="preserve">
     <value>Проверяемый текст</value>
@@ -206,9 +194,6 @@
   </data>
   <data name="LeaveAcomment" xml:space="preserve">
     <value>Комментировать</value>
-  </data>
-  <data name="Location" xml:space="preserve">
-    <value>Местоположение</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Имя</value>
@@ -239,12 +224,6 @@
   </data>
   <data name="NotificationTitle" xml:space="preserve">
     <value>Новый комментарий к топику - </value>
-  </data>
-  <data name="OtherContacts" xml:space="preserve">
-    <value>Другие контакты</value>
-  </data>
-  <data name="Page" xml:space="preserve">
-    <value>Страница</value>
   </data>
   <data name="Preview" xml:space="preserve">
     <value>Предпросмотр</value>
