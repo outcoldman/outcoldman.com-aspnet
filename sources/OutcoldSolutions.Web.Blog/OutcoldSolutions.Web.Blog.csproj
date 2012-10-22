@@ -183,7 +183,6 @@
     </Compile>
     <Compile Include="Helpers\BlogTagsHelper.cs" />
     <Compile Include="Helpers\HtmlRouteData.cs" />
-    <Compile Include="Helpers\MainMenuControl.cs" />
     <Compile Include="Helpers\PagesControl.cs" />
     <Compile Include="Helpers\TagsPagesControl.cs" />
     <Compile Include="Helpers\UserHelper.cs" />
@@ -237,16 +236,12 @@
   <ItemGroup>
     <Content Include="App_Data\LocalDatabase.sdf" />
     <Content Include="Content\edit.css" />
-    <Content Include="Content\images\bgR.png" />
     <Content Include="Content\images\busy.gif" />
-    <Content Include="Content\images\footerContainerBgR.png" />
-    <Content Include="Content\images\icons\en.gif" />
     <Content Include="Content\images\icons\facebook.gif" />
     <Content Include="Content\images\icons\habrahabr.gif" />
     <Content Include="Content\images\icons\linkedin.ico" />
     <Content Include="Content\images\icons\livejournal.gif" />
     <Content Include="Content\images\icons\microsoft.png" />
-    <Content Include="Content\images\icons\ru.gif" />
     <Content Include="Content\images\icons\skype.png" />
     <Content Include="Content\images\icons\spaces.live.com.gif" />
     <Content Include="Content\images\icons\twitter.gif" />
@@ -254,8 +249,6 @@
     <Content Include="Content\images\mvp.jpg" />
     <Content Include="Content\images\rss.png" />
     <Content Include="Content\images\rss64.png" />
-    <Content Include="Content\images\sideBarArrow.png" />
-    <Content Include="Content\images\topNavSep.png" />
     <Content Include="Content\images\twitter.png" />
     <Content Include="Content\images\twitter64.png" />
     <Content Include="Core\Akismet\copyright.txt" />
@@ -297,10 +290,8 @@
     <Content Include="Views\Comment\unsubscribe.cshtml" />
     <Content Include="Views\Error\Error.cshtml" />
     <Content Include="Views\Shared\_Site.cshtml" />
-    <Content Include="Views\Shared\Advertising.cshtml" />
     <Content Include="Views\Shared\CommentViewItem.cshtml" />
     <Content Include="Views\Shared\FeedBurner.cshtml" />
-    <Content Include="Views\Shared\LinksPartial.cshtml" />
     <Content Include="Views\Shared\ShowBlogItem.cshtml" />
     <Content Include="Views\Site\AboutMe.cshtml" />
     <Content Include="Views\Site\Index.cshtml" />

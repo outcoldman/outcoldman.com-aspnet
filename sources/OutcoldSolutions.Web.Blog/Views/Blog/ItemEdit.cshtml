@@ -16,71 +16,66 @@
 	@Html.ActionLink("Delete", "delete", new { id = Model.PostID })
 }
 
+<h2>Blog post edit</h2>
+@Html.ValidationSummary("Edit was unsuccessful. Please correct errors and try again:") 
 
+@using (Html.BeginForm())
+{
+    <fieldset class="edit">
 
-    <h2>Blog post edit</h2>
-    @Html.ValidationSummary("Edit was unsuccessful. Please correct errors and try again:") 
+        <p>
+            <label for="Title">Blog title:</label><br />
+            @Html.TextBox("Title", Model.Title)
+            @Html.ValidationMessage("Title", "*")
+        </p>
 
-    @using (Html.BeginForm())
-  {
-   <fieldset class="edit">
+        <p>
+            <label for="Language">Language:</label><br />
+            @Html.DropDownList("Language", LanguagesRepository.GetLanguages())
+        </p>
 
-   <p>
-    <label for="Title">Blog title:</label><br />
-    @Html.TextBox("Title", Model.Title)
-    @Html.ValidationMessage("Title", "*")
-   </p>
+        <p>
+            <label for="Date">Blog date:</label><br />
+            @Html.TextBox("Date", Model.Date.ToString("dd.MM.yyyy HH:mm"))
+            @Html.ValidationMessage("Date", "*")
+        </p>
 
-   <p>
-    <label for="Language">Language:</label><br />
-    @Html.DropDownList("Language", LanguagesRepository.GetLanguages())
-   </p>
-
-   <p>
-    <label for="Date">Blog date:</label><br />
-    @Html.TextBox("Date", Model.Date.ToString("dd.MM.yyyy HH:mm"))
-    @Html.ValidationMessage("Date", "*")
-   </p>
-
-   <p>
-    <label for="HtmlText">Abstraction:</label><br />
-    @Html.TextArea("HtmlAbstraction", new { style = "height:100px" })
-    @Html.ValidationMessage("HtmlAbstraction", "*")
-   </p>
+        <p>
+            <label for="HtmlText">Abstraction:</label><br />
+            @Html.TextArea("HtmlAbstraction", new { style = "height:100px" })
+            @Html.ValidationMessage("HtmlAbstraction", "*")
+        </p>
 
    
-   <p>
-    @Html.CheckBox("IsJustAbstraction")
-    <label for="IsJustAbstraction">Just Abstraction</label>
-   </p>
+        <p>
+            @Html.CheckBox("IsJustAbstraction")
+            <label for="IsJustAbstraction">Just Abstraction</label>
+        </p>
 
-   <p>
-    <label for="HtmlText">Body:</label><br />
-    @Html.TextArea("HtmlText", new { style = "height:500px" })
-    @Html.ValidationMessage("HtmlText", "*")
-   </p>
+        <p>
+            <label for="HtmlText">Body:</label><br />
+            @Html.TextArea("HtmlText", new { style = "height:500px" })
+            @Html.ValidationMessage("HtmlText", "*")
+        </p>
 
-   <p>
-    <label for="TagsLine">Tags:</label><br />
-    @Html.TextBox("TagsLine")
-   </p>
+        <p>
+            <label for="TagsLine">Tags:</label><br />
+            @Html.TextBox("TagsLine")
+        </p>
 
-   <p>
-    @Html.CheckBox("IsPublic")
-    <label for="HtmlText">Is Public</label>
-   </p>
+        <p>
+            @Html.CheckBox("IsPublic")
+            <label for="HtmlText">Is Public</label>
+        </p>
 
-   <p>
-    @Html.CheckBox("IsForExternal")
-    <label for="IsForExternal">Is External</label>
-   </p>
+        <p>
+            @Html.CheckBox("IsForExternal")
+            <label for="IsForExternal">Is External</label>
+        </p>
 
-   <p>
-       <input type="submit" value="Save"/>
-   </p>
-  </fieldset>
-    
-  }
+        <p>
+            <input type="submit" value="Save"/>
+        </p>
+    </fieldset>
 
-
-
+}

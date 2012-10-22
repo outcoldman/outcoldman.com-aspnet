@@ -1,59 +1,48 @@
 ﻿@model IEnumerable<BlogPostModel>
 @using Microsoft.Web.Helpers
-@using OutcoldSolutions.Web.Blog.Core.Util
 @using OutcoldSolutions.Web.Blog.Models.Repositories
 @using OutcoldSolutions.Web.Blog.Resources
 @{
 	ViewBag.Title = "outcoldman: " + Html.GetResource("HomePage");
 }
 
-<div class="contantleft">
-	@foreach (var item in Model) { 
-	<div class="postwrapper">
-
-@Html.Partial("ShowBlogItem", item)
-
-	</div>
-    } 
+<section class="leftSection">
+    
+    <div class="clear-fix">
+        @foreach (var item in Model) { 
+            @Html.Partial("ShowBlogItem", item)
+        } 
+    </div>
 	
-	<div style="padding-top:50px; font-style:italic;">
-		@Html.Raw(string.Format(Html.GetResource("FindMore"), Html.ActionLink(Html.GetResource("Blog"), "index", "blog")))
-	</div>
+    <div class="float-left">
+        @Html.Raw(string.Format(Html.GetResource("FindMore"), Html.ActionLink(Html.GetResource("Blog"), "index", "blog")))
+    </div>
 
-	<div style="float:right;">
-		@Html.Partial("FeedBurner") 
-	</div>
-</div>
+    <div class="float-right">
+        @Html.Partial("FeedBurner") 
+    </div>
 
-<div class="sideBar">
-@if (ConfigurationUtil.GetSettings("ShowAdvertising", false))
-{
-	<div style="text-align:center;">
-		<a href="http://www.microsoft.com/ru-ru/events/devcon/">
-			<img src="http://outcoldman.ru/resources/advertising/devcon.gif" width="240" height="400" alt="Microsoft DevCon Conference" title="Microsoft DevCon Conference">
-		</a>
-	</div>
+</section>
 
-	<br/>
-}
-	<h3>Tag Cloud</h3>
-	
+<aside>
+
 	<ul class="tags">
-		@{ foreach (GetTopTagsResult tag in (List<GetTopTagsResult>)ViewData["toptags"]) {
-			<li>@Html.ActionLink(tag.Name, "tag", "blog", new {id = tag.TagID}, new {@class = "tag" + tag.TagType, rel = "tag"}) </li>
-			}}
+		@foreach (GetTopTagsResult tag in (List<GetTopTagsResult>)ViewData["toptags"])
+		{
+		    <li>@Html.ActionLink(tag.Name, "tag", "blog", new { id = tag.TagID }, new { @class = "tag" + tag.TagType, rel = "tag" }) </li>
+		}
 	</ul>
     
-    @Twitter.Profile(
-        "outcoldman", 
-        width: 240, 
-        backgroundShellColor: "#919191", 
-        shellColor: "#ffffff", 
-        tweetsBackgroundColor: "#ebe8d9", 
-        tweetsColor: "#5a5a5a", 
-        tweetsLinksColor: "#650000", 
-        behavior: "all")
+    <div class="default-vertical-padding">
+        @Twitter.Profile(
+            "outcoldman", 
+            width: 240, 
+            backgroundShellColor: "#919191", 
+            shellColor: "#ffffff", 
+            tweetsBackgroundColor: "#ebe8d9", 
+            tweetsColor: "#5a5a5a", 
+            tweetsLinksColor: "#650000", 
+            behavior: "all")
+    </div>
 
-</div>
-<br class="clear" />
-@Html.Partial("Advertising") 
+</aside>

@@ -27,7 +27,7 @@ namespace OutcoldSolutions.Web.Blog.Helpers
 
                 stringBuilder.AppendFormat(
                     "<a href='{0}' rel='tag'>{1}</a>",
-                    urlHelper.Action("tag", "blog", new {lang = helper.GetLanguage(), tagId = tag.TagID }),
+                    urlHelper.Action("tag", "blog", new { lang = helper.GetLanguage(), tagId = tag.TagID, id = 1 }),
                     tag.Name);
             }
 

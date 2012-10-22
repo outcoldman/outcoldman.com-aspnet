@@ -3,31 +3,43 @@
 @model OutcoldSolutions.Web.Blog.Models.Repositories.BlogPostModel
 
 <article>
-
-	<hgroup>
-		<h3 ><time datetime="@Model.BlogPost.Date.ToString("o")" pubdate="pubdate">@Model.BlogPost.Date.ToString("dd.MM.yyyy HH:mm") UTC</time></h3>
-		<h1>@Html.ActionLink(Model.BlogPost.Title, "show", "blog", new { id = Model.BlogPost.PostID }, null)</h1>
-	</hgroup>
+    <div class="article-title">
+        <time datetime="@Model.BlogPost.Date.ToString("o")" pubdate="pubdate">@Model.BlogPost.Date.ToString("dd.MM.yyyy HH:mm") UTC</time>
+        <h1>@Html.ActionLink(Model.BlogPost.Title, "show", "blog", new { id = Model.BlogPost.PostID }, null)</h1>
+    </div>
 	
-	<div class="post">
-    	@Html.Raw(Model.BlogPost.HtmlAbstraction)
-	</div>
-	<div>
-	@if (!Model.BlogPost.IsJustAbstraction)
-	{
-
-	@Html.ActionLink(Html.GetResource("ReadMore"), "show", "blog", new { id = Model.BlogPost.PostID }, null)
-
-	 }  
-	</div>
-	<br class="clear" />
-	<div style="float:left;">
-            <a href='@Url.Action("show", "blog", new RouteValueDictionary() {{"id", Model.BlogPost.PostID } })#addcomment' >
-                @string.Format("{0} ( {1} )", Html.GetResource("LeaveAcomment"), Model.CommentsCount) 
-            </a>  
-	</div>
-	<div style="float:right;">
-	@Html.RenderTags(Model.BlogPost.Tags.ToList())
-	</div>
+    <div class="clear-fix-b">
+        @Html.Raw(Model.BlogPost.HtmlAbstraction)
+    </div>
 </article>
+
+<div class="clear-fix content-break">
+@if (!Model.BlogPost.IsJustAbstraction)
+{
+    <p>
+        @Html.ActionLink(Html.GetResource("ReadMore"), "show", "blog", new { id = Model.BlogPost.PostID }, null)
+    </p>
+}
+    
+    <div class="float-left">
+        <p>
+            @Html.ActionLink(
+                string.Format("{0} ( {1} )", Html.GetResource("LeaveAcomment"), Model.CommentsCount),
+                "show",
+                "blog",
+                null,
+                null,
+                "addcomment",
+                new { id = Model.BlogPost.PostID },
+                null
+            )
+        </p>
+    </div>
+
+    <div class="float-right">
+       <p>
+         @Html.RenderTags(Model.BlogPost.Tags.ToList())
+       </p>
+    </div>
+</div>
 

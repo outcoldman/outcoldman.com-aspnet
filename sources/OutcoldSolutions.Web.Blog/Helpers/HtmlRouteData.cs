@@ -73,12 +73,27 @@ namespace OutcoldSolutions.Web.Blog.Helpers
 
         public static string GetAction(this HtmlHelper helper)
         {
-            return helper.ViewContext.RequestContext.RouteData.Values["action"].To(string.Empty).ToLower();
+            return helper.ViewContext.RouteData.Values["action"].To(string.Empty).ToLower();
         }
 
         public static string GetController(this HtmlHelper helper)
         {
-            return helper.ViewContext.RequestContext.RouteData.Values["controller"].To(string.Empty).ToLower();
+            return helper.ViewContext.RouteData.Values["controller"].To(string.Empty).ToLower();
+        }
+
+        public static bool IsAction(this HtmlHelper helper, string action)
+        {
+            return string.Equals(helper.ViewContext.RouteData.Values["action"].ToString(), action, StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        public static bool IsAction(this HtmlHelper helper, string action, string controller)
+        {
+            return helper.IsAction(action) && helper.IsController(controller);
+        }
+
+        public static bool IsController(this HtmlHelper helper, string controller)
+        {
+            return string.Equals(helper.ViewContext.RouteData.Values["controller"].ToString(), controller, StringComparison.InvariantCultureIgnoreCase);
         }
     }
 }

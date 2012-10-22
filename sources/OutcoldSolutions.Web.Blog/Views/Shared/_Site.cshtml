@@ -1,5 +1,4 @@
-﻿@using OutcoldSolutions.Web.Blog.Core.Util
-@using OutcoldSolutions.Web.Blog.Helpers
+﻿@using OutcoldSolutions.Web.Blog.Helpers
 @using OutcoldSolutions.Web.Blog.Resources
 <!DOCTYPE html >
 <html lang="@Html.GetLanguage()">
@@ -15,61 +14,82 @@
 	<meta name="revisit-after" content="2 days" />
 	<meta name="robots" content="ALL" />
 	<meta name="author" content="Powered: outcoldman (Denis Gladkikh), Design conception: VectorArt(http://vectorart.org)" />
-	<meta name="description" content="@(ViewData["description"] == null ? "Denis Gladkikh (outcoldman) Personal Web Site" : ViewData["description"])" />
-	<meta name="keywords" content="@(ViewData["keywords"] == null ? ".NET, WPF, Silverlight, C#, ASP.NET, MVC, XAML, outcoldman, Denis Gladkikh" : (ViewData["keywords"]))" />
+	<meta name="description" content="@(this.ViewData["description"] ?? "Denis Gladkikh (outcoldman) Personal Web Site")" />
+	<meta name="keywords" content="@(ViewData["keywords"] ?? ".NET, WPF, Silverlight, C#, ASP.NET, MVC, XAML, outcoldman, Denis Gladkikh")" />
 	<link rel="openid.server" href="http://www.myopenid.com/server"/>
 	<link rel="openid.delegate" href="http://outcoldman.myopenid.com/"/>
 	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Outcoldman@(Html.IsRussian() ? "" : "_en")" /> 
 	@RenderSection("Head", required: false)
 </head>
 <body>
+    <header>
+        <div class="content-wrapper default-padding">
+            
+            <div class="float-right">
+                <section class="langbar clear-fix">
+                    @if (Html.IsRussian())
+                    {
+                        <a href="@Url.Action("index", "site", new { lang = "en" })">In English</a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("index", "site", new { lang = "ru" })">In Russian</a>
+                    }
+                </section>
+                
+                <div class="subscription">
+                    @Html.Partial("SubscriptionButtons")
+                </div>
+            </div>
+            
+            <div class="float-left">
+                
+                <hgroup class="site-title float-left clear-fix">
+                    <h2>
+                        @Html.ActionLink("Denis Gladkikh", "index", "site")
+                    </h2>
+                    <h1>
+                        @Html.ActionLink("outcoldman", "index", "site")
+                    </h1>
+                </hgroup>
 
-<div id="center">
-	<div id="wrapper">
-		<div class="myname">
-			Denis Gladkikh
-		</div>
-		<div class="langbar">
-			<a class="ru" href="@Url.Action("index", "site", new { lang = "ru" })">Russian</a>&nbsp;&nbsp;
-				|&nbsp;&nbsp;<a class="en" href="@Url.Action("index", "site", new { lang = "en" })">English</a>
-		</div>
-		<div class="subscription"  >
 
-@Html.Partial("LinksPartial")
+                <nav class='mainMenu clear-fix-b'>
+                    @{
+                        var selectedMenuItemAttributes = new { @class = "active" };
+                    }
+                    <ul>
+                        <li>@this.Html.ActionLink(this.Html.GetResource("HomePage"), "index", "site", new {}, this.Html.IsAction("index", "site") ? selectedMenuItemAttributes : null)</li>
+                        <li>@this.Html.ActionLink(this.Html.GetResource("Blog"), "index", "blog", new {}, this.Html.IsController("blog") ? selectedMenuItemAttributes : null)</li>
+                        <li>@this.Html.ActionLink(this.Html.GetResource("AboutMe"), "aboutme", "site", new {}, this.Html.IsAction("aboutme", "site") ? selectedMenuItemAttributes : null)</li>
+                        <li>@this.Html.ActionLink(this.Html.GetResource("Contacts"), "links", "site", new {}, this.Html.IsAction("links", "site") ? selectedMenuItemAttributes : null)</li>
+                    </ul>
+                </nav>
 
-		</div>
-		<div id="branding">
-			<div class="logo">
-				<a href="@ConfigurationUtil.SiteUrl">outcoldman</a>
-			</div>
-			<nav>
+            </div>
+            
+        </div>
+    </header>
+    
+    <div id="body">
+        <div class="content-wrapper clear-fix default-padding text-content default-vertical-padding">
+            @RenderBody()
+        </div>
+    </div>
 
-@Html.CreateMainMenu()
-
-			</nav>
-			<br class="clear" />
-		</div>
-		<div class="contant" >
-	   
-@RenderBody()
-		
-		</div>
-		<br class="clear"/>
-	</div>
-	<footer >
-		<div id="footerContainer">
-			<p>
-@Html.GetResource("ContentOfSite")
-				<label>
-					Denis Gladkikh (outcoldman) © 2010
-				</label>
-			</p>
-		</div>
+	<footer>
+	    <div class="content-wrapper">
+	        <div class="float-left">
+	            @Html.GetResource("ContentOfSite")
+	        </div>
+	        <div class="float-right">
+	            Denis Gladkikh (outcoldman) &copy; @DateTime.Now.Year
+	        </div>
+	    </div>
 	</footer>
 
 @RenderSection("BottomContent", required: false)
 
-</div>
 <script type="text/javascript" src="~/Scripts/Master.js"></script>
 </body>
 </html>

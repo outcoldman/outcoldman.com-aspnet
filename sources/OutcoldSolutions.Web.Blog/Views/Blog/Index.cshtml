@@ -8,48 +8,45 @@
 }
 
 
+@if (ViewData["tag"] != null)
+{
+    <hgroup>
+        <h3>&rarr; @(((Tag)ViewData["tag"]).Name)</h3>
+    </hgroup>
+}
 
-	@if (ViewData["tag"] != null)
-  {
-    <h3 style="text-align:center">@Html.GetResource("SelectedTag"): @(((Tag)ViewData["tag"]).Name) </h3>
-  
-  }
+<div class="float-right clear-fix">
+	@if (Html.GetAction().ToLower() == "tag")
+	{
+		@Html.CreateTagsPager((int)ViewData["selectedPage"], (int)ViewData["pagesCount"])
+	}
+	else
+	{
+		@Html.CreatePager((int)ViewData["selectedPage"], (int)ViewData["pagesCount"])
+	}
+</div>
 
-	<div style="float:right;">
-		@if (Html.GetAction().ToLower() == "tag") {
-			@Html.CreateTagsPager((int)ViewData["selectedPage"], (int)ViewData["pagesCount"]) 
-	  } else { 
-			@Html.CreatePager((int)ViewData["selectedPage"], (int)ViewData["pagesCount"])  
-	  }
-	</div>
+<div class="clear-fix-b">
+@foreach (var item in Model)
+{
+    @Html.Partial("ShowBlogItem", item) 
+}
+</div>
 
-	@{int i = 0;}
+<div class="float-right">
+@if (Html.GetAction().ToLower() == "tag")
+{
+	@Html.CreateTagsPager((int)ViewData["selectedPage"], (int)ViewData["pagesCount"])
+}
+else
+{
+	@Html.CreatePager((int)ViewData["selectedPage"], (int)ViewData["pagesCount"])
+}
+</div>
 
-    @foreach (var item in Model) { 
-    
-		if (i++ == 5) {
-			@Html.Partial("Advertising") 
-	  }
-	  
-		<div class="postwrapper">
-			 @Html.Partial("ShowBlogItem", item) 
-		</div>
-    	<br />
-     } 
-
-	<div style="float:right;">
-	@if (Html.GetAction().ToLower() == "tag") {
-		@Html.CreateTagsPager((int)ViewData["selectedPage"], (int)ViewData["pagesCount"]) 
-	 } else {
-	 @Html.CreatePager((int)ViewData["selectedPage"], (int)ViewData["pagesCount"])  
- }
-	</div>
-
-	<div style="float:left;">
-		 @Html.Partial("FeedBurner") 
-	</div>
-
-	<br class="clear" />
+<div class="float-left" >
+		@Html.Partial("FeedBurner") 
+</div>
 
 
 

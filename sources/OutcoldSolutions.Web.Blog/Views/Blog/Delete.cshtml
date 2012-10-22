@@ -5,20 +5,20 @@
 	ViewBag.Title = "Delete blog post";
 }
 
-
-    <h2>
+<h2>
 	Delete Confirmation
-	</h2>
+</h2>
 	 
-	<div>
+<div>
 	<p>Please confirm you want to delete blog post:
-	<i> @Model.Title ? </i>
+	    <i> @Model.Title ? </i>
 	</p>
-	</div>
+</div>
 	 
-	@using (Html.BeginForm()) {  
-	<input name="confirmButton" type="submit" value="Delete" />       
-	 } 
+@using (Html.BeginForm())
+{
+	<input name="confirmButton" type="submit" value="Delete" />
+}
 
 
 

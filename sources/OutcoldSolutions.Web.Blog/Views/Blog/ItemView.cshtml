@@ -1,6 +1,5 @@
 ﻿@model BlogPost
 @using Microsoft.Web.Helpers
-@using OutcoldSolutions.Web.Blog.Core.Util
 @using OutcoldSolutions.Web.Blog.Helpers
 @using OutcoldSolutions.Web.Blog.Models
 @using OutcoldSolutions.Web.Blog.Resources
@@ -8,67 +7,63 @@
 	ViewBag.Title = Model.Title;
 }
 
-	<article>
 
-		<hgroup>
-			<h3 ><time datetime="@Model.Date.ToString("o")" pubdate="pubdate">@Model.Date.ToString("dd.MM.yyyy HH:mm") UTC</time></h3>
-			<h1>@Model.Title </h1>
-		</hgroup>
-		
-		<div class="post">
-		@Html.Raw(Model.HtmlText)
-		</div>
+<article>
+        
+    <div class="article-title">
+        <time datetime="@Model.Date.ToString("o")" pubdate="pubdate">@Model.Date.ToString("dd.MM.yyyy HH:mm") UTC</time>
+        <h1>@Model.Title </h1>
+    </div>
+    
+    @Html.Raw(Model.HtmlText)
 
-	</article>
+</article>
 
-<p>
-    @Twitter.TweetButton(dataCount: "horizontal", url: Url.Action("show", "blog", new { id = Model.PostID }, this.Request.Url.Scheme))
-    @*@Facebook.LikeButton(href: Url.Action("show", "blog", new { id = Model.PostID }, this.Request.Url.Scheme), buttonLayout: "button_count")*@
-    @Html.Partial("FeedBurner") 
-</p>
-
-	<div style="float:right;">
-		@Html.RenderTags(Model.Tags.ToList()) 
+<div class="clear-fix default-vertical-padding">
+    <div class="float-left">
+        @Twitter.TweetButton(dataCount: "horizontal", url: Url.Action("show", "blog", new { id = Model.PostID }, this.Request.Url.Scheme))
+        @*@Facebook.LikeButton(href: Url.Action("show", "blog", new { id = Model.PostID }, this.Request.Url.Scheme), buttonLayout: "button_count")*@
+        @Html.Partial("FeedBurner") 
 	</div>
 
-	<br class="clear" />
-
-	 @Html.Partial("Advertising") 
-
-	<div>
-		@{ var posts = (List<BlogPost>)ViewData["simpleposts"]; }
-		@if (posts.Count > 0) { 
-		<div style="float:left; ">
-			<h4>@Html.GetResource("YouMightAlsoLike")</h4>
-				<div class="items">
-					<ul>
-						@foreach (BlogPost post in posts)
-						{ <li>@Html.ActionLink(post.Title, "show", "blog", new {id = post.PostID, lang = post.Language}, null) </li> } 
-						 
-					</ul>
-				</div>
-		</div>
-		}
-		<div style="float:right">
-		 @Html.Partial("LinksPartial") 
-		</div>
+	<div class="float-right">
+	    @Html.RenderTags(Model.Tags.ToList()) 
 	</div>
+</div>
 
-	<br class="clear" />
-	@{ var comments = (List<Comment>) ViewData["comments"]; }
+<div class="clear-fix">
+	@{ var posts = (List<BlogPost>)ViewData["simpleposts"]; }
+	@if (posts.Count > 0) { 
+		<section class="float-left">
+		    <h4>@Html.GetResource("YouMightAlsoLike")</h4>
+		    <ul>
+		        @foreach (BlogPost post in posts)
+		        {
+		            <li>@Html.ActionLink(post.Title, "show", "blog", new {id = post.PostID, lang = post.Language}, null) </li>
+		        } 
+		    </ul>
+		</section>
+	}
+	<div class="subscription float-right">
+		@Html.Partial("SubscriptionButtons")
+	</div>
+</div>
+
+<section>
+    @{ var comments = (List<Comment>) ViewData["comments"]; }
 	
-	<h2>@Html.GetResource("Comments")  (@comments.Count)</h2>
-	<div id="comments">
-	@foreach (Comment comment in comments) {
-		@Html.Partial("CommentViewItem", comment) 
- }
-	</div>
+    <h2>@Html.GetResource("Comments")  (@comments.Count)</h2>
 
-	
+    <div id="comments">
+    @foreach (Comment comment in comments)
+    {
+	    @Html.Partial("CommentViewItem", comment)
+    }
+    </div>
+</section>
 
-	<a id="addcomment"></a>
 
-  <fieldset class="footerForm">
+  <fieldset class="footerForm" id="addComment">
 	<legend>@Html.GetResource("AddComment") </legend>
 	<p class="info">@Html.Raw(Html.GetResource("NotificationInformation"))</p>
 	<div id="notification" class="notification"><h4></h4></div>
