@@ -298,6 +298,7 @@
     <Content Include="Views\Site\Links.cshtml" />
     <Content Include="Views\Site\OpenID.cshtml" />
     <Content Include="Views\Site\SiteMap.cshtml" />
+    <Content Include="Views\Shared\SubscriptionButtons.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\ResourceEn.resx">

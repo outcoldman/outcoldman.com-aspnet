@@ -152,7 +152,7 @@ header .content-wrapper {
         float: left;
         font-family: "Segoe UI Semibold", Verdana, Helvetica, Sans-Serif;
         font-size: 0.75em;
-        color: #FFFFFF;
+        color: #fff;
         text-align: center;
         padding: 10px 12px;
         display: inline-block;
@@ -203,27 +203,82 @@ aside {
     width: 25%;
 }   
 
-/***** Bottom *******/
-.footerForm {	width:925px;	padding: 20px;	color: black;	}
-.footerForm legend { font-weight:bold; color: #4a4a4a; padding: 5px; font-size:large;}
-.footerForm .info {font-size:small; color:#b7b7b7; line-height:100%}
-.footerFormR {width:285px;margin-right:10px;float:left;margin-top:20px;}
-.footerFormR1 {	width:612px;	margin-right:10px;	float:left;	margin-top:20px;}
-.footerForm p{	margin: 0px 0px 5px 0px;}
-.footerForm p label{		color: #6a6a6a; padding-bottom:2px;}
-.footerForm input[type=text], .footerForm input[type=email], .footerForm input[type=url] {background:#FFFFFF;border:solid 1px #b7b7b7;	padding:6px;	width:274px;	height:20px;	padding-top:4px;	font-size:18px;font-weight:normal;}
-.footerForm textarea {	background:#FFFFFF;	border:solid 1px #b7b7b7;	padding:6px;	width:600px;	padding-top:6px;	font-size:18px;	font-weight:normal;}
-input.footerSubmit {background-color:#AEAEAE;	color:Black;	border:none;	width:108px;	height:37px;	font-size:18px;	font-weight:normal;	float:right;	cursor:pointer;}
-input.footerPreview {background-color:#CECECE;	color:Black;	border:none;	width:138px;	height:37px;	font-size:18px;	font-weight:normal;	float:right;	cursor:pointer; margin-right:10px;}
-div.footerBusy {	height:37px;float:right; padding-top:5px; display:none;}
-.footerForm div.notification{display:none;}
-.footerForm div.notification h4{text-align:left;color:#EAAB15; padding: 5px 0px 0px 0px; line-height:100%;}
+/***** Comment form *******/
+fieldset.comment-edit .info {
+    font-size:0.8em;
+    color: #b7b7b7;
+}
+
+fieldset.comment-edit .fields-section {
+    width: 35%;
+    float: left;
+}
+
+fieldset.comment-edit .comment-body-section {
+    width: 60%;
+    float: right;
+}
+
+fieldset.comment-edit label {
+    color: #6a6a6a; 
+    margin-bottom:5em;
+}
+
+fieldset.comment-edit input[type=text], fieldset.comment-edit input[type=email], fieldset.comment-edit input[type=url], fieldset.comment-edit textarea {
+    background:#FFFFFF;
+    border:solid 1px #b7b7b7;
+    padding:0.3em;
+    width:98%;
+    font-size:1em;
+}
+
+input[type=button] {
+    background-color:#313131;	
+    color:#fff;
+    border:none;
+    padding: 0.5em;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+input[type=button]:hover {
+    background-color:#F57E29;	
+    color:#fff;
+}
+
+#busyIndicator {
+    vertical-align: middle;
+    display: none;
+}
+
+fieldset.comment-edit div.notification {display:none;}
+
+fieldset.comment-edit div.notification h4 {
+    text-align:left;
+    color:#EAAB15; 
+    padding: 5px 0px 0px 0px; 
+    line-height:100%;
+}
+
 /*** Comment View ****/
-.comment fieldset {padding: 10px;}
-.comment fieldset.my {padding: 10px; border: solid 2px #4a4a4a;}
-.comment fieldset legend { font-size:large; margin-left: 10px; padding:2px; }
-.comment .commenttext {padding-top:10px;padding-bottom:10px;padding-left:10px; float:right; width:850px;}
-.comment .commentavatar {width: 80px; height: 80px; float:left; }
+
+fieldset.comment, fieldset.comment-author, fieldset.comment-edit {
+    padding: 10px;
+}
+
+fieldset.comment-author {
+    border: solid 2px #4a4a4a;
+}
+
+fieldset.comment legend {
+    font-size:1.2em; 
+    margin-left: 10px; 
+    padding:2px;
+}
+
+fieldset.comment .comment-body {
+    padding-left:90px; 
+}
 
 /*** Article ****/
 

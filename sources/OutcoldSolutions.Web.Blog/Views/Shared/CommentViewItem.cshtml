@@ -3,31 +3,30 @@
 @using OutcoldSolutions.Web.Blog.Resources
 @model OutcoldSolutions.Web.Blog.Models.Comment
 
-<div class="comment" @(Model.CommentID <= 0 ? "id=preview" : string.Empty) >
+@{ bool fMyComment = string.Compare(Model.UserWeb, ConfigurationUtil.SiteUrl, true) == 0; }
+<fieldset class="comment @(fMyComment ? "comment-author" : string.Empty)" @(Model.CommentID <= 0 ? "id=preview" : string.Empty)>
+        
+    <legend > 
+        @if (string.IsNullOrWhiteSpace(Model.UserWeb))
+        {
+            @(!string.IsNullOrWhiteSpace(Model.UserName) ? Model.UserName : Html.GetResource("Anonymous"))
+        }
+        else
+        {
+            <a href="@Model.UserWeb" @(fMyComment ? string.Empty : "rel=\"nofollow\"")>@(!string.IsNullOrWhiteSpace(Model.UserName) ? Model.UserName : Html.GetResource("Anonymous"))</a>
+        }
+        ( <time datetime="@Model.Date.ToString("o")">@Model.Date.ToString("dd.MM.yyyy HH:mm") UTC</time> )
     
-    @{ bool fMyComment = string.Compare(Model.UserWeb, ConfigurationUtil.SiteUrl, true) == 0; }
-    <fieldset @(fMyComment ? "class='my'" : string.Empty) >
-        <legend > 
-            @if (string.IsNullOrWhiteSpace(Model.UserWeb))
-            {
-                @(!string.IsNullOrWhiteSpace(Model.UserName) ? Model.UserName : Html.GetResource("Anonymous"))
-            }
-            else
-            {
-                <a href="@Model.UserWeb" @(fMyComment ? string.Empty : "rel=\"nofollow\"")>@(!string.IsNullOrWhiteSpace(Model.UserName) ? Model.UserName : Html.GetResource("Anonymous"))</a>
-            }
-            ( <time datetime="@Model.Date.ToString("o")">@Model.Date.ToString("dd.MM.yyyy HH:mm") UTC</time> )
-    
-            <a id="@string.Format("comment_{0}", @Model.CommentID)" href="@string.Format("{0}#comment_{1}", this.Url.Action("show", "blog", new { id = this.Model.PostID }), this.Model.CommentID)" title="Link to comment">@(Model.CommentID <= 0 ? Html.GetResource("Preview") : "#")</a>
-        </legend>
+        <a id="@string.Format("comment_{0}", @Model.CommentID)" href="@string.Format("{0}#comment_{1}", this.Url.Action("show", "blog", new { id = this.Model.PostID }), this.Model.CommentID)" title="Link to comment">@(Model.CommentID <= 0 ? Html.GetResource("Preview") : "#")</a>
+    </legend>
+        
+        
+    <div class="float-left">
+        @Gravatar.GetHtml(string.IsNullOrEmpty(Model.UserEmail) ? " " : Model.UserEmail)
+    </div>
 
-        <div class="commentavatar">
-            @Gravatar.GetHtml(string.IsNullOrEmpty(Model.UserEmail) ? " " : Model.UserEmail)
-        </div>
+    <section class="comment-body">
+        @Html.Raw(Model.Body)
+    </section>
 
-        <div class="commenttext">
-            @Html.Raw(Model.Body)
-        </div>
-
-    </fieldset>
-</div>
+</fieldset>

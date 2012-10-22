@@ -63,28 +63,54 @@
 </section>
 
 
-  <fieldset class="footerForm" id="addComment">
-	<legend>@Html.GetResource("AddComment") </legend>
-	<p class="info">@Html.Raw(Html.GetResource("NotificationInformation"))</p>
-	<div id="notification" class="notification"><h4></h4></div>
-	<div class="footerFormR">
-	   <p><label for="Name">@Html.GetResource("Name"):</label><input type="text" id="Name" placeholder="@Html.GetResource("InputName")" /></p>
-	   <p><label for="Email">@Html.GetResource("Email"):</label><input type="email" id="Email" placeholder="@Html.GetResource("InputEmail")" /></p>
-	   <p><label for="WebSite">@Html.GetResource("Web"):</label><input type="url" id="WebSite" placeholder="@Html.GetResource("InputWeb")" /></p>
-		<p><span><input type="checkbox" id="commentNeedInform" value="false" />&nbsp;<label for="commentNeedInform">@Html.GetResource("SendNotifications")</label></span></p>
-	 </div>
-	 <div class="footerFormR1">
-	   <p><label for="commentBody">@Html.GetResource("Body"):</label><textarea id="commentBody" cols="4" rows="10" placeholder="@Html.GetResource("InputComment")" ></textarea></p>
-	   
-		<input  type="button" class="footerSubmit" id="addComment" value="@Html.GetResource("Add")" />
+<fieldset class="comment-edit" id="addComment">
+    
+    <legend>@Html.GetResource("AddComment") </legend>
 
-		<input  type="button" class="footerPreview" id="showPreview" value="@Html.GetResource("Preview")" />
+    <div class="info">@Html.Raw(Html.GetResource("NotificationInformation"))</div>
 
-		<div class="footerBusy" id="busyIndicator" >
-			<img alt="busy"  src="~/Content/images/busy.gif" />&nbsp;
-		</div>
-	  </div>
-  </fieldset>
+    <div id="notification" class="notification"><h4></h4></div>
+
+    <div class="fields-section">
+        <p>
+            <label for="Name">@Html.GetResource("Name"):</label>
+            <input type="text" id="Name" placeholder="@Html.GetResource("InputName")" />
+        </p>
+
+        <p>
+            <label for="Email">@Html.GetResource("Email"):</label>
+            <input type="email" id="Email" placeholder="@Html.GetResource("InputEmail")" />
+        </p>
+
+        <p>
+            <label for="WebSite">@Html.GetResource("Web"):</label>
+            <input type="url" id="WebSite" placeholder="@Html.GetResource("InputWeb")" />
+        </p>
+
+        <p>
+            <span>
+                <input type="checkbox" id="commentNeedInform" value="false" />&nbsp;
+                <label for="commentNeedInform">@Html.GetResource("SendNotifications")</label>
+            </span>
+        </p>
+    </div>
+
+    <div class="comment-body-section">
+        <p>
+            <label for="commentBody">@Html.GetResource("Body"):</label>
+            <textarea id="commentBody" cols="4" rows="10" placeholder="@Html.GetResource("InputComment")" ></textarea>
+        </p>
+    </div>
+    
+    <div class="clear-fix-b float-right default-vertical-padding">
+        <img alt="busy"  src="~/Content/images/busy.gif" id="busyIndicator" />
+
+        <input  type="button" id="btnShowPreview" value="@Html.GetResource("Preview")" />
+
+        <input  type="button" id="btnAddComment" value="@Html.GetResource("Add")" />
+    </div>
+
+</fieldset>
 
 <script type="text/javascript">
 	var fillBodyComment = "@Html.Encode(Html.GetResource("FillBodyComment")) <br /><br />";

@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<BlogPostModel>
-@using Microsoft.Web.Helpers
 @using OutcoldSolutions.Web.Blog.Models.Repositories
 @using OutcoldSolutions.Web.Blog.Resources
 @{
@@ -34,15 +33,37 @@
 	</ul>
     
     <div class="default-vertical-padding">
-        @Twitter.Profile(
-            "outcoldman", 
-            width: 240, 
-            backgroundShellColor: "#919191", 
-            shellColor: "#ffffff", 
-            tweetsBackgroundColor: "#ebe8d9", 
-            tweetsColor: "#5a5a5a", 
-            tweetsLinksColor: "#650000", 
-            behavior: "all")
+        <script src="http://widgets.twimg.com/j/2/widget.js"></script>
+	    <script>
+	        new TWTR.Widget({
+	            version: 2,
+	            type: 'profile',
+	            rpp: 5,
+	            interval: 6000,
+	            width: "100%",
+	            height: 300,
+	            theme: {
+	                shell: {
+	                    background: '#919191',
+	                    color: '#ffffff'
+	                },
+	                tweets: {
+	                    background: '#ebe8d9',
+	                    color: '#5a5a5a',
+	                    links: '#650000'
+	                }
+	            },
+	            features: {
+	                scrollbar: false,
+	                loop: false,
+	                live: false,
+	                hashtags: true,
+	                timestamp: true,
+	                avatars: false,
+	                behavior: 'all'
+	            }
+	        }).render().setUser('outcoldman').start();
+	    </script>
     </div>
 
 </aside>

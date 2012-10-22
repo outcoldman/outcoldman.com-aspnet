@@ -1,5 +1,5 @@
 ﻿$(function () {
-	$("#addComment").click(function () {
+    $("#btnAddComment").click(function () {
 		var nHeader = $("#notification > h4")[0];
 		hideHeader();
 		var comment = getCommentData();
@@ -31,7 +31,7 @@
 		$("#commentNeedInform")[0].checked = true;
 	});
 
-	$("#showPreview").click(function () {
+	$("#btnShowPreview").click(function () {
 		hideHeader();
 		startRequest();
 		$.post(commentPreviewUrl, getCommentData(), commentPreviewed, "json");
@@ -143,14 +143,14 @@ function blink(el) {
 }
 
 function startRequest() {
-	$("#addComment")[0].disabled = true;
-	$("#showPreview")[0].disabled = true;
+	$("#btnAddComment")[0].disabled = true;
+	$("#btnShowPreview")[0].disabled = true;
 	$("#busyIndicator").show();
 }
 
 function endRequest() {
-	$("#addComment")[0].disabled = false;
-	$("#showPreview")[0].disabled = false;
+    $("#btnAddComment")[0].disabled = false;
+	$("#btnShowPreview")[0].disabled = false;
 	$("#busyIndicator").hide();
 }
 
