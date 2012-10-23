@@ -72,7 +72,9 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
-    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -184,6 +186,7 @@
     <Compile Include="Helpers\HtmlRouteData.cs" />
     <Compile Include="Helpers\PagesControl.cs" />
     <Compile Include="Helpers\UserHelper.cs" />
+    <Compile Include="Core\LegacyUrlRoute.cs" />
     <Compile Include="Metablog\BlogInfo.cs" />
     <Compile Include="Metablog\Category.cs" />
     <Compile Include="Metablog\CategoryInfo.cs" />
@@ -298,6 +301,7 @@
     <EmbeddedResource Include="Resources\ResourceRu.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourceRu.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

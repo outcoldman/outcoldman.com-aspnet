@@ -16,15 +16,15 @@ namespace OutcoldSolutions.Web.Blog.Timers
 
     public class NotificationSender
     {
-        private readonly Timer _timer;
+        private readonly Timer timer;
 
         public NotificationSender()
         {
-            this._timer = new Timer();
-            this._timer.Elapsed += this.OnTimed;
-            this._timer.AutoReset = false;
-            this._timer.Interval = 10000;
-            this._timer.Enabled = true;
+            this.timer = new Timer();
+            this.timer.Elapsed += this.OnTimed;
+            this.timer.AutoReset = false;
+            this.timer.Interval = 10000;
+            this.timer.Enabled = true;
         }
 
         private void OnTimed(object state, ElapsedEventArgs elapsedEventArgs)
@@ -117,8 +117,8 @@ namespace OutcoldSolutions.Web.Blog.Timers
             }
             finally
             {
-                this._timer.Interval = ConfigurationUtil.GetSettings("NoificationSenderInterval", 120000);
-                this._timer.Enabled = true;
+                this.timer.Interval = ConfigurationUtil.GetSettings("NoificationSenderInterval", 120000);
+                this.timer.Enabled = true;
             }
         }
     }

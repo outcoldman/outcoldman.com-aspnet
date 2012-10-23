@@ -13,7 +13,7 @@ namespace OutcoldSolutions.Web.Blog.Controllers
         public ActionResult Start()
         {
             string lang = HtmlRouteData.GetLanguage(this.RouteData, this.Request);
-            return this.RedirectToAction("index", "site", new { lang });
+            return this.RedirectToAction("index", "blog", new { lang });
         }
     }
 }

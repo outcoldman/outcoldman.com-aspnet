@@ -231,9 +231,6 @@
   <data name="ReadMore" xml:space="preserve">
     <value>Читать дальше...</value>
   </data>
-  <data name="ReadMoreRss" xml:space="preserve">
-    <value>Читать дальше... (redirect to http://outcoldman.ru)</value>
-  </data>
   <data name="Search" xml:space="preserve">
     <value>Поиск</value>
   </data>

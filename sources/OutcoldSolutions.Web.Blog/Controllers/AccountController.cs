@@ -45,7 +45,7 @@ namespace OutcoldSolutions.Web.Blog.Controllers
             }
             else
             {
-                return this.RedirectToAction("Index", "Site");
+                return this.RedirectToAction("index", "blog");
             }
         }
     }

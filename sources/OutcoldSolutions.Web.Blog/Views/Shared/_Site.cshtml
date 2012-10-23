@@ -30,11 +30,11 @@
                 <section class="langbar clear-fix">
                     @if (Html.IsRussian())
                     {
-                        <a href="@Url.Action("index", "site", new { lang = "en" })">In English</a>
+                        <a href="@Url.Action("index", "blog", new { lang = "en" })">In English</a>
                     }
                     else
                     {
-                        <a href="@Url.Action("index", "site", new { lang = "ru" })">In Russian</a>
+                        <a href="@Url.Action("index", "blog", new { lang = "ru" })">In Russian</a>
                     }
                 </section>
                 
@@ -47,10 +47,10 @@
                 
                 <hgroup class="site-title float-left clear-fix">
                     <h2>
-                        @Html.ActionLink("Denis Gladkikh", "index", "site")
+                        @Html.ActionLink("Denis Gladkikh", "index", "blog")
                     </h2>
                     <h1>
-                        @Html.ActionLink("outcoldman", "index", "site")
+                        @Html.ActionLink("outcoldman", "index", "blog")
                     </h1>
                 </hgroup>
 
@@ -60,8 +60,8 @@
                         var selectedMenuItemAttributes = new { @class = "active" };
                     }
                     <ul>
-                        <li>@this.Html.ActionLink(this.Html.GetResource("Blog"), "index", "blog", new {}, this.Html.IsController("blog") ? selectedMenuItemAttributes : null)</li>
-                        <li>@this.Html.ActionLink(this.Html.GetResource("AboutMe"), "aboutme", "site", new {}, this.Html.IsAction("aboutme", "site") ? selectedMenuItemAttributes : null)</li>
+                        <li>@this.Html.ActionLink(this.Html.GetResource("Blog"), "index", "blog", new { lang = this.Html.GetLanguage() }, this.Html.IsController("blog") ? selectedMenuItemAttributes : null)</li>
+                        <li>@this.Html.ActionLink(this.Html.GetResource("AboutMe"), "aboutme", "site", new { lang = this.Html.GetLanguage() }, this.Html.IsAction("aboutme", "site") ? selectedMenuItemAttributes : null)</li>
                     </ul>
                 </nav>
 

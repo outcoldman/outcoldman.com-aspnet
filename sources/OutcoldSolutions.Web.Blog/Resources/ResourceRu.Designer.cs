@@ -367,15 +367,6 @@ namespace OutcoldSolutions.Web.Blog.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Читать дальше... (redirect to http://outcoldman.ru).
-        /// </summary>
-        internal static string ReadMoreRss {
-            get {
-                return ResourceManager.GetString("ReadMoreRss", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Поиск.
         /// </summary>
         internal static string Search {

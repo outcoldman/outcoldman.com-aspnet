@@ -4,12 +4,16 @@
 
 namespace OutcoldSolutions.Web.Blog
 {
+    using System;
+    using System.Diagnostics;
     using System.Web.Mvc;
     using System.Web.Optimization;
     using System.Web.Routing;
 
     using OutcoldSolutions.Web.Blog.Controllers;
+    using OutcoldSolutions.Web.Blog.Core.Util;
     using OutcoldSolutions.Web.Blog.Services;
+    using OutcoldSolutions.Web.Blog.Timers;
 
     using WebMatrix.WebData;
 
@@ -17,6 +21,11 @@ namespace OutcoldSolutions.Web.Blog
     {
         protected void Application_Start()
         {
+            if (Debugger.IsAttached)
+            {
+                // Trace.Listeners.Add(new DefaultTraceListener() { TraceOutputOptions = TraceOptions.DateTime });
+            }
+
             AreaRegistration.RegisterAllAreas();
 
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
@@ -29,7 +38,6 @@ namespace OutcoldSolutions.Web.Blog
             IDependencyResolverContainer container = new DependencyResolverContainer();
             using (var registration = container.Registration())
             {
-
                 registration.Register<IDependencyResolver>()
                     .AsSingleton<CustomDependencyResolver>();
 
@@ -38,7 +46,6 @@ namespace OutcoldSolutions.Web.Blog
 
                 registration.Register<ILiveJournalService>()
                     .As<LiveJournalService>();
-
 
                 // Controllers
                 registration.Register<AccountController>();
@@ -55,10 +62,10 @@ namespace OutcoldSolutions.Web.Blog
             this.Application.Lock();
             this.Application[container.GetType().FullName] = container;
 
-            //if (ConfigurationUtil.GetSettings("SendNotifications", true))
-            //{
-                // this.Application["notificationSender"] = new NotificationSender();
-            //}
+            if (ConfigurationUtil.GetSettings("SendNotifications", true))
+            {
+                this.Application["notificationSender"] = new NotificationSender();
+            }
 
             this.Application.UnLock();
         }

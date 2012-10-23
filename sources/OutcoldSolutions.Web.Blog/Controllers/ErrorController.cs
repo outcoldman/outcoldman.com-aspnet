@@ -21,8 +21,9 @@ namespace OutcoldSolutions.Web.Blog.Controllers
         public ActionResult NotFound(string aspxerrorpath)
         {
             this.LogError();
-            this.ViewData["ErrorMessage"] = string.Format(
-                "Error 404. Couldn't find page with current url {0}. Sorry.", aspxerrorpath);
+            var message = string.Format("Error 404. Couldn't find page with current url {0}. Sorry.", aspxerrorpath);
+            this.ViewData["ErrorMessage"] = message;
+            Trace.TraceWarning(message);
             return this.View("Error");
         }
 

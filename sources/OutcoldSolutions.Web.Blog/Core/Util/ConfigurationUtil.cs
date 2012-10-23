@@ -9,14 +9,6 @@ namespace OutcoldSolutions.Web.Blog.Core.Util
 
     public static class ConfigurationUtil
     {
-        public static ConnectionStringSettings ConnectionStringMain
-        {
-            get
-            {
-                return GetConnectionString(MainConnectionString);
-            }
-        }
-
         public static int DefaultCacheValue
         {
             get
@@ -37,7 +29,7 @@ namespace OutcoldSolutions.Web.Blog.Core.Util
         {
             get
             {
-                return GetSettings("MeEmail", "outcoldman@gmail.com");
+                return GetSettings("MeEmail", "outcoldman@outlook.com");
             }
         }
 
@@ -45,23 +37,7 @@ namespace OutcoldSolutions.Web.Blog.Core.Util
         {
             get
             {
-                return GetSettings("SiteUrl", "http://outcoldman.ru");
-            }
-        }
-
-        public static string LivejournalEmail
-        {
-            get
-            {
-                return GetSettings("LivejournalEmail", "outcoldman+outcoldan@post.livejournal.com");
-            }
-        }
-
-        public static string MainConnectionString
-        {
-            get
-            {
-                return GetSettings("MainConnectionString", "Main");
+                return GetSettings("SiteUrl", "http://outcoldman.com");
             }
         }
 
