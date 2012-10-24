@@ -457,7 +457,7 @@ select x.CommentID, x.Email
 		union 
 		select {1} as CommentID , '{0}' as Email
 	) as x
-", ConfigurationUtil.MeEmail, comment.CommentID), connection))
+", ConfigurationUtil.AuthorEmail, comment.CommentID), connection))
                 {
                     command.Parameters.AddWithValue("@commentID", comment.CommentID);
                     command.ExecuteNonQuery();

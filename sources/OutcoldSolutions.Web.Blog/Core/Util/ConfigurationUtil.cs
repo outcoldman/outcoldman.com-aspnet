@@ -17,19 +17,19 @@ namespace OutcoldSolutions.Web.Blog.Core.Util
             }
         }
 
-        public static string Me
+        public static string AuthorUsername
         {
             get
             {
-                return GetSettings("MeUsername", "outcoldman");
+                return GetSettings("AuthorUsername", "admin");
             }
         }
 
-        public static string MeEmail
+        public static string AuthorEmail
         {
             get
             {
-                return GetSettings("MeEmail", "outcoldman@outlook.com");
+                return GetSettings("AuthorEmail", "admin@example.com");
             }
         }
 
@@ -37,7 +37,7 @@ namespace OutcoldSolutions.Web.Blog.Core.Util
         {
             get
             {
-                return GetSettings("SiteUrl", "http://outcoldman.com");
+                return GetSettings("SiteUrl", "http://example.com");
             }
         }
 

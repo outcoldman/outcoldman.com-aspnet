@@ -16,24 +16,32 @@ namespace OutcoldSolutions.Web.Blog.Core
 
         public override RouteData GetRouteData(HttpContextBase httpContext)
         {
-            var request = httpContext.Request;
-            var response = httpContext.Response;
-
-            if (request.Url != null)
+            if (ConfigurationUtil.GetSettings("UseLegacyRoute", false))
             {
-                var uriBuilder = new UriBuilder(request.Url)
+                var request = httpContext.Request;
+                var response = httpContext.Response;
+
+                if (request.Url != null)
+                {
+                    var uriBuilder = new UriBuilder(request.Url)
                     {
                         Path = string.Empty,
                         Query = string.Empty
                     };
 
-                if (!uriBuilder.Uri.Equals(this.currentUri))
-                {
-                    var rightUri = new UriBuilder(this.currentUri) { Path = request.Url.PathAndQuery };
+                    if (!uriBuilder.Uri.Equals(this.currentUri))
+                    {
+                        var rightUri = new UriBuilder(this.currentUri) { Path = request.Url.PathAndQuery };
 
-                    response.StatusCode = 301; /* HTTP_STATUS_MOVED */
-                    response.RedirectLocation = rightUri.Uri.ToString();
-                    response.End();
+                        response.StatusCode = 301; /* HTTP_STATUS_MOVED */
+                        response.RedirectLocation = rightUri.Uri.ToString();
+
+                        response.Cache.SetCacheability(HttpCacheability.Public);
+                        response.Cache.SetValidUntilExpires(true);
+                        response.Cache.SetExpires(DateTime.Now.AddMonths(1));
+
+                        response.End();
+                    }
                 }
             }
 

@@ -41,8 +41,7 @@ namespace OutcoldSolutions.Web.Blog.Timers
                             {
                                 string adminBody = string.Empty;
 
-                                if (string.Compare(model.Notification.Email, ConfigurationUtil.MeEmail, false) == 0
-                                    && model.Comment.IsSpam)
+                                if (string.Equals(model.Notification.Email, ConfigurationUtil.AuthorEmail, StringComparison.OrdinalIgnoreCase) && model.Comment.IsSpam)
                                 {
                                     adminBody = "<h2>MARKED AS SPAM!</h2>";
                                 }
@@ -53,47 +52,17 @@ namespace OutcoldSolutions.Web.Blog.Timers
                                         SmtpConfig.GetFrom(), model.Notification.Email)
                                         {
                                             IsBodyHtml = true, 
-                                            Subject =
-                                                ResourceLoader.GetResource
-                                                    (
-                                                        model.Language, 
-                                                        "NotificationTitle")
-                                                + model.Title, 
-                                            Body =
-                                                string.Format(
-                                                    ResourceLoader
-                                                .GetResource(
-                                                    model.Language, 
-                                                    "NotificationBody"), 
+                                            Subject = ResourceLoader.GetResource(model.Language, "NotificationTitle") + model.Title, 
+                                            Body = string.Format(
+                                                    ResourceLoader.GetResource(model.Language, "NotificationBody"), 
                                                     model.Title, 
                                                     model.Comment.Body, 
-                                                    string.Format(
-                                                        "{2}/{0}/comment/unsubscribe/{1}", 
-                                                        model.Language, 
-                                                        model
-                                                .SubscribtionId, 
-                                                        ConfigurationUtil
-                                                .SiteUrl), 
-                                                    string.Format(
-                                                        "{2}/{0}/blog/show/{1}", 
-                                                        model.Language, 
-                                                        model.Comment
-                                                .PostID, 
-                                                        ConfigurationUtil
-                                                .SiteUrl), 
-                                                    string.IsNullOrEmpty(
-                                                        model.Comment
-                                                        .UserName)
-                                                        ? ResourceLoader
-                                                              .GetResource
-                                                              (
-                                                                  model
-                                                              .Language, 
-                                                                  "Anonymous")
-                                                        : model.Comment
-                                                              .UserName, 
-                                                    adminBody)
+                                                    string.Format("{2}/{0}/comment/unsubscribe/{1}", model.Language, model.SubscribtionId, ConfigurationUtil.SiteUrl), 
+                                                    string.Format("{2}/{0}/blog/show/{1}", model.Language, model.Comment.PostID, ConfigurationUtil.SiteUrl), 
+                                                    string.IsNullOrEmpty(model.Comment.UserName) ? ResourceLoader.GetResource(model.Language, "Anonymous") : model.Comment.UserName, 
+                                                    adminBody),
                                         };
+
                                     client.Send(message);
                                 }
                                 catch (FormatException e)

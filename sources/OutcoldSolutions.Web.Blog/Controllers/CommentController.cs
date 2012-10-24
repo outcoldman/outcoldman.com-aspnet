@@ -80,7 +80,7 @@ namespace OutcoldSolutions.Web.Blog.Controllers
                                     comment.UserWeb);
 
                                 CommentSubscription subscription = null;
-                                if (fInform && email != ConfigurationUtil.MeEmail)
+                                if (fInform && email != ConfigurationUtil.AuthorEmail)
                                 {
                                     if (!repository.CheckSubscriptionExist(id, email))
                                     {

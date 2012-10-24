@@ -1,4 +1,5 @@
 ﻿@using Microsoft.Web.Helpers
+@using OutcoldSolutions.Web.Blog.Core.Util
 @{
 	Layout = "~/Views/Shared/_Site.cshtml";
 }
@@ -6,9 +7,12 @@
 @RenderBody()
 
 @section Head {
-    @if (!string.Equals(HttpContext.Current.Request.UserHostName, "::1", StringComparison.InvariantCulture))
-    {
-        @Analytics.GetGoogleAsyncHtml("UA-7023371-5")
+    @{
+        var googleAnalyticsId = ConfigurationUtil.GetSettings("GoogleAnalyticsId", string.Empty);
+        if (!string.IsNullOrEmpty(googleAnalyticsId))
+        {
+            @Analytics.GetGoogleAsyncHtml(googleAnalyticsId)
+        }
     }
 }
 

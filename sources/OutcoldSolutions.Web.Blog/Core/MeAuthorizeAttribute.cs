@@ -12,7 +12,7 @@ namespace OutcoldSolutions.Web.Blog.Core
     {
         public MeAuthorizeAttribute()
         {
-            this.Users = ConfigurationUtil.Me;
+            this.Users = ConfigurationUtil.AuthorUsername;
         }
     }
 }

@@ -14,7 +14,7 @@ namespace OutcoldSolutions.Web.Blog.Helpers
         public static bool IsMe(this HttpContextBase context)
         {
             IPrincipal principal = context.User;
-            return principal != null && principal.Identity != null && principal.Identity.Name == ConfigurationUtil.Me;
+            return principal != null && principal.Identity != null && principal.Identity.Name == ConfigurationUtil.AuthorUsername;
         }
     }
 }

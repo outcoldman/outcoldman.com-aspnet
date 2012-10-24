@@ -226,7 +226,7 @@ namespace OutcoldSolutions.Web.Blog.Metablog
                             BlogName =
                                 string.Format(
                                     "{0} {1}", 
-                                    ConfigurationUtil.Me, 
+                                    ConfigurationUtil.AuthorUsername, 
                                     "ru"), 
                             Url =
                                 string.Format(
@@ -240,7 +240,7 @@ namespace OutcoldSolutions.Web.Blog.Metablog
                             BlogName =
                                 string.Format(
                                     "{0} {1}", 
-                                    ConfigurationUtil.Me, 
+                                    ConfigurationUtil.AuthorUsername, 
                                     "en"), 
                             Url =
                                 string.Format(
@@ -258,8 +258,8 @@ namespace OutcoldSolutions.Web.Blog.Metablog
             ValidateUser(username, password);
             UserInfo info = new UserInfo
                 {
-                    Email = ConfigurationUtil.MeEmail, 
-                    Nickname = ConfigurationUtil.Me, 
+                    Email = ConfigurationUtil.AuthorEmail, 
+                    Nickname = ConfigurationUtil.AuthorUsername, 
                     Url = ConfigurationUtil.SiteUrl
                 };
             return info;
@@ -294,7 +294,7 @@ namespace OutcoldSolutions.Web.Blog.Metablog
                     Description = blogPost.HtmlText, 
                     Permalink = GetBlogUrl(blogPost), 
                     Title = blogPost.Title, 
-                    Userid = ConfigurationUtil.Me, 
+                    Userid = ConfigurationUtil.AuthorUsername, 
                     Publish = blogPost.IsPublic
                 };
         }
