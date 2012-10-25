@@ -23,22 +23,22 @@ namespace OutcoldSolutions.Web.Blog.Models.Repositories
 
     public class NotificationRepository : IDisposable
     {
-        private readonly LocalDatabaseEntities _dataContext = new LocalDatabaseEntities();
+        private readonly LocalDatabaseEntities dataContext = new LocalDatabaseEntities();
 
         public LocalDatabaseEntities DataContext
         {
             get
             {
-                return this._dataContext;
+                return this.dataContext;
             }
         }
 
         public void Dispose()
         {
-            this._dataContext.Dispose();
+            this.dataContext.Dispose();
         }
 
-        public IList<NotificationModel> GetNotifications()
+        public IList<NotificationModel> GetNotifications(Comment comment)
         {
             return (from n in this.DataContext.Notifications
                     join c in this.DataContext.Comments on n.CommentID equals c.CommentID
@@ -46,7 +46,7 @@ namespace OutcoldSolutions.Web.Blog.Models.Repositories
                     join s in this.DataContext.CommentSubscriptions on new { c.PostID, email = n.Email.ToLower() }
                         equals new { s.PostID, email = s.Email.ToLower() } into sd
                     from sdd in sd.DefaultIfEmpty()
-                    where n.IsSent == false
+                    where n.IsSent == false && c.CommentID == comment.CommentID
                     select
                         new NotificationModel
                             {

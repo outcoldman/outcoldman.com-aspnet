@@ -1,11 +1,12 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// Outcold Solutions (http://outcoldman.ru)
+// Outcold Solutions (http://outcoldman.com)
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace OutcoldSolutions.Web.Blog.Controllers
 {
     using System;
     using System.Diagnostics;
+    using System.Threading.Tasks;
     using System.Web;
     using System.Web.Mvc;
 
@@ -18,14 +19,17 @@ namespace OutcoldSolutions.Web.Blog.Controllers
     using OutcoldSolutions.Web.Blog.Models.Repositories;
     using OutcoldSolutions.Web.Blog.Resources;
     using OutcoldSolutions.Web.Blog.Services;
+    using OutcoldSolutions.Web.Blog.Timers;
 
     public class CommentController : Controller
     {
         private readonly ISpamFilterService spamFilterService;
+        private readonly NotificationSender notificationSender;
 
-        public CommentController(ISpamFilterService spamFilterService)
+        public CommentController(ISpamFilterService spamFilterService, NotificationSender notificationSender)
         {
             this.spamFilterService = spamFilterService;
+            this.notificationSender = notificationSender;
         }
 
         [ValidateInput(false)]
@@ -100,6 +104,8 @@ namespace OutcoldSolutions.Web.Blog.Controllers
                                 resMessage = comment.IsSpam
                                                  ? ResourceLoader.GetResource(lang, "CommentAddedAsSpam")
                                                  : ResourceLoader.GetResource(lang, "CommentAdded");
+
+                                Task.Factory.StartNew(() => this.notificationSender.SendNotifications(comment));
                             }
                             else
                             {

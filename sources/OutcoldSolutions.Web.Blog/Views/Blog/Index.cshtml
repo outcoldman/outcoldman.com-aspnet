@@ -8,39 +8,40 @@
 	ViewBag.Title = "outcoldman: " + Html.GetResource("Blog") + (ViewData["tag"] == null ? string.Empty : string.Format(" - {0}", ((Tag)ViewData["tag"]).Name));
 }
 
-<section class="leftSection">
+<section @if( ViewData["tag"] == null) { <text>class='leftSection'</text> } >
     
+    @if (ViewData["tag"] != null)
+    {
+        <hgroup>
+            <h3>&rarr; @(((Tag)ViewData["tag"]).Name)</h3>
+        </hgroup>
+    }
 
-@if (ViewData["tag"] != null)
-{
-    <hgroup>
-        <h3>&rarr; @(((Tag)ViewData["tag"]).Name)</h3>
-    </hgroup>
-}
+    <div class="clear-fix-b">
+        @foreach (var item in Model)
+        {
+            @Html.Partial("ShowBlogItem", item) 
+        }
+    </div>
 
-<div class="clear-fix-b">
-@foreach (var item in Model)
-{
-    @Html.Partial("ShowBlogItem", item) 
-}
-</div>
-
-<div class="float-right">
-    @Html.CreatePager((int)ViewData["selectedPage"], (int)ViewData["pagesCount"])
-</div>
-
+    <div class="float-right">
+        @Html.CreatePager((int)ViewData["selectedPage"], (int)ViewData["pagesCount"])
+    </div>
 
 </section>
 
-<aside>
+@if (ViewData["tag"] == null)
+{
+    <aside>
     
-    <div class="clear-fix-b">
-        <ul class="tags">
-            @foreach (GetTopTagsResult tag in (List<GetTopTagsResult>)ViewData["toptags"])
-            {
-                <li>@Html.ActionLink(tag.Name, "tag", "blog", new { id = tag.TagID }, new { @class = "tag" + tag.TagType, rel = "tag" }) </li>
-            }
-        </ul>
-    </div>
+        <div class="clear-fix-b">
+            <ul class="tags">
+                @foreach (GetTopTagsResult tag in (List<GetTopTagsResult>)ViewData["toptags"])
+                {
+                    <li>@Html.ActionLink(tag.Name, "tag", "blog", new { id = tag.TagID }, new { @class = "tag" + tag.TagType, rel = "tag" }) </li>
+                }
+            </ul>
+        </div>
    
-</aside>
+    </aside>
+}

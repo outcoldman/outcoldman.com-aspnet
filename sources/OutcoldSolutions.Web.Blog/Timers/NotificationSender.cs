@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// Outcold Solutions (http://outcoldman.ru)
+// Outcold Solutions (http://outcoldman.com)
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace OutcoldSolutions.Web.Blog.Timers
@@ -7,33 +7,22 @@ namespace OutcoldSolutions.Web.Blog.Timers
     using System;
     using System.Diagnostics;
     using System.Net.Mail;
-    using System.Timers;
 
     using OutcoldSolutions.Web.Blog.Core;
     using OutcoldSolutions.Web.Blog.Core.Util;
+    using OutcoldSolutions.Web.Blog.Models;
     using OutcoldSolutions.Web.Blog.Models.Repositories;
     using OutcoldSolutions.Web.Blog.Resources;
 
     public class NotificationSender
     {
-        private readonly Timer timer;
-
-        public NotificationSender()
-        {
-            this.timer = new Timer();
-            this.timer.Elapsed += this.OnTimed;
-            this.timer.AutoReset = false;
-            this.timer.Interval = 10000;
-            this.timer.Enabled = true;
-        }
-
-        private void OnTimed(object state, ElapsedEventArgs elapsedEventArgs)
+        public void SendNotifications(Comment comment)
         {
             try
             {
                 using (NotificationRepository repository = new NotificationRepository())
                 {
-                    foreach (NotificationModel model in repository.GetNotifications())
+                    foreach (NotificationModel model in repository.GetNotifications(comment))
                     {
                         try
                         {
@@ -83,11 +72,6 @@ namespace OutcoldSolutions.Web.Blog.Timers
             catch (Exception e)
             {
                 Trace.TraceError(e.ToString());
-            }
-            finally
-            {
-                this.timer.Interval = ConfigurationUtil.GetSettings("NoificationSenderInterval", 120000);
-                this.timer.Enabled = true;
             }
         }
     }

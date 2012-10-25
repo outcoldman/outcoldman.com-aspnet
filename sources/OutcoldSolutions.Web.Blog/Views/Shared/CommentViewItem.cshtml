@@ -6,14 +6,14 @@
 @{ bool fMyComment = string.Compare(Model.UserWeb, ConfigurationUtil.SiteUrl, true) == 0; }
 <fieldset class="comment @(fMyComment ? "comment-author" : string.Empty)" @(Model.CommentID <= 0 ? "id=preview" : string.Empty)>
         
-    <legend > 
+    <legend style="hyphens: auto" > 
         @if (string.IsNullOrWhiteSpace(Model.UserWeb))
         {
             @(!string.IsNullOrWhiteSpace(Model.UserName) ? Model.UserName : Html.GetResource("Anonymous"))
         }
         else
         {
-            <a href="@Model.UserWeb" @(fMyComment ? string.Empty : "rel=\"nofollow\"")>@(!string.IsNullOrWhiteSpace(Model.UserName) ? Model.UserName : Html.GetResource("Anonymous"))</a>
+            <a rel="nofollow" href="@Model.UserWeb">@(!string.IsNullOrWhiteSpace(Model.UserName) ? Model.UserName : Html.GetResource("Anonymous"))</a>
         }
         ( <time datetime="@Model.Date.ToString("o")">@Model.Date.ToString("dd.MM.yyyy HH:mm") UTC</time> )
     

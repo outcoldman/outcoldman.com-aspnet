@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// Outcold Solutions (http://outcoldman.ru)
+// Outcold Solutions (http://outcoldman.com)
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace OutcoldSolutions.Web.Blog.Core
@@ -14,10 +14,12 @@ namespace OutcoldSolutions.Web.Blog.Core
     {
         public static SmtpClient GetClient()
         {
-            return new SmtpClient(ConfigurationUtil.GetSettings("SmtpServer", "example.com"), ConfigurationUtil.GetSettings("SmtpPort", 25))
+            return new SmtpClient()
                 {
-                    UseDefaultCredentials = false, 
-                    Credentials = new NetworkCredential("bot@outcoldman.ru", "botQw12er34")
+                    Credentials =
+                        new NetworkCredential(
+                        ConfigurationUtil.GetSettings("SmtpUserName", "Author"),
+                        ConfigurationUtil.GetSettings("SmtpPassword", "Password"))
                 };
         }
 

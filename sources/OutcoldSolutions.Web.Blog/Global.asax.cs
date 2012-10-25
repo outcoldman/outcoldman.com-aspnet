@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// Outcold Solutions (http://outcoldman.ru)
+// Outcold Solutions (http://outcoldman.com)
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace OutcoldSolutions.Web.Blog
@@ -11,7 +11,6 @@ namespace OutcoldSolutions.Web.Blog
     using System.Web.Routing;
 
     using OutcoldSolutions.Web.Blog.Controllers;
-    using OutcoldSolutions.Web.Blog.Core.Util;
     using OutcoldSolutions.Web.Blog.Services;
     using OutcoldSolutions.Web.Blog.Timers;
 
@@ -21,9 +20,11 @@ namespace OutcoldSolutions.Web.Blog
     {
         protected void Application_Start()
         {
+            AppDomain.CurrentDomain.UnhandledException += this.CurrentDomainOnUnhandledException;
+
             if (Debugger.IsAttached)
             {
-                // Trace.Listeners.Add(new DefaultTraceListener() { TraceOutputOptions = TraceOptions.DateTime });
+                Trace.Listeners.Add(new DefaultTraceListener() { TraceOutputOptions = TraceOptions.DateTime });
             }
 
             AreaRegistration.RegisterAllAreas();
@@ -47,6 +48,8 @@ namespace OutcoldSolutions.Web.Blog
                 registration.Register<ILiveJournalService>()
                     .As<LiveJournalService>();
 
+                registration.Register<NotificationSender>();
+
                 // Controllers
                 registration.Register<AccountController>();
                 registration.Register<BlogController>();
@@ -61,13 +64,12 @@ namespace OutcoldSolutions.Web.Blog
 
             this.Application.Lock();
             this.Application[container.GetType().FullName] = container;
-
-            if (ConfigurationUtil.GetSettings("SendNotifications", true))
-            {
-                this.Application["notificationSender"] = new NotificationSender();
-            }
-
             this.Application.UnLock();
+        }
+
+        private void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs unhandledExceptionEventArgs)
+        {
+            Trace.TraceError(unhandledExceptionEventArgs.ExceptionObject.ToString());
         }
     }
 }
