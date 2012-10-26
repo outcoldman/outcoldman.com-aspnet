@@ -4,7 +4,6 @@
 @using OutcoldSolutions.Web.Blog.Models.Repositories
 @using OutcoldSolutions.Web.Blog.Resources
 @{
-	Layout = "~/Views/Shared/_Site.cshtml";
 	ViewBag.Title = "outcoldman: " + Html.GetResource("Blog") + (ViewData["tag"] == null ? string.Empty : string.Format(" - {0}", ((Tag)ViewData["tag"]).Name));
 }
 
