@@ -7,14 +7,10 @@ namespace OutcoldSolutions.Web.Blog
     using System.Web.Mvc;
     using System.Web.Routing;
 
-    using OutcoldSolutions.Web.Blog.Core;
-
     public class RouteConfig
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-            routes.Add(new LegacyUrlRoute());
-
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             
             routes.MapRoute("Account", "account/login", new { controller = "Account", action = "Login" });

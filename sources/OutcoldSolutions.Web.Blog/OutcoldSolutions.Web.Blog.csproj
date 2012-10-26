@@ -186,7 +186,6 @@
     <Compile Include="Helpers\HtmlRouteData.cs" />
     <Compile Include="Helpers\PagesControl.cs" />
     <Compile Include="Helpers\UserHelper.cs" />
-    <Compile Include="Core\LegacyUrlRoute.cs" />
     <Compile Include="Metablog\BlogInfo.cs" />
     <Compile Include="Metablog\Category.cs" />
     <Compile Include="Metablog\CategoryInfo.cs" />
@@ -274,7 +273,6 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Shared\_Public.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Blog\List.cshtml" />
     <Content Include="Views\Blog\Delete.cshtml" />
@@ -293,6 +291,7 @@
     <Content Include="Views\Site\SiteMap.cshtml" />
     <Content Include="Views\Shared\SubscriptionButtons.cshtml" />
     <Content Include="Views\Shared\TagsLine.cshtml" />
+    <Content Include="Views\Shared\_Public.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\ResourceEn.resx">

@@ -22,7 +22,7 @@
         
         
     <div class="float-left">
-        @Gravatar.GetHtml(string.IsNullOrEmpty(Model.UserEmail) ? " " : Model.UserEmail)
+        <img src="@Gravatar.GetUrl(string.IsNullOrEmpty(Model.UserEmail) ? " " : Model.UserEmail)&d=identicon" alt="gravatar" />
     </div>
 
     <section class="comment-body">
