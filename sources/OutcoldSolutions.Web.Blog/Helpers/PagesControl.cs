@@ -11,9 +11,9 @@ namespace OutcoldSolutions.Web.Blog.Helpers
     
     public static class PagesControl
     {
-        public const int ItemsPerPage = 10;
+        public const int ItemsPerPage = 5;
 
-        public const int PageCenter = 5;
+        public const int PageCenter = 3;
 
         public static MvcHtmlString CreatePager(this HtmlHelper helper, int selectedPage, int pagesCount)
         {

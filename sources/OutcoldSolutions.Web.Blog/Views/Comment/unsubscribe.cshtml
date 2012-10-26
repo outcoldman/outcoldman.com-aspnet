@@ -7,15 +7,16 @@
 }
 
 
+<section class="default-vertical-padding">
+    <h1>@Html.ActionLink(Model.BlogTitle, "show", "blog", new { id = Model.PostId }, null)</h1>
+    <p>@Html.GetResource("UnsubscribeQuestion")</p>
+</section>
 
 
-    <h2>@Html.ActionLink(Model.BlogTitle, "show", "blog", new { id = Model.PostId }, null)</h2>
-	<p>@Html.GetResource("UnsubscribeQuestion")</p>
-
-
-@using (Html.BeginForm()) {
-	<input type="submit" class="footerSubmit" value="@Html.GetResource("Unsubscribe") " style="float:left;" />
-	 }
+@using (Html.BeginForm())
+{
+    <input type="submit" class="float-left" value="@Html.GetResource("Unsubscribe") "  />
+}
 
 
 

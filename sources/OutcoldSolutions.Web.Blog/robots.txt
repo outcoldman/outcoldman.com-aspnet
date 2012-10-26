@@ -5,6 +5,8 @@ Disallow: /en/comment/add/
 Disallow: /ru/comment/add/
 Disallow: /​ru/​com​men​t/p​rev​iew​/
 Disallow: /​en/​com​men​t/p​rev​iew​/
+Disallow: /ru/comment/unsubscribe/
+Disallow: /en/comment/unsubscribe/
 Disallow: /error/
 Allow: /
 
