@@ -73,7 +73,7 @@ namespace OutcoldSolutions.Web.Blog.Controllers
                 "outcoldman LJ Friends",
                 "outcoldman LiveJournal Friends",
                 new Uri("http://outcoldman.livejournal.com/friends"),
-                liveJournalPosts);
+                liveJournalPosts) { LastUpdatedTime = DateTime.Now };
 
             return new FeedResult(new Rss20FeedFormatter(feed));
         }

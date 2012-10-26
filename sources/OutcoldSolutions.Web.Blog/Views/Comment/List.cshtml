@@ -7,47 +7,46 @@
 	ViewBag.Title = "Comments list";
 }
 
+<p>
+	@Html.ActionLink("Posts", "list", "blog")  
+</p>
 
+<h2>Comments list</h2>
 
-	<p>
-		@Html.ActionLink("Posts", "list", "blog")  
-    </p>
+@Html.CreatePager((int)ViewData["selectedPage"], (int)ViewData["pagesCount"])
 
-    <h2>Comments list</h2>
+<table style="width:100%;">
+    <tr>
+        <th style="width:50%;">
+            Body
+        </th>
+        <th>
+            PostID
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            UserIP
+        </th>
+		<th>
+            UserName
+        </th>
+		<th>
+            UserEmail
+        </th>
+		<th>
+            UserWeb
+        </th>
+		<th></th>
+        <th>Spam</th>
+    </tr>
+@{
+    int i = 0;
+    foreach (var item in Model)
+    {
 
-	@Html.CreatePager((int)ViewData["selectedPage"], (int)ViewData["pagesCount"])
-
-    <table style="width:100%;">
-        <tr>
-            <th style="width:50%;">
-                Body
-            </th>
-            <th>
-                PostID
-            </th>
-            <th>
-                Date
-            </th>
-            <th>
-                UserIP
-            </th>
-			<th>
-                UserName
-            </th>
-			<th>
-                UserEmail
-            </th>
-			<th>
-                UserWeb
-            </th>
-			<th></th>
-            <th>Spam</th>
-        </tr>
-		@{
-			int i = 0; }
-    @{ foreach (var item in Model) { 
-    
-        <tr style='background-color:@((i++) % 2 == 0 ? "#f4f4f4" : "white") ;'>
+        <tr style='background-color: @((i++) % 2 == 0 ? "#f4f4f4" : "white");'>
             <td>
                 @item.Body.SafelySubstring(50)
             </td>
@@ -55,37 +54,36 @@
                 @Html.ActionLink(item.PostID.ToString(), "show", "blog", new { id = item.PostID }, null)
             </td>
             <td>
-				<time datetime="@item.Date.ToString("o")" pubdate="pubdate">@item.Date.ToString("dd.MM.yyyy HH:mm")  UTC</time>
+                <time datetime="@item.Date.ToString("o")" pubdate="pubdate">@item.Date.ToString("dd.MM.yyyy HH:mm")  UTC</time>
             </td>
             <td>
                 <a href="http://whois.domaintools.com/@item.UserIP " target="_blank">@item.UserIP </a>
             </td>
-			 <td>
+            <td>
                 @item.UserName 
             </td>
-			<td>
+            <td>
                 @item.UserEmail 
             </td>
-			<td>
+            <td>
                 @item.UserWeb 
             </td>
-			<td>
-				@Html.ActionLink("Delete", "delete", new { id = item.CommentID })  
+            <td>
+                @Html.ActionLink("Delete", "delete", new { id = item.CommentID })  
             </td>
             <td>
-                @if (item.IsSpam) {
-				    @Html.ActionLink("UnSpam", "unspam", new { id = item.CommentID })
-                } else {
+                @if (item.IsSpam)
+                {
+                    @Html.ActionLink("UnSpam", "unspam", new { id = item.CommentID })
+                }
+                else
+                {
                     @Html.ActionLink("Spam", "spam", new { id = item.CommentID })
-                 }
+                }
             </td>
         </tr>
-    
-     } }
 
-    </table>
+    }
+}
 
-
-
-
-
+</table>

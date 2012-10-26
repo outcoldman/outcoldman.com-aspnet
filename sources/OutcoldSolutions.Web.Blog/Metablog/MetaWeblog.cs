@@ -154,11 +154,7 @@ namespace OutcoldSolutions.Web.Blog.Metablog
                 {
                     filePath = Path.Combine(
                         imagePath, 
-                        string.Format(
-                            "{0}_{1}{2}", 
-                            Path.GetFileNameWithoutExtension(mediaObjectName), 
-                            index++, 
-                            Path.GetExtension(mediaObjectName)));
+                        string.Format("{0}_{1}{2}", Path.GetFileNameWithoutExtension(mediaObjectName), index++, Path.GetExtension(mediaObjectName)));
                 }
 
                 Trace.TraceInformation("create file {0}", filePath);
@@ -170,12 +166,7 @@ namespace OutcoldSolutions.Web.Blog.Metablog
 
                 MediaObjectInfo objectInfo = new MediaObjectInfo
                     {
-                        Url =
-                            string.Format(
-                                "{0}/Library/{1}/{2}", 
-                                ConfigurationUtil.SiteUrl, 
-                                sole, 
-                                Path.GetFileName(filePath))
+                        Url = string.Format("/Library/{0}/{1}", sole.Replace(Path.DirectorySeparatorChar, '/'), Path.GetFileName(filePath))
                     };
                 return objectInfo;
             }

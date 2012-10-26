@@ -107,14 +107,13 @@
 </fieldset>
 
 <script type="text/javascript">
-	var fillBodyComment = "@Html.Encode(Html.GetResource("FillBodyComment")) <br /><br />";
-	var fillEmailComment = "@Html.Encode(Html.GetResource("FillEmailComment")) <br /><br />";
-	var commentAddUrl = "@Url.Action("add", "comment", new { id = Model.PostID })";
+    var fillBodyComment = "@Html.Encode(Html.GetResource("FillBodyComment")) <br /><br />";
+    var fillEmailComment = "@Html.Encode(Html.GetResource("FillEmailComment")) <br /><br />";
+    var commentAddUrl = "@Url.Action("add", "comment", new { id = Model.PostID })";
     var commentPreviewUrl = "@Url.Action("preview", "comment", new { id = Model.PostID })";
-	var couldntAddComment = "@Html.Encode(Html.GetResource("CouldntAddComment"))";
-	var couldntShowPreview = "@Html.Encode(Html.GetResource("CouldntShowPreview"))";
+    var couldntAddComment = "@Html.Encode(Html.GetResource("CouldntAddComment"))";
+    var couldntShowPreview = "@Html.Encode(Html.GetResource("CouldntShowPreview"))";
 </script>
-<script type="text/javascript" src="~/Scripts/ItemView.js"></script>
-
+ @Scripts.Render("~/bundles/itemview")
 
 

@@ -18,10 +18,8 @@ namespace OutcoldSolutions.Web.Blog.Services
         public IEnumerable<LiveJournalFriendPost> LoadFriendsFeeds(string liveJournalUser)
         {
             HtmlWeb hw = new HtmlWeb();
-            HtmlDocument doc = hw.Load(string.Format(
-                CultureInfo.InvariantCulture, 
-                "http://{0}.livejournal.com/friends", 
-                HttpUtility.UrlEncode(liveJournalUser)));
+            var friendsUrl = string.Format(CultureInfo.InvariantCulture, "http://{0}.livejournal.com/friends", HttpUtility.UrlEncode(liveJournalUser));
+            HtmlDocument doc = hw.Load(friendsUrl);
 
             HtmlNodeCollection entries = doc.DocumentNode.SelectNodes("//div[@class='subcontent']");
 
@@ -32,16 +30,21 @@ namespace OutcoldSolutions.Web.Blog.Services
                 HtmlNode href = entry.SelectSingleNode(".//a[@href and @class='subj-link']");
                 HtmlNode friend = entry.SelectSingleNode(".//font[@color='#000000']");
 
+                if (friend != null)
+                {
+                    item.Title = string.Format(CultureInfo.InvariantCulture, "{0}: ", friend.InnerText);
+                }
+
                 // get what's interesting for RSS 
                 if (href != null)
                 {
                     item.Link = href.Attributes["href"].Value;
-                    if (friend != null)
-                    {
-                        item.Title = string.Format(CultureInfo.InvariantCulture, "{0}: ", friend.InnerText);
-                    }
-
                     item.Title += href.InnerText;
+                }
+
+                if (string.IsNullOrEmpty(item.Link))
+                {
+                    item.Link = friendsUrl;
                 }
 
                 HtmlNode date = entry.SelectSingleNode(".//div[@class='date']");

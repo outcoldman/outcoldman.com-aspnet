@@ -7,31 +7,32 @@
 
 <h2>Log On</h2>
 
-@Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.") 
-
-@using (Html.BeginForm())
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
 {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.") 
+    
     <div>
         <fieldset>
             <legend>Account Information</legend>
                 
-            <div class="editor-label">
+            <div>
                 @Html.LabelFor(m => m.UserName) 
             </div>
-            <div class="editor-field">
+            <div>
                 @Html.TextBoxFor(m => m.UserName) 
                 @Html.ValidationMessageFor(m => m.UserName) 
             </div>
                 
-            <div class="editor-label">
+            <div>
                 @Html.LabelFor(m => m.Password) 
             </div>
-            <div class="editor-field">
+            <div>
                 @Html.PasswordFor(m => m.Password) 
                 @Html.ValidationMessageFor(m => m.Password) 
             </div>
                 
-            <div class="editor-label">
+            <div>
                 @Html.CheckBoxFor(m => m.RememberMe) 
                 @Html.LabelFor(m => m.RememberMe) 
             </div>

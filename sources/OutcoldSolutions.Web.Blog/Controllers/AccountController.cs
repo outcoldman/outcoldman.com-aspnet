@@ -24,7 +24,7 @@ namespace OutcoldSolutions.Web.Blog.Controllers
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
-        // [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(LogOnModel model, string returnUrl)
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
@@ -39,7 +39,7 @@ namespace OutcoldSolutions.Web.Blog.Controllers
 
         private ActionResult RedirectToLocal(string returnUrl)
         {
-            if (Url.IsLocalUrl(returnUrl))
+            if (this.Url.IsLocalUrl(returnUrl))
             {
                 return this.Redirect(returnUrl);
             }
