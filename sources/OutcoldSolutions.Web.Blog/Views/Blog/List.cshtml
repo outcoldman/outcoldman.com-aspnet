@@ -1,5 +1,5 @@
 ﻿@using OutcoldSolutions.Web.Blog.Helpers
-@model System.Collections.Generic.List<OutcoldSolutions.Web.Blog.Models.Repositories.BlogPostModel>
+@model List<OutcoldSolutions.Web.Blog.Models.Repositories.BlogPostModel>
 
 @{
 	Layout = "~/Views/Shared/_Site.cshtml";
@@ -50,9 +50,9 @@
                 @item.BlogPost.IsPublic 
             </td>
 			<td>
-                @Html.ActionLink("Edit", "itemedit", new { id = item.BlogPost.PostID }) |
-                @Html.ActionLink("Show", "show", new { id = item.BlogPost.PostID }) | 
-				@Html.ActionLink("Delete", "delete", new { id = item.BlogPost.PostID })  
+                @Html.ActionLink("Edit", "itemedit", new { id = item.BlogPost.PostID, lang = item.BlogPost.Language }) |
+                @Html.ActionLink("Show", "show", new { id = item.BlogPost.PostID, lang = item.BlogPost.Language }) | 
+				@Html.ActionLink("Delete", "delete", new { id = item.BlogPost.PostID, lang = item.BlogPost.Language })  
             </td>
         </tr>
     

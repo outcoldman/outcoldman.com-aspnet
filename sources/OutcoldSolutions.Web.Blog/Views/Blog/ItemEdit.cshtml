@@ -35,7 +35,7 @@
 
         <p>
             <label for="Date">Blog date:</label><br />
-            @Html.TextBox("Date", Model.Date.ToString("dd.MM.yyyy HH:mm"))
+            @Html.TextBox("Date", Model.Date)
             @Html.ValidationMessage("Date", "*")
         </p>
 
