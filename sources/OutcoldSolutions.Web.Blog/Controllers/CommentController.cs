@@ -41,7 +41,7 @@ namespace OutcoldSolutions.Web.Blog.Controllers
             var userAgent = this.Request.UserAgent;
             bool result = false;
             body = Sanitizer.GetSafeHtmlFragment(HtmlParser.DoBr(HtmlParser.HighlightCode(body).Trim()));
-            site = Sanitizer.GetSafeHtmlFragment(site);
+            site = Encoder.UrlEncode(site);
             string commentView = string.Empty;
 
             string resMessage = ResourceLoader.GetResource(lang, "CommentNotAdded");
@@ -128,7 +128,7 @@ namespace OutcoldSolutions.Web.Blog.Controllers
         public ActionResult Preview(int id, string body, string name, string site, string email)
         {
             body = Sanitizer.GetSafeHtmlFragment(HtmlParser.DoBr(HtmlParser.HighlightCode(body).Trim()));
-            site = Sanitizer.GetSafeHtmlFragment(site);
+            site = Encoder.UrlEncode(site);
 
             Comment comment = new Comment
                 {
