@@ -238,6 +238,7 @@
   <ItemGroup>
     <None Include="App_Data\LocalDatabase.sdf" />
     <Content Include="Content\edit.css" />
+    <Content Include="Content\images\background.jpg" />
     <Content Include="Content\images\busy.gif" />
     <Content Include="Content\images\assembla.ico" />
     <Content Include="Content\images\codeplex.ico" />

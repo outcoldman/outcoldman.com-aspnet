@@ -33,7 +33,7 @@ body {
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     font-size:1em;
     color:#000000;
-    background:#EBE8D9;
+    background:#EBE8D9 url(images/background.jpg) top center no-repeat;
 }
 
 header {
@@ -411,6 +411,10 @@ ul.contacts img {
 *   Mobile Styles   *
 ********************/
 @media only screen and (max-width: 600px) {
+
+    body {
+        background:#EBE8D9;
+    }
 
     header .content-wrapper {
         padding-top: 5px;
