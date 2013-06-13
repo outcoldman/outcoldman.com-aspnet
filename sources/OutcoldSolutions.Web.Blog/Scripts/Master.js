@@ -11,13 +11,13 @@ function wZ(x) {
 
 function doCurrentDate() {
     $("time").each(function() {
-        var content = this.innerHTML;
+        var content = $(this).html();
         if (content.toUpperCase().indexOf("UTC") >= 0) {
-            this.innerHTML = utcToLocal(content);
+            $(this).html(utcToLocal(content));
         }
     });
 }
 
-$(document).ready(function() {
+$(function() {
     doCurrentDate();
 });

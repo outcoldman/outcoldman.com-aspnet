@@ -220,7 +220,7 @@ For unsubscribe please use current link &lt;a href="{2}"&gt;{2}&lt;/a&gt;.
 &lt;/html&gt;</value>
   </data>
   <data name="NotificationInformation" xml:space="preserve">
-    <value>If you want to get notifications about new comments at this topic, please fill email text box and check proper item. If you want to place source code in comment body place it in tags &lt;b&gt;[code]...[/code]&lt;/b&gt;, you can set language like this [code cs]...[/code], where cs can be cs, html, xml, java, js, php, sql, cpp, css.</value>
+    <value>If you want to get email notifications with new commentaries added to current topic, just fill email and select checkbox below. If you want to include source code in commentary body, just wrap it with &lt;b&gt;[code]...[/code]&lt;/b&gt;, also you can specify code language with [code cs]...[/code], where cs can be cs, html, xml, java, js, php, sql, cpp, css.</value>
   </data>
   <data name="NotificationTitle" xml:space="preserve">
     <value>New comment on blogpost - </value>
